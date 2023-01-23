@@ -28,11 +28,11 @@
       <FileName>Vaporeon.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="eevee_fantasy.Volteon" Collapsed="true">
+  <Class Name="eevee_fantasy.Jolteon" Collapsed="true">
     <Position X="9.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Volteon.cs</FileName>
+      <FileName>Jolteon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
