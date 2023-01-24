@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class HyperPotion : Potion
+    internal class Character
     {
-        public HyperPotion()
+        public string? Name { get; protected set; }
+        public Skill[]? Skills { get; }
+
+        public void unlockSkill()
         {
-            Id = 3;
-            Price = 100;
-            Health = 200;
+            //
         }
     }
 }
-
-
