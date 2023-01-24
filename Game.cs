@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net.Security;
 
 namespace eevee_fantasy
 {
     internal class Game
     {
-        protected int level;
-        public Game() {
-            level = 0;
+        int _gameLevel;
+        public Game()
+        {
+            GameLevel = 0;
+            Console.WriteLine("test");
 
             using (StreamWriter save = new StreamWriter("save.txt"))
             {
@@ -23,6 +26,7 @@ namespace eevee_fantasy
                 save.ReadLine();
             }
         }
-        public int Level { get; set; }
+
+        public int GameLevel { get => _gameLevel; set => _gameLevel = value; }
     }
 }
