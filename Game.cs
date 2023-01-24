@@ -10,23 +10,23 @@ namespace eevee_fantasy
 {
     internal class Game
     {
-        int _gameLevel;
+        public int GameLevel { get; set; }
+
         public Game()
         {
             GameLevel = 0;
-            Console.WriteLine("test");
 
+            //Création du fichier texte de sauvegarde
             using (StreamWriter save = new StreamWriter("save.txt"))
             {
                 save.WriteLine("test");
             }
 
+            //Lecture du fichier texte de sauvegarde
             using (StreamReader save = new StreamReader("save.txt"))
             {
                 save.ReadLine();
             }
         }
-
-        public int GameLevel { get => _gameLevel; set => _gameLevel = value; }
     }
 }

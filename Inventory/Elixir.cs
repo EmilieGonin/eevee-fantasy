@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class HyperPotion : Potion
+    internal class Elixir : Inventory
     {
-        public HyperPotion()
+        public Elixir()
         {
-            Id = 3;
-            Price = 100;
-            Health = 200;
+            Id = 5;
+            Price = 50;
         }
     }
 }
-
-

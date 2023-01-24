@@ -11,7 +11,4 @@
   <ItemGroup>
     <None Remove="Inventory\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Inventory\" />
-  </ItemGroup>
 </Project>

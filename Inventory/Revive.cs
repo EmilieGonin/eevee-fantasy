@@ -8,14 +8,15 @@ namespace eevee_fantasy
 {
     internal class Revive : Inventory
     {
-        
-        int _reviveprice = 70;
-
-        public int Reviveprice { get => _reviveprice; set => _reviveprice = value; }
-
-        void Use(Character eevee)
+        public Revive()
         {
-            //eevee.setAlive() = true;
+            Id = 6;
+            Price = 70;
+        }
+
+        void Use(Character character)
+        {
+            //character.Alive = true;
         }
     }
 }
