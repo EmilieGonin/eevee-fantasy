@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using eevee_fantasy;
+
 Console.WriteLine("Hello, World!");
+Game game = new Game();
