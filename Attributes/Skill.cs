@@ -25,7 +25,7 @@ namespace eevee_fantasy
 
         public virtual void Use(Character target)
         {
-            //target.Hp -= Damage;
+            target.BattleHp -= Damage;
         }
     }
 }
