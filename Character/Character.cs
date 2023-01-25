@@ -9,8 +9,11 @@ namespace eevee_fantasy
     internal class Character
     {
 
+
+        
         public string? Name { get; protected set; }
         public Skill[]? Skills { get; }
+        public Attribute? Attribute { get; }
 
         public int TotalHp { get; protected set; }
         public int TotalDef { get; protected set; }
@@ -27,6 +30,11 @@ namespace eevee_fantasy
         public void unlockSkill()
         {
             //
+        }
+
+        public void LooseHp(int amount)
+        {
+            BattleHp -= amount;
         }
     }
 }

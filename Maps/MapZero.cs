@@ -11,18 +11,18 @@ namespace eevee_fantasy
     {
         public static void DrawMapZero() //This function should work when called in main
         {
-        //    StreamReader mapzero = new StreamReader("levelzero.txt")) 
-        //    {           
-        //        string lines;
+            StreamReader mapzero = new StreamReader("levelzero.txt")) 
+            {           
+             string lines;
 
-        //        while ((lines = mapzero.ReadLine()) != null)
-        //        {
-        //            Console.WriteLine(lines);
-        //        }
+               while ((lines = mapzero.ReadLine()) != null)
+               {
+                   Console.WriteLine(lines);
+                }
 
 
 
-        //    }
+           }
             
 
 
