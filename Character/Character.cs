@@ -15,8 +15,8 @@ namespace eevee_fantasy
         public int TotalHp { get; protected set; }
         public int TotalDef { get; protected set; }
         public int TotalMagicDef { get; protected set; }
-        public int TotalAtk { get; protected set; }
-        public int BattleHp { get; protected set; }
+        public int TotalAtk { get; set; }
+        public int BattleHp { get; set; }
         public int Speed { get; protected set; }
 
         public Character()
