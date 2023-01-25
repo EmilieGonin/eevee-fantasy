@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Fire : Attributes
+    internal class Fire : Attribute
     {
         public Fire()
         {

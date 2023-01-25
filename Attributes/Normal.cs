@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Normal : Attributes
+    internal class Normal : Attribute
     {
         public Normal()
         {

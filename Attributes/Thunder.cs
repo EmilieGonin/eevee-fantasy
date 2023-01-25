@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Thunder : Attributes
+    internal class Thunder : Attribute
     {
         public Thunder()
         {
