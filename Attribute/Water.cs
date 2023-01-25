@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Water : Attributes
+    internal class Water : Attribute
     {
         public Water()
         {

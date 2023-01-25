@@ -23,9 +23,11 @@ namespace eevee_fantasy
             Accuracy = 95;
         }
 
-        public virtual void Use(Character target)
+        public virtual void Use(Attribute attribute, Character target)
         {
-            //target.Hp -= Damage;
+            PP -= 1;
+            //add accuracy check
+            target.LooseHp(Damage * attribute.EffectivenessMultiplier(target.Attribute));
         }
     }
 }

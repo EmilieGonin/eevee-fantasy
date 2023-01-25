@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Ice : Attributes
+    internal class Ice : Attribute
     {
         public Ice()
         {
