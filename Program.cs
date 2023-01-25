@@ -1,5 +1,5 @@
 ﻿using eevee_fantasy;
 
 Console.WriteLine("Hello, World!");
-Settings game = new Settings();
+Game game = new Game();
 Character character = new Character();
