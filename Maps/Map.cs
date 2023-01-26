@@ -18,7 +18,6 @@ namespace eevee_fantasy
             using (StreamReader maps = new StreamReader(MapLink))
             {
                 string mapContent = maps.ReadToEnd(); //21x75
-                //Console.WriteLine(mapContent);
                 string[] rows = mapContent.Split("\r\n");
                 foreach (var row in rows)
                 {
