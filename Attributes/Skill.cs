@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace eevee_fantasy
 {
-    internal class Skill
+    public class Skill
     {
         public int Id { get; protected set; }
         public string? Name { get; protected set; }
