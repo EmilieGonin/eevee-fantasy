@@ -4,29 +4,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace eevee_fantasy
 {
-    internal class MapZero
-    {
-        public static void DrawMapZero() //This function should work when called in main
+
+    internal class MapZero : Map
+	{
+
+
+
+        public MapZero()
         {
-            StreamReader mapzero = new StreamReader("levelzero.txt");
-            {           
-             string lines;
+            MapLink = "Map_Basic.txt";
 
-               while ((lines = mapzero.ReadLine()) != null)
-               {
-                   Console.WriteLine(lines);
-                }
-
-
-
-           }
+            //DrawMap("Map_Basic.txt");
             
-
-
         }
-
     }
-} 
+}
