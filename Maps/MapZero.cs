@@ -4,34 +4,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace eevee_fantasy.Maps
+namespace eevee_fantasy
 {
 
-    public class MapSymbols
+    internal class MapZero : Map
 	{
-        public static MapSymbols[,] map = new MapSymbols[32, 128];
-        public char character { get; set; }
-        public ConsoleColor colour { get; set; }
 
-        public static void Main()
+
+
+        public MapZero()
         {
+            MapLink = "Map_Basic.txt";
 
-            MapSymbols grass = new MapSymbols();
-            grass.character = '#';
-            grass.colour = ConsoleColor.Green;
-
-            StreamReader mapzero = new StreamReader("Map_Basic.txt");
-
-            string lines;
-
-            while ((lines = mapzero.ReadLine()) != null)
-            {
-                Console.WriteLine(lines);
-
-            }
+            //DrawMap("Map_Basic.txt");
+            
         }
-
     }
 }
-
