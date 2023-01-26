@@ -1,6 +1,9 @@
 ﻿using eevee_fantasy;
 
 Console.WriteLine("Hello, World!");
-Game game = new Game();
-Character character = new Character();
+
 MapZero map = new MapZero();
+
+Game.Init();
+Character character = new Character();
+
