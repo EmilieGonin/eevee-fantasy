@@ -28,12 +28,9 @@ namespace eevee_fantasy
             MapZero mapZero = new MapZero(); 
             mapZero.DrawMap();
 
+            Character character = new Character();
+            Game.Init();
+
         }
     }
 }
-
-//Console.WriteLine("Hello, World!");
-//Settings game = new Settings();
-//Character character = new Character();
-Character character = new Character();
-Game.Init();

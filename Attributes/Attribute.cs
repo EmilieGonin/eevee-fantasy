@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Attribute
+    public class Attribute
     {
         public int Id { get; protected set; }
         public Skill SpecialAttackOne { get; protected set; }

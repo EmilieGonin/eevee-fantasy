@@ -12,8 +12,8 @@ namespace eevee_fantasy
 
         
         public string? Name { get; protected set; }
-        Skill[]? Skills { get; }
-        Attribute? Attribute { get; }
+        public Skill[]? Skills { get; }
+        public Attribute? Attribute { get; }
 
 
         public int TotalXP { get; protected set; }
