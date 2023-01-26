@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Plant : Attributes
+    internal class Plant : Attribute
     {
         public Plant()
         {

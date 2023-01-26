@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace eevee_fantasy
 {
@@ -23,9 +24,12 @@ namespace eevee_fantasy
             Accuracy = 95;
         }
 
-        public virtual void Use(Character target)
+        public virtual void Use(Attribute attribute, Character target)
         {
-            //target.Hp -= Damage;
+            PP -= 1;
+            //add accuracy check
+            int damage = Convert.ToInt32(Damage * attribute.EffectivenessMultiplier(attribute, target.Attribute)) - target.TotalDef / 2;
+            target.LooseHp(damage);
         }
     }
 }

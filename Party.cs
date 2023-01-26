@@ -8,5 +8,12 @@ namespace eevee_fantasy
 {
     internal class Party
     {
+        public List<Character>? PartyMembers;
+
+
+        public void AddMember(Character member)
+        {
+            PartyMembers.Add(member);
+        }
     }
 }

@@ -3,7 +3,7 @@
   <Class Name="eevee_fantasy.Character" Collapsed="true">
     <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAAAAAEAAEACACBAAAgAAAQhIAgAAAQAAAAAAAAgAAA=</HashCode>
       <FileName>Character\Character.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -94,21 +94,14 @@
   <Class Name="eevee_fantasy.Game" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="eevee_fantasy.Map" Collapsed="true">
-    <Position X="2.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Map.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Party" Collapsed="true">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Party.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -185,8 +178,15 @@
   <Class Name="eevee_fantasy.Battle" Collapsed="true">
     <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAgAAACAAAAAAAAAAAAAAAIAAAAAACAABAAAACAA=</HashCode>
       <FileName>Battle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.MapZero" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Maps\MapZero.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
