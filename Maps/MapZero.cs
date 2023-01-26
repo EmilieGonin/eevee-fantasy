@@ -5,28 +5,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eevee_fantasy
+namespace eevee_fantasy.Maps
 {
-    internal class MapZero
-    {
-        public static void DrawMapZero() //This function should work when called in main
+
+    public class MapSymbols
+	{
+        public static MapSymbols[,] map = new MapSymbols[32, 128];
+        public char character { get; set; }
+        public ConsoleColor colour { get; set; }
+
+        public static void Main()
         {
-        //    StreamReader mapzero = new StreamReader("levelzero.txt")) 
-        //    {           
-        //        string lines;
 
-        //        while ((lines = mapzero.ReadLine()) != null)
-        //        {
-        //            Console.WriteLine(lines);
-        //        }
+            MapSymbols grass = new MapSymbols();
+            grass.character = '#';
+            grass.colour = ConsoleColor.Green;
 
+            StreamReader mapzero = new StreamReader("Map_Basic.txt");
 
+            string lines;
 
-        //    }
-            
+            while ((lines = mapzero.ReadLine()) != null)
+            {
+                Console.WriteLine(lines);
 
-
+            }
         }
 
     }
-} 
+}
+
