@@ -13,12 +13,21 @@ namespace eevee_fantasy
         private Character? Character;
         private Character? Enemy;
         private int _choiceIndex;
+        private bool _choiceDone;
         
 
 
-        public Battle(Character character, Character enemy)
+        public Battle(Party myParty, Character enemy)
         {
-            Character = character;
+            foreach(var member in myParty.PartyMembers)
+            {
+                if (member.Alive == true)
+                {
+                    Character = member;
+                    break;
+                }
+            }
+           
             Enemy = enemy;
             _choiceIndex = 0;
 
@@ -32,6 +41,21 @@ namespace eevee_fantasy
             if (_choiceIndex == 0)
             {
                 //choose skill
+                do
+                {
+                    if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 0)
+                    {
+                        _choiceIndex += 1;
+
+                    }
+                    if (Console.ReadKey().Key == ConsoleKey.Enter)
+                    {
+                       _choiceDone  = true;
+
+                    }
+                } while (!_choiceDone);
+
+                switch (_choiceIndex) { }
                 //attack function
             }
         }
@@ -42,10 +66,10 @@ namespace eevee_fantasy
 
         private void Attack(Character attacker, Character target, Skill skillUsed)
         {
-
             skillUsed.Use(attacker.Attribute, target); 
         }
 
+        
 
     }
 }
