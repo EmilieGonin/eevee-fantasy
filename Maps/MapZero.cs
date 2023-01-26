@@ -12,13 +12,9 @@ namespace eevee_fantasy
     internal class MapZero : Map
 	{
 
-
-
         public MapZero()
         {
             MapLink = "Map_Basic.txt";
-
-            //DrawMap("Map_Basic.txt");
             
         }
     }

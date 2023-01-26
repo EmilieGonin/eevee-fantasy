@@ -9,13 +9,16 @@ namespace eevee_fantasy
 {
     internal class Map
     {
+
+        public char[,]? myMap { get; set; }
         public string? MapLink { get; set; }
 
         public void DrawMap()
         {
             //Console.Clear();
+            var directory = "../../../res/" + MapLink;
 
-            using (StreamReader maps = new StreamReader(MapLink))
+            using (StreamReader maps = new StreamReader(directory))
             {
                 string mapContent = maps.ReadToEnd(); //21x75
                 string[] rows = mapContent.Split("\r\n");
@@ -60,9 +63,12 @@ namespace eevee_fantasy
                     }
                     Console.WriteLine();
                 }
+                myMap = map;
             }
-
+            
         }
+
+
 
     }
 } 

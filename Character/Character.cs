@@ -47,5 +47,10 @@ namespace eevee_fantasy
                 BattleHp = 0;
             }
         }
+
+        public void Move()
+        {
+
+        }
     }
 }
