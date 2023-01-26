@@ -1,3 +1,6 @@
+using eevee_fantasy;
+
+
 namespace Testing
 {
     public class Tests
@@ -6,6 +9,7 @@ namespace Testing
         public void Test1()
         {
             Assert.Pass();
+            Eevee myEevee;
         }
     }
 }
