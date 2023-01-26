@@ -11,4 +11,8 @@
   <ItemGroup>
     <None Remove="Inventory\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Skills\Ice\" />
+  </ItemGroup>
 </Project>

@@ -9,9 +9,7 @@ namespace eevee_fantasy
     public class Attribute
     {
         public int Id { get; protected set; }
-        public Skill SpecialAttackOne { get; protected set; }
-        public Skill SpecialAttackTwo { get; protected set; }
-        public Skill SpecialAttackThree { get; protected set; }
+        public Skill[]? SpecialAttacks { get; protected set; }
         protected int[]? Strengths { get; set; }
         protected int[]? Weaknesses { get; set; }
 

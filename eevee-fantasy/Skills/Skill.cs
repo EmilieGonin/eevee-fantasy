@@ -9,19 +9,17 @@ namespace eevee_fantasy
 {
     public class Skill
     {
-        public int Id { get; protected set; }
+        readonly int _accuracy;
+
+        //public int Id { get; protected set; }
         public string? Name { get; protected set; }
         public int Damage { get; protected set; }
-        public int PP { get; protected set; }
-        public int Accuracy { get; protected set; }
+        public int PP { get; set; }
 
-        public Skill(int id, string? name, int damage, int pp)
+        public Skill()
         {
-            Id = id;
-            Name = name;
-            Damage = damage;
-            PP = pp;
-            Accuracy = 95;
+            _accuracy = 95;
+            PP = 35;
         }
 
         public virtual void Use(Attribute attribute, Character target)
