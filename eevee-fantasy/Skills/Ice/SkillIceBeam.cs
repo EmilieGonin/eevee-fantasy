@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillIceBeam : Skill
     {
+        public SkillIceBeam()
+        {
+            Name = "Ice Beam";
+            Damage = 90;
+            PP = 10;
+        }
     }
 }

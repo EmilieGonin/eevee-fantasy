@@ -12,6 +12,7 @@ namespace eevee_fantasy
         {
             Name = "Ember";
             Damage = 0;
+            PP = 25;
         }
     }
 }

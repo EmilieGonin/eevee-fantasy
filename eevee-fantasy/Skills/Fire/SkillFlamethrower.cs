@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillFlamethrower : Skill
     {
+        public SkillFlamethrower()
+        {
+            Name = "Flamethrower";
+            Damage = 90;
+            PP = 15;
+        }
     }
 }
