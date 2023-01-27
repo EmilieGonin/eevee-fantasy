@@ -6,33 +6,58 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Battle
+    public class Battle
     {
-        
-
         private Character? Character;
         private Character? Enemy;
         private int _choiceIndex;
-        private bool _choiceDone;
-        
+        private bool _choiceDone, _battleState;
 
-
-        public Battle(Party myParty, Character enemy)
+        public Battle(Party myParty)
         {
-            foreach(var member in myParty.PartyMembers)
+            foreach (var member in myParty.PartyMembers)
             {
                 if (member.Alive == true)
                 {
+
                     Character = member;
+                    Console.WriteLine(Character.Speed);
                     break;
                 }
             }
-           
-            Enemy = enemy;
+
+            _battleState = true;
+            _choiceDone = false;
+
+            Enemy = new BasicEnemy();
+
+            Console.WriteLine(Enemy.Speed);
             _choiceIndex = 0;
 
+            Play();
         }
 
+        public void Play()
+        {
+
+            Console.WriteLine("start battle");
+            if (_battleState == true)
+            {
+                Console.WriteLine("je calcule wsh");
+                if (Character?.Speed < Enemy?.Speed)
+                {
+
+                    EnnemysTurn();
+                }
+                else if (Character?.Speed > Enemy?.Speed)
+                {
+                    MyTurn();
+
+
+                }
+                Play();
+            }
+        }
 
         private void MyTurn()
         {
@@ -43,19 +68,54 @@ namespace eevee_fantasy
                 //choose skill
                 do
                 {
-                    if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 0)
+                    if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex > 3)
                     {
                         _choiceIndex += 1;
+                        Console.WriteLine(_choiceIndex);
 
+                    }
+                    else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex < 0) //var to check skill unlocked
+                    {
+                        _choiceIndex -= 1;
+                        Console.WriteLine(_choiceIndex);
                     }
                     if (Console.ReadKey().Key == ConsoleKey.Enter)
                     {
-                       _choiceDone  = true;
+                        _choiceDone = true;
+                        Console.WriteLine("Je selectionne");
 
                     }
                 } while (!_choiceDone);
 
-                switch (_choiceIndex) { }
+                switch (_choiceIndex)
+                {
+                    case 0:
+                        do
+                        {
+                            if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 0)
+                            {
+                                _choiceIndex += 1;
+
+                            }
+                            else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex > 4) //var to check skill unlocked
+                            {
+                                _choiceIndex -= 1;
+
+                            }
+                            if (Console.ReadKey().Key == ConsoleKey.Enter)
+                            {
+                                _choiceDone = true;
+
+                            }
+                        } while (!_choiceDone);
+                        Console.WriteLine("skill" + _choiceIndex + "used");
+                        //Attack(Character, Enemy, Character.Skills[_choiceIndex]);
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
                 //attack function
             }
         }
@@ -66,10 +126,9 @@ namespace eevee_fantasy
 
         private void Attack(Character attacker, Character target, Skill skillUsed)
         {
-            skillUsed.Use(attacker.Attribute, target); 
+
+            skillUsed.Use(attacker.Attribute, target);
+
         }
-
-        
-
     }
 }

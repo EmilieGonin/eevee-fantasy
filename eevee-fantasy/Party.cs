@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Party
+    public class Party
     {
         public List<Character>? PartyMembers;
 
+        public Party()
+        {
+            PartyMembers = new List<Character>();
+        }
 
         public void AddMember(Character member)
         {

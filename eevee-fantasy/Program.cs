@@ -1,8 +1,4 @@
-﻿
-
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,26 +7,21 @@ using System.Threading.Tasks;
 using eevee_fantasy;
 using static System.Net.Mime.MediaTypeNames;
 
-
-
-
 namespace eevee_fantasy
 {
-
     public class Program
     {
-
-
-
         public static void Main()
         {
-
             MapZero mapZero = new MapZero(); 
             mapZero.DrawMap();
 
-            Character character = new Character();
-            Game.Init();
+            Party myParty = new Party();
+            Eevee eevee = new Eevee();
+            myParty.AddMember(eevee);
+            Battle battle = new Battle(myParty);
 
+            Game.Init();
         }
     }
 }

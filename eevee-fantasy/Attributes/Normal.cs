@@ -11,9 +11,7 @@ namespace eevee_fantasy
         public Normal()
         {
             Id = 1;
-            SpecialAttackOne = new Skill(1, "Tackle", 0, 0);
-            SpecialAttackTwo = new Skill(2, "Take Down", 0, 0);
-            SpecialAttackThree = new Skill(3, "Giga Impact", 0, 0);
+            SpecialAttacks = new Skill[] { new SkillTackle(), new SkillTakeDown(), new SkillDoubleEdge() };
         }
     }
 }

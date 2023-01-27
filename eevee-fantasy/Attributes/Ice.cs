@@ -11,9 +11,7 @@ namespace eevee_fantasy
         public Ice()
         {
             Id = 6;
-            SpecialAttackOne = new Skill(1, "", 0, 0);
-            SpecialAttackTwo = new Skill(2, "", 0, 0);
-            SpecialAttackThree = new Skill(3, "", 0, 0);
+            SpecialAttacks = new Skill[] { new SkillIceShard(), new SkillIceBeam(), new SkillSheerCold() };
             Strengths = new int[] { 3, 5 };
             Weaknesses = new int[] { 2 };
         }

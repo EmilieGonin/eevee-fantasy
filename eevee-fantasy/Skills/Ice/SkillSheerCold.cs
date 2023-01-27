@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    public class BossEnemy : Character
+    internal class SkillSheerCold : Skill
     {
-        //Création des Boss dans les classes LevelOne, LevelTwo, etc.
     }
 }

@@ -11,9 +11,7 @@ namespace eevee_fantasy
         public Thunder()
         {
             Id = 4;
-            SpecialAttackOne = new Skill(1, "Spark", 0, 0);
-            SpecialAttackTwo = new Skill(2, "Tunderbolt", 0, 0);
-            SpecialAttackThree = new Skill(3, "Thunder", 0, 0);
+            SpecialAttacks = new Skill[] { new SkillSpark(), new SkillThunderbolt(), new SkillThunder() };
             Strengths = new int[] { 3 };
         }
     }

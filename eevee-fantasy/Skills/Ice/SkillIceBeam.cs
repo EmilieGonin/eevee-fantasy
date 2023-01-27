@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class SkillTunderbolt : Skill
+    internal class SkillIceBeam : Skill
     {
     }
 }
