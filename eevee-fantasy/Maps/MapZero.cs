@@ -11,10 +11,16 @@ namespace eevee_fantasy
 
     internal class MapZero : Map
 	{
+        public int X { get; }
+        public int Y { get; }
 
         public MapZero()
         {
+            X = 34;
+            Y = 19;
+            
             MapLink = "Map_Basic.txt";
+
             
         }
     }

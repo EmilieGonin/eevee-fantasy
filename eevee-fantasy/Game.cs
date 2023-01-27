@@ -35,7 +35,7 @@ namespace eevee_fantasy
                         Console.WriteLine(line);
                         if (line.StartsWith("GameLevel"))
                         {
-                            Console.WriteLine("test");
+                            //Console.WriteLine("test");
                             GameLevel = Int32.Parse(line.Split("=")[1]);
                         }
                     }
