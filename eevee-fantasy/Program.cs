@@ -19,9 +19,10 @@ namespace eevee_fantasy
             mapZero.CreateMap();
             mapZero.DrawMap();
 
-            Party myParty = new Party();
             Eevee eevee = new Eevee();
-            myParty.AddMember(eevee);
+            Party.Fill(eevee);
+            Game.Init(eevee);
+
             eevee.Spawn(mapZero.X, mapZero.Y);
 
             while (play != false)
@@ -49,10 +50,8 @@ namespace eevee_fantasy
                     eevee.Move(input.KeyChar);
                 }
             }
-            
-            //Battle battle = new Battle(myParty);
 
-            Game.Init();
+            //Battle battle = new Battle();
         }
     }
 }

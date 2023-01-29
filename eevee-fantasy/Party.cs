@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    public class Party
+    public static class Party
     {
-        public List<Character>? PartyMembers;
+        public static List<Character>? PartyMembers;
 
-        public Party()
+        public static void Fill(Eevee eevee)
         {
-            PartyMembers = new List<Character>();
-        }
-
-        public void AddMember(Character member)
-        {
-            PartyMembers.Add(member);
+            PartyMembers = new List<Character> { eevee, new Flareon(), new Vaporeon(), new Jolteon(), new Leafeon(), new Glaceon() };
         }
     }
 }
