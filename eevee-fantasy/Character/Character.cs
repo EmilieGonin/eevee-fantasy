@@ -10,8 +10,8 @@ namespace eevee_fantasy
     public class Character
     {
 
-        protected int X { get; set; }
-        protected int Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         
         public string? Name { get; protected set; }
         public Skill[]? Skills { get; }
@@ -28,11 +28,13 @@ namespace eevee_fantasy
         public int BattleHp { get; set; }
         public int Speed { get; protected set; }
         public bool Alive { get; protected set; }
+        public bool Recruited { get; set; }
 
         public Character()
         {
             TotalHp = TotalDef = TotalAtk = BattleHp = 0;
             Alive = true;
+            Recruited = false;
         }
 
         public void unlockSkill()

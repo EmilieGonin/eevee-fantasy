@@ -11,23 +11,16 @@ namespace eevee_fantasy
     internal static class Game
     {
         public static int GameLevel { get; set; }
-        public static int PositionX { get; set; }
-        public static int PositionY { get; set; }
-        public static int Flareon { get; set; }
-        public static int Vaporeon { get; set; }
-        public static int Jolteon { get; set; }
-        public static int Leafeon { get; set; }
-        public static int Glaceon { get; set; }
 
-        public static void Init()
+        public static void Init(Eevee eevee)
         {
-            if (!GetSave())
+            if (!GetSave(eevee))
             {
-                CreateSave();
+                CreateSave(eevee);
             }
         }
 
-        private static bool GetSave()
+        private static bool GetSave(Eevee eevee)
         {
             try
             {
@@ -47,25 +40,40 @@ namespace eevee_fantasy
                                 GameLevel = value;
                                 break;
                             case "PositionX":
-                                    PositionX = value;
+                                eevee.X = value;
                                 break;
                             case "PositionY":
-                                PositionY = value;
+                                eevee.Y = value;
                                 break;
                             case "Flareon":
-                                Flareon = value;
+                                Party.PartyMembers![0].Recruited = Convert.ToBoolean(value);
+                                break;
+                            case "FlareonHp":
+                                Party.PartyMembers![0].BattleHp = value;
                                 break;
                             case "Vaporeon":
-                                Vaporeon = value;
+                                Party.PartyMembers![1].Recruited = Convert.ToBoolean(value);
+                                break;
+                            case "VaporeonHp":
+                                Party.PartyMembers![1].BattleHp = value;
                                 break;
                             case "Jolteon":
-                                Jolteon = value;
+                                Party.PartyMembers![2].Recruited = Convert.ToBoolean(value);
+                                break;
+                            case "JolteonHp":
+                                Party.PartyMembers![2].BattleHp = value;
                                 break;
                             case "Leafeon":
-                                Leafeon = value;
+                                Party.PartyMembers![3].Recruited = Convert.ToBoolean(value);
+                                break;
+                            case "LeafeonHp":
+                                Party.PartyMembers![3].BattleHp = value;
                                 break;
                             case "Glaceon":
-                                Glaceon = value;
+                                Party.PartyMembers![4].Recruited = Convert.ToBoolean(value);
+                                break;
+                            case "GlaceonHp":
+                                Party.PartyMembers![4].BattleHp = value;
                                 break;
                             default:
                                 break;
@@ -81,12 +89,26 @@ namespace eevee_fantasy
             }
         }
 
-        public static void CreateSave()
+        public static void CreateSave(Eevee eevee)
         {
-            //Création du fichier texte de sauvegarde
-            using (StreamWriter save = new StreamWriter("save.txt"))
+            //Création du fichier texte de sauvegarde -- "false" permet de remplacer le texte déjà présent
+            using (StreamWriter save = new StreamWriter("save.txt", false))
             {
-                save.Write("GameLevel=0\nPositionX=0\nPositionY=0\nFlareon=0\nVaporeon=0\nJolteon=0\nLeafeon=0\nGlaceon=0");
+                string str = "GameLevel=" + GameLevel.ToString() +
+                    "\nPositionX=" + eevee.X.ToString() +
+                    "\nPositionY=" + eevee.Y.ToString() +
+                    "\nFlareon=" + Convert.ToInt64(Party.PartyMembers![0].Recruited).ToString() +
+                    "\nFlareonHp=" + Party.PartyMembers![0].BattleHp.ToString() +
+                    "\nVaporeon=" + Convert.ToInt64(Party.PartyMembers![1].Recruited).ToString() +
+                    "\nVaporeonHp=" + Party.PartyMembers![1].BattleHp.ToString() +
+                    "\nJolteon=" + Convert.ToInt64(Party.PartyMembers![2].Recruited).ToString() +
+                    "\nJolteonHp=" + Party.PartyMembers![2].BattleHp.ToString() +
+                    "\nLeafeon=" + Convert.ToInt64(Party.PartyMembers![3].Recruited).ToString() +
+                    "\nLeafeonHp=" + Party.PartyMembers![3].BattleHp.ToString() +
+                    "\nGlaceon=" + Convert.ToInt64(Party.PartyMembers![4].Recruited).ToString() +
+                    "\nGlaceonHp=" + Party.PartyMembers![4].BattleHp.ToString();
+
+                save.Write(str);
             }
         }
     }

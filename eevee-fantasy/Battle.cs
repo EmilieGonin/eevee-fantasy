@@ -13,9 +13,9 @@ namespace eevee_fantasy
         private int _choiceIndex;
         private bool _choiceDone, _battleState;
 
-        public Battle(Party myParty)
+        public Battle()
         {
-            foreach (var member in myParty.PartyMembers)
+            foreach (var member in Party.PartyMembers!)
             {
                 if (member.Alive == true)
                 {

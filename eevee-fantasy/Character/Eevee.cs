@@ -14,7 +14,7 @@ namespace eevee_fantasy
             TotalDef = 25;
             TotalAtk = 50;
             Speed = 150;
-
+            Recruited = true;
         }
     }
 }
