@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class AtkPotion : Inventory
+    internal class AtkPotion : Item
     {
         readonly int _attack;
 
         public AtkPotion()
         {
-            Id = 4;
             Price = 70;
             _attack = 100;
         }
 
-        void Use(Character character)
+        public override void Use(Character character)
         {
-            //character.Atk += _attack;
+            base.Use(character);
+            character.TotalAtk += _attack;
         }
     }
 }

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Revive : Inventory
+    internal class Revive : Item
     {
         public Revive()
         {
-            Id = 6;
             Price = 70;
         }
 
-        void Use(Character character)
+        public override void Use(Character character)
         {
-            //character.Alive = true;
+            base.Use(character);
+            character.Alive = true;
         }
     }
 }

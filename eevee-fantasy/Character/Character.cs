@@ -27,7 +27,7 @@ namespace eevee_fantasy
         public int TotalAtk { get; set; }
         public int BattleHp { get; set; }
         public int Speed { get; protected set; }
-        public bool Alive { get; protected set; }
+        public bool Alive { get; set; }
         public bool Recruited { get; set; }
 
         public Character()
