@@ -14,11 +14,13 @@ namespace eevee_fantasy
         public int Y { get; set; }
         
         public string? Name { get; protected set; }
-        public Skill[]? Skills { get; }
-        public Attribute? Attribute { get; }
+        public Skill[]? Skills { get; protected set; }
+        public Attribute? Attribute { get; protected set; }
+        public Attribute? NormalType { get; protected set; }
 
 
         public int TotalXP { get; protected set; }
+        public int lvl { get; protected set; }
         public int XPToGet { get; protected set; }
 
         public int TotalHp { get; protected set; }
@@ -35,13 +37,39 @@ namespace eevee_fantasy
             TotalHp = TotalDef = TotalAtk = BattleHp = 0;
             Alive = true;
             Recruited = false;
+            NormalType = new Normal();
         }
 
-        public void unlockSkill()
+        public void LevelUp()
         {
-            //
+            lvl += 1;
+            TotalHp += 100 / 25 * TotalHp;
+            TotalDef += 100 / 10 * TotalDef;
+            TotalAtk += 100 / 20 * TotalAtk;
+            XPToGet = lvl * lvl * lvl;
+            Speed += 2;
+            UnlockSkills();
         }
+        public void UnlockSkills()
+        {
 
+            if (Skills == null)
+            {
+                Skills?.Append(NormalType?.NormalAttack); // tackle
+                Skills?.Append(Attribute?.SpecialAttacks?[0]); // first skill 
+            }
+
+            if (lvl == 15)
+            {
+                Skills?.Append(Attribute?.SpecialAttacks?[1]);
+            }
+
+            if (lvl == 40)
+            {
+                Skills?.Append(Attribute?.SpecialAttacks?[2]);
+            }
+
+        }
         public void LooseHp(int amount)
         {
             BattleHp -= amount;

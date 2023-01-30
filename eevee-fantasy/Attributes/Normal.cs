@@ -8,10 +8,14 @@ namespace eevee_fantasy
 {
     internal class Normal : Attribute
     {
+
+        public Skill? NormalAttack { get; protected set; }
         public Normal()
         {
+                
             Id = 1;
-            SpecialAttacks = new Skill[] { new SkillTackle(), new SkillTakeDown(), new SkillDoubleEdge() };
+            SpecialAttacks = new Skill[] { new SkillPound(), new SkillTakeDown(), new SkillDoubleEdge() };
+            NormalAttack = new SkillTackle();
         }
     }
 }
