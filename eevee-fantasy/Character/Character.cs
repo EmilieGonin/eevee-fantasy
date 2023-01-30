@@ -16,7 +16,7 @@ namespace eevee_fantasy
         public string? Name { get; protected set; }
         public Skill[]? Skills { get; protected set; }
         public Attribute? Attribute { get; protected set; }
-        public Attribute? NormalType { get; protected set; }
+        public Normal? NormalType { get; protected set; }
 
 
         public int TotalXP { get; protected set; }
@@ -34,6 +34,7 @@ namespace eevee_fantasy
 
         public Character()
         {
+            lvl = 1;
             TotalHp = TotalDef = TotalAtk = BattleHp = 0;
             Alive = true;
             Recruited = false;

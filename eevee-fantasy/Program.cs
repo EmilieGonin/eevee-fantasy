@@ -15,7 +15,6 @@ namespace eevee_fantasy
         {
             Console.CursorVisible = false;
             bool play = true;
-            bool start = true;
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);

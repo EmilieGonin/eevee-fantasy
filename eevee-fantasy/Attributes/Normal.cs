@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Normal : Attribute
+    public class Normal : Attribute
     {
 
-        public Skill? NormalAttack { get; protected set; }
+        public Skill? NormalAttack { get; set; }
         public Normal()
         {
                 

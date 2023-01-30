@@ -10,14 +10,12 @@ namespace eevee_fantasy
     {
         public Eevee()
         {
-
-            lvl = 5;
             TotalHp = 300;
             TotalDef = 76;
             TotalAtk = 50;
             Speed = 110;
 
-            for(int i = 0;i < lvl; i++) 
+            for(int i = 0;i < 5; i++) 
             {
                 LevelUp();
             }
