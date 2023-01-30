@@ -13,6 +13,7 @@ namespace eevee_fantasy
     {
         public static void Main()
         {
+            Console.CursorVisible = false;
             bool play = true;
             MapZero mapZero = new MapZero(); 
             //mapZero.test();
