@@ -49,30 +49,26 @@ namespace eevee_fantasy
                 {
                     char item = myMap[i, j];
 
-                    if (item == '#')
+                    switch (item)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                    }
-                    else if (item == '/')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                    }
-                    else if (item == '*')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    }
-                    else if (item == '.')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    }
-                    else if (item == '\\')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
+                        case '#':
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case '\\':
+                        case '/':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            break;
+                        case '*':
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
+                            break;
+                        case '.':
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            break;
+                        default:
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+                    }                
+                    
                     Console.Write(item);
                 }
                 Console.WriteLine();
@@ -82,25 +78,36 @@ namespace eevee_fantasy
 
         public bool Collisions(int eeveeX, int eeveeY)
         {
-            if (myMap[eeveeY, eeveeX] == '/') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '\\') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '-') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '|') { return true; }
-            else { return false;}
+            switch(myMap[eeveeY, eeveeX])
+            {
+                case '/':
+                    return true;
+                case '\\':
+                    return true;
+                case '–':
+                    return true;
+                case '|':
+                    return true;
+            }
+            return false;
         }
 
-        public bool TpNext(int eeveeX, int eeveeY)
+        public bool Tp(int eeveeX, int eeveeY)
         {
-            if (myMap[eeveeY, eeveeX] == '>') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '<') { return true; }
-            else if (myMap[eeveeY, eeveeX] == 'v') { return true; }
-            else { return false; }
-        }
 
-        public bool TpPrevious(int eeveeX, int eeveeY)
-        {
-            if (myMap[eeveeY, eeveeX] == '^') { return true; }
-            else { return false; }
+            switch(myMap[eeveeY, eeveeX])
+            {
+                case '>':
+                case '<':
+                case 'v':
+                    Game.GameLevel += 1;
+                    return true;
+                case '^':
+                    Game.GameLevel -= 1;
+                    return true;
+            }
+
+            return false;
         }
     }
 

@@ -35,26 +35,9 @@ namespace eevee_fantasy
             while (play != false)
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
-
-                if (currentMap.TpNext(eevee.X, eevee.Y) == true)
-                {
-                    Game.GameLevel += 1;
-                    currentMap = maps[Game.GameLevel];
-                    //currentMap.CreateMap();
-                    currentMap.DrawMap();
-                    eevee.Spawn(currentMap.X, currentMap.Y);
-                }
-                else if (currentMap.TpPrevious(eevee.X, eevee.Y) == true)
-                {
-                    Game.GameLevel -= 1;
-                    currentMap = maps[Game.GameLevel];
-                    //currentMap.CreateMap();
-                    currentMap.DrawMap();
-                    eevee.Spawn(currentMap.X, currentMap.Y);
-                }
                     //Console.WriteLine("test");
 
-                    if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != true))
+                if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != true))
                 {
                     currentMap.DrawMap();
                     eevee.Move(input.KeyChar);
@@ -73,6 +56,13 @@ namespace eevee_fantasy
                 {
                     currentMap.DrawMap();
                     eevee.Move(input.KeyChar);
+                }
+
+                if (currentMap.Tp(eevee.X, eevee.Y))
+                {
+                    currentMap = maps[Game.GameLevel];
+                    currentMap.DrawMap();
+                    eevee.Spawn(currentMap.X, currentMap.Y);
                 }
             }
 
