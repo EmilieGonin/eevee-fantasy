@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillVineWhip : Skill
     {
+        public SkillVineWhip()
+        {
+            Name = "Vine Whip";
+            Damage = 45;
+            PP = 25;
+        }
     }
 }

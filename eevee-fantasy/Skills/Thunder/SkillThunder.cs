@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillThunder : Skill
     {
+        public SkillThunder()
+        {
+            Name = "Thunder";
+            Damage = 110;
+            PP = 10;
+        }
     }
 }

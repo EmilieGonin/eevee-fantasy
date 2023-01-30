@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillWaterGun : Skill
     {
+        public SkillWaterGun()
+        {
+            Name = "Water Gun";
+            Damage = 40;
+            PP = 25;
+        }
     }
 }
