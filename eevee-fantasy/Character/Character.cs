@@ -76,7 +76,7 @@ namespace eevee_fantasy
 
             }
 
-            Console.SetCursorPosition(X, Y);
+            Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write('E');
             Console.SetCursorPosition(0, 22);

@@ -40,6 +40,8 @@ namespace eevee_fantasy
         }
         public void DrawMap()
         {
+            Console.SetCursorPosition(0,0);
+
             foreach (var item in myMap)
             {
                 if (item == '#')
