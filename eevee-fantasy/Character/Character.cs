@@ -9,7 +9,6 @@ namespace eevee_fantasy
 {
     public class Character
     {
-
         public int X { get; set; }
         public int Y { get; set; }
         
@@ -17,7 +16,6 @@ namespace eevee_fantasy
         public Skill[]? Skills { get; protected set; }
         public Attribute? Attribute { get; protected set; }
         public Normal? NormalType { get; protected set; }
-
 
         public int TotalXP { get; protected set; }
         public int lvl { get; protected set; }
@@ -39,6 +37,10 @@ namespace eevee_fantasy
             Alive = true;
             Recruited = false;
             NormalType = new Normal();
+
+            TotalXP = lvl * lvl * lvl;
+            XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
+            UnlockSkills();
         }
 
         public void LevelUp()
@@ -53,7 +55,6 @@ namespace eevee_fantasy
         }
         public void UnlockSkills()
         {
-
             if (Skills == null)
             {
                 Skills?.Append(NormalType?.NormalAttack); // tackle
@@ -110,7 +111,6 @@ namespace eevee_fantasy
             Console.Write('E');
             Console.SetCursorPosition(0, 22);
             //Console.WriteLine("test");
-
         }
         public void Spawn(int mapX, int mapY)
         {
@@ -120,7 +120,6 @@ namespace eevee_fantasy
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write('E');
             Console.SetCursorPosition(0, 22);
-
         }
 
     }
