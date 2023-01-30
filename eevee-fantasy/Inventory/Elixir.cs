@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Elixir : Inventory
+    internal class Elixir : Item
     {
         public Elixir()
         {
-            Id = 5;
             Price = 50;
+        }
+
+        public override void Use(Character character)
+        {
+            base.Use(character);
+            //Select skill
         }
     }
 }

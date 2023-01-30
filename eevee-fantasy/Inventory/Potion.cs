@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-	internal class Potion : Inventory
+    internal class Potion : Item
 	{
         protected int Health { get; set; }
 
         public Potion()
 		{
-			Id = 1;
 			Price = 10;
             Health = 40;
 		}
 
-        public void Use(Character character)
+        public override void Use(Character character)
 		{
-			//character.Hp += Health;
+			base.Use(character);
+			character.BattleHp += Health;
 		}
 
 		

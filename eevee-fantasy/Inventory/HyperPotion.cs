@@ -10,7 +10,6 @@ namespace eevee_fantasy
     {
         public HyperPotion()
         {
-            Id = 3;
             Price = 100;
             Health = 200;
         }

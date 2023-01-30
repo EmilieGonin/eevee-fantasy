@@ -6,27 +6,24 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-	internal class Inventory
+	public static class Inventory
 	{
-        public int Id { get; protected set; }
-        public int Price { get; protected set; }
-        public int PokeDollars { get; private set; }
-        public Revive[]? Revives { get; }
-        public AtkPotion[]? AtkPotions { get; }
-        public Elixir[]? Elixir { get; }
-        public Potion[]? HealthPotions { get; }
-        public SuperPotion[]? SuperPotions { get; }
-        public HyperPotion[]? HyperPotions { get; }
+        public static int PokeDollars { get; private set; }
+        public static Item[]? Items { get; private set; }
 
-        //1 = Potion, 2 = SuperPotion, 3 = HyperPotion
-        //4 = AtkPotion, 5 = Elixir, 6 = Revive
-        //Création d'un enum ?
-        public void Buy(int id)
+        public static void Init()
         {
-            //
+            Items = new Item[6] { new AtkPotion(), new Elixir(), new Revive(), new Potion(), new SuperPotion(), new HyperPotion() };
+        }
+
+        public static void Buy(int id)
+        {
+            if (PokeDollars > Items[id].Price)
+            {
+                Items[id].Number++;
+                PokeDollars -= Items[id].Price;
+            }
         }
     }
-
-    
 }
 

@@ -10,7 +10,6 @@ namespace eevee_fantasy
 	{
         public SuperPotion()
         {
-            Id = 2;
             Price = 50;
             Health = 100;
         }
