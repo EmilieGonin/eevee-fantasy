@@ -17,7 +17,7 @@ namespace eevee_fantasy
         public MapZero()
         {
             X = 34;
-            Y = 19;
+            Y = 18;
             
             MapLink = "Map_Basic.txt";
 

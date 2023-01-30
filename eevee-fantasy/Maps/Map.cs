@@ -21,7 +21,7 @@ namespace eevee_fantasy
             using (StreamReader maps = new StreamReader(directory))
             {
                 string mapContent = maps.ReadToEnd(); //21x75
-                string[] rows = mapContent.Split("\r");
+                string[] rows = mapContent.Split('\n');
 
                 int rowLength = rows[0].Length; //75
                 int rowCount = rows.Length; //21
@@ -42,35 +42,50 @@ namespace eevee_fantasy
         {
             Console.SetCursorPosition(0,0);
 
-            foreach (var item in myMap)
+            for (int i = 0; i < myMap.GetLength(0); i++)
             {
-                if (item == '#')
+                for (int j = 0; j < myMap.GetLength(1); j++)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    char item = myMap[i, j];
+
+                    if (item == '#')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else if (item == '/')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                    }
+                    else if (item == '*')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    }
+                    else if (item == '.')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    }
+                    else if (item == '\\')
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    Console.Write(item);
                 }
-                else if (item == '/')
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                }
-                else if (item == '*')
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                }
-                else if (item == '.')
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                }
-                else if (item == '\\')
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-                Console.Write(item);
+                Console.WriteLine();
             }
 
+        }
+
+        public bool Collisions(int eeveeX, int eeveeY)
+        {
+            if (myMap[eeveeY, eeveeX] == '/') { return true; }
+            else if (myMap[eeveeY, eeveeX] == '\\') { return true; }
+            else if (myMap[eeveeY, eeveeX] == '-') { return true; }
+            else if (myMap[eeveeY, eeveeX] == '|') { return true; }
+            else { return false;}
         }
     }
 

@@ -30,22 +30,22 @@ namespace eevee_fantasy
             {
                 //Console.WriteLine("test");
                 ConsoleKeyInfo input = Console.ReadKey(true);
-                if (input.KeyChar == 'z')
+                if (input.KeyChar == 'z' && (mapZero.Collisions(eevee.X, eevee.Y-1) != true))
                 {
                     mapZero.DrawMap();
                     eevee.Move(input.KeyChar);
                 }
-                else if (input.KeyChar == 's')
+                else if (input.KeyChar == 's' && (mapZero.Collisions(eevee.X, eevee.Y+1) != true))
                 {
                     mapZero.DrawMap();
                     eevee.Move(input.KeyChar);
                 }
-                else if (input.KeyChar == 'q')
+                else if (input.KeyChar == 'q' && (mapZero.Collisions(eevee.X-1, eevee.Y) != true))
                 {
                     mapZero.DrawMap();
                     eevee.Move(input.KeyChar);
                 }
-                else if (input.KeyChar == 'd')
+                else if (input.KeyChar == 'd' && (mapZero.Collisions(eevee.X+1, eevee.Y) != true))
                 {
                     mapZero.DrawMap();
                     eevee.Move(input.KeyChar);
