@@ -9,18 +9,19 @@ using static System.Net.Mime.MediaTypeNames;
 namespace eevee_fantasy
 {
 
-    internal class MapZero : Map
-	{
+    internal class MapOne : Map
+    {
 
-
-        public MapZero()
+        public MapOne()
         {
             X = 34;
             Y = 18;
-            
-            MapLink = "Map_Basic.txt";
+
+            MapLink = "LevelOne.txt";
             CreateMap();
-            
+
+
         }
     }
 }
+

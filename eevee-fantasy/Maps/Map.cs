@@ -12,7 +12,8 @@ namespace eevee_fantasy
 
         public char[,]? myMap { get; set; }
         public string? MapLink { get; set; }
-
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public void CreateMap()
         {
@@ -23,7 +24,7 @@ namespace eevee_fantasy
                 string mapContent = maps.ReadToEnd(); //21x75
                 string[] rows = mapContent.Split('\n');
 
-                int rowLength = rows[0].Length; //75
+                int rowLength = rows[0].Length - 1; //75
                 int rowCount = rows.Length; //21
                 myMap = new char[rowCount, rowLength];
 
@@ -86,6 +87,15 @@ namespace eevee_fantasy
             else if (myMap[eeveeY, eeveeX] == '-') { return true; }
             else if (myMap[eeveeY, eeveeX] == '|') { return true; }
             else { return false;}
+        }
+
+        public bool Tp(int eeveeX, int eeveeY)
+        {
+            if (myMap[eeveeY, eeveeX] == '>') { return true; }
+            else if (myMap[eeveeY, eeveeX] == '<') { return true; }
+            else if (myMap[eeveeY, eeveeX] == 'v') { return true; }
+            else if (myMap[eeveeY, eeveeX] == '^') { return true; }
+            else { return false; }
         }
     }
 
