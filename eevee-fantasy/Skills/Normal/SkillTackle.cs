@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillTackle : Skill
     {
+        public SkillTackle()
+        {
+            Name = "Tackle";
+            Damage = 40;
+            PP = 35;
+        }
     }
 }
