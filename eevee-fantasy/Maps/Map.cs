@@ -62,6 +62,12 @@ namespace eevee_fantasy
                             Console.ForegroundColor = ConsoleColor.DarkBlue;
                             break;
                         case '.':
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            break;
+                        case '-':
+                        case '+':
+                        case '|':
+                        case '~':
                             Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             break;
                         default:
@@ -84,9 +90,11 @@ namespace eevee_fantasy
                     return true;
                 case '\\':
                     return true;
-                case '–':
+                case '-':
                     return true;
                 case '|':
+                    return true;
+                case '+':
                     return true;
             }
             return false;
