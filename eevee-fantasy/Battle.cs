@@ -62,62 +62,61 @@ namespace eevee_fantasy
         private void MyTurn()
         {
             // choice between inventory, attack or party change
-
-            if (_choiceIndex == 0)
+            //choose skill
+            do
             {
-                //choose skill
-                do
+                if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex > 3)
                 {
-                    if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex > 3)
-                    {
-                        _choiceIndex += 1;
-                        Console.WriteLine(_choiceIndex);
+                    _choiceIndex += 1;
+                    Console.WriteLine(_choiceIndex);
 
-                    }
-                    else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex < 0) //var to check skill unlocked
-                    {
-                        _choiceIndex -= 1;
-                        Console.WriteLine(_choiceIndex);
-                    }
-                    if (Console.ReadKey().Key == ConsoleKey.Enter)
-                    {
-                        _choiceDone = true;
-                        Console.WriteLine("Je selectionne");
-
-                    }
-                } while (!_choiceDone);
-
-                switch (_choiceIndex)
-                {
-                    case 0:
-                        do
-                        {
-                            if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 0)
-                            {
-                                _choiceIndex += 1;
-
-                            }
-                            else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex > 4) //var to check skill unlocked
-                            {
-                                _choiceIndex -= 1;
-
-                            }
-                            if (Console.ReadKey().Key == ConsoleKey.Enter)
-                            {
-                                _choiceDone = true;
-
-                            }
-                        } while (!_choiceDone);
-                        Console.WriteLine("skill" + _choiceIndex + "used");
-                        //Attack(Character, Enemy, Character.Skills[_choiceIndex]);
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
                 }
-                //attack function
+                else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex < 0) //var to check skill unlocked
+                {
+                    _choiceIndex -= 1;
+                    Console.WriteLine(_choiceIndex);
+                }
+                if (Console.ReadKey().Key == ConsoleKey.Enter)
+                {
+                    _choiceDone = true;
+                    Console.WriteLine("Je selectionne");
+
+                }
+            } while (!_choiceDone);
+
+            switch (_choiceIndex)
+            {
+                case 0:
+                    _choiceDone = false;
+                    do
+                    {
+                        if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 0)
+                        {
+                            _choiceIndex += 1;
+
+                        }
+                        else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex > Character.Skills.Length) //var to check skill unlocked
+                        {
+                            _choiceIndex -= 1;
+
+                        }
+                        if (Console.ReadKey().Key == ConsoleKey.Enter)
+                        {
+                            _choiceDone = true;
+
+                        }
+                    } while (!_choiceDone);
+                    Console.WriteLine("skill" + _choiceIndex + "used");
+                    //Attack(Character, Enemy, Character.Skills[_choiceIndex]);
+                    break;
+                case 1:
+                    Console.WriteLine("j'ouvre mon inventaire");
+                    break;
+                case 2:
+                    Console.WriteLine("je change de pokemon");
+                    break;
             }
+            //attack function
         }
         private void EnnemysTurn()
         {
