@@ -27,9 +27,14 @@ namespace eevee_fantasy
 
             MapZero mapZero = new MapZero(); 
             mapZero.DrawMap();
+            Party myParty = new Party();
+            Eevee eevee = new Eevee();
+            myParty.AddMember(eevee);
 
-            Character character = new Character();
+           
+            Battle battle = new Battle(myParty);
             Game.Init();
+
 
         }
     }

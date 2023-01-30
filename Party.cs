@@ -10,6 +10,11 @@ namespace eevee_fantasy
     {
         public List<Character>? PartyMembers;
 
+        public Party()
+        {
+            PartyMembers= new List<Character>();
+        }
+
 
         public void AddMember(Character member)
         {
