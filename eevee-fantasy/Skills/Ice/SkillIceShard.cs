@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillIceShard : Skill
     {
+        public SkillIceShard()
+        {
+            Name = "Ice Shard";
+            Damage = 40;
+            PP = 30;
+        }
     }
 }

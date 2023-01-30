@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillTakeDown : Skill
     {
+        public SkillTakeDown()
+        {
+            Name = "Take Down";
+            Damage = 90;
+            PP = 20;
+        }
     }
 }

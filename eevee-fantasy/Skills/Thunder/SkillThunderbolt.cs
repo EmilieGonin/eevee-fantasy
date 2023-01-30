@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillThunderbolt : Skill
     {
+        public SkillThunderbolt()
+        {
+            Name = "Thunderbolt";
+            Damage = 90;
+            PP = 15;
+        }
     }
 }

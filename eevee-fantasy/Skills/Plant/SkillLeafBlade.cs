@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillLeafBlade : Skill
     {
+        public SkillLeafBlade()
+        {
+            Name = "Leaf Blade";
+            Damage = 90;
+            PP = 15;
+        }
     }
 }

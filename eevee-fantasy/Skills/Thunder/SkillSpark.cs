@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillSpark : Skill
     {
+        public SkillSpark()
+        {
+            Name = "Spark";
+            Damage = 0;
+            PP = 0;
+        }
     }
 }

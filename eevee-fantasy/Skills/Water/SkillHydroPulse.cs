@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillHydroPulse : Skill
     {
+        public SkillHydroPulse()
+        {
+            Name = "Hydro Pump";
+            Damage = 110;
+            PP = 5;
+        }
     }
 }
