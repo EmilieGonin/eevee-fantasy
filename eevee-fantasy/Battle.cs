@@ -71,7 +71,7 @@ namespace eevee_fantasy
                     Console.WriteLine(_choiceIndex);
 
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex < 0) //var to check skill unlocked
+                else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex < 2) //var to check skill unlocked
                 {
                     _choiceIndex -= 1;
                     Console.WriteLine(_choiceIndex);
@@ -120,7 +120,7 @@ namespace eevee_fantasy
         }
         private void EnnemysTurn()
         {
-            // AI to determine who's enemy the best to attack 
+            
         }
 
         private void Attack(Character attacker, Character target, Skill skillUsed)

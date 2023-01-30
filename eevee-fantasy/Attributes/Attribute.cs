@@ -10,6 +10,7 @@ namespace eevee_fantasy
     {
         public int Id { get; protected set; }
         public Skill[]? SpecialAttacks { get; protected set; }
+       
         protected int[]? Strengths { get; set; }
         protected int[]? Weaknesses { get; set; }
 
