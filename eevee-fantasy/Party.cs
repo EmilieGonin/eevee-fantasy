@@ -13,6 +13,7 @@ namespace eevee_fantasy
         public static void Fill(Eevee eevee)
         {
             PartyMembers = new List<Character> { eevee, new Flareon(), new Vaporeon(), new Jolteon(), new Leafeon(), new Glaceon() };
+            Console.WriteLine("haha" + PartyMembers[0].BattleHp);
         }
     }
 }

@@ -26,8 +26,10 @@ namespace eevee_fantasy
                 string mapContent = maps.ReadToEnd(); //21x75
                 string[] rows = mapContent.Split('\n');
 
+
                 int rowLength = rows[0].Length - 1; //75
                 int rowCount = rows.Length; //21
+
                 myMap = new char[rowCount, rowLength];
 
                 for (int i = 0; i < rowCount; i++)

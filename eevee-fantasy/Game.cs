@@ -45,35 +45,38 @@ namespace eevee_fantasy
                             case "PositionY":
                                 eevee.Y = value;
                                 break;
-                            case "Flareon":
+                            case "Eevee":
                                 Party.PartyMembers![0].Recruited = Convert.ToBoolean(value);
                                 break;
-                            case "FlareonHp":
-                                Party.PartyMembers![0].BattleHp = value;
-                                break;
-                            case "Vaporeon":
+                            case "Flareon":
                                 Party.PartyMembers![1].Recruited = Convert.ToBoolean(value);
                                 break;
-                            case "VaporeonHp":
+                            case "FlareonHp":
                                 Party.PartyMembers![1].BattleHp = value;
                                 break;
-                            case "Jolteon":
+                            case "Vaporeon":
                                 Party.PartyMembers![2].Recruited = Convert.ToBoolean(value);
                                 break;
-                            case "JolteonHp":
+                            case "VaporeonHp":
                                 Party.PartyMembers![2].BattleHp = value;
                                 break;
-                            case "Leafeon":
+                            case "Jolteon":
                                 Party.PartyMembers![3].Recruited = Convert.ToBoolean(value);
                                 break;
-                            case "LeafeonHp":
+                            case "JolteonHp":
                                 Party.PartyMembers![3].BattleHp = value;
                                 break;
-                            case "Glaceon":
+                            case "Leafeon":
                                 Party.PartyMembers![4].Recruited = Convert.ToBoolean(value);
                                 break;
-                            case "GlaceonHp":
+                            case "LeafeonHp":
                                 Party.PartyMembers![4].BattleHp = value;
+                                break;
+                            case "Glaceon":
+                                Party.PartyMembers![5].Recruited = Convert.ToBoolean(value);
+                                break;
+                            case "GlaceonHp":
+                                Party.PartyMembers![5].BattleHp = value;
                                 break;
                             default:
                                 break;
@@ -97,16 +100,18 @@ namespace eevee_fantasy
                 string str = "GameLevel=" + GameLevel.ToString() +
                     "\nPositionX=" + eevee.X.ToString() +
                     "\nPositionY=" + eevee.Y.ToString() +
-                    "\nFlareon=" + Convert.ToInt64(Party.PartyMembers![0].Recruited).ToString() +
-                    "\nFlareonHp=" + Party.PartyMembers![0].BattleHp.ToString() +
-                    "\nVaporeon=" + Convert.ToInt64(Party.PartyMembers![1].Recruited).ToString() +
-                    "\nVaporeonHp=" + Party.PartyMembers![1].BattleHp.ToString() +
-                    "\nJolteon=" + Convert.ToInt64(Party.PartyMembers![2].Recruited).ToString() +
-                    "\nJolteonHp=" + Party.PartyMembers![2].BattleHp.ToString() +
-                    "\nLeafeon=" + Convert.ToInt64(Party.PartyMembers![3].Recruited).ToString() +
-                    "\nLeafeonHp=" + Party.PartyMembers![3].BattleHp.ToString() +
-                    "\nGlaceon=" + Convert.ToInt64(Party.PartyMembers![4].Recruited).ToString() +
-                    "\nGlaceonHp=" + Party.PartyMembers![4].BattleHp.ToString();
+                    "\nEevee=" + Convert.ToInt64(Party.PartyMembers![0].Recruited).ToString() +
+                    "\nEevee=" + Party.PartyMembers![0].BattleHp.ToString() +
+                    "\nFlareon=" + Convert.ToInt64(Party.PartyMembers![1].Recruited).ToString() +
+                    "\nFlareonHp=" + Party.PartyMembers![1].BattleHp.ToString() +
+                    "\nVaporeon=" + Convert.ToInt64(Party.PartyMembers![2].Recruited).ToString() +
+                    "\nVaporeonHp=" + Party.PartyMembers![2].BattleHp.ToString() +
+                    "\nJolteon=" + Convert.ToInt64(Party.PartyMembers![3].Recruited).ToString() +
+                    "\nJolteonHp=" + Party.PartyMembers![3].BattleHp.ToString() +
+                    "\nLeafeon=" + Convert.ToInt64(Party.PartyMembers![4].Recruited).ToString() +
+                    "\nLeafeonHp=" + Party.PartyMembers![4].BattleHp.ToString() +
+                    "\nGlaceon=" + Convert.ToInt64(Party.PartyMembers![5].Recruited).ToString() +
+                    "\nGlaceonHp=" + Party.PartyMembers![5].BattleHp.ToString();
 
                 save.Write(str);
             }
