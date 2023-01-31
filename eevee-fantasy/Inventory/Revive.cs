@@ -10,6 +10,7 @@ namespace eevee_fantasy
     {
         public Revive()
         {
+            Name = "Revive";
             Price = 70;
         }
 

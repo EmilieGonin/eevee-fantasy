@@ -8,6 +8,7 @@ namespace eevee_fantasy
 {
     public class Item
     {
+        public string? Name { get; set; }
         public int Number { get; set; }
         public int Price { get; protected set; }
 
