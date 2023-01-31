@@ -35,37 +35,45 @@ namespace eevee_fantasy
 
                 if (!Inventory.IsOpen)
                 {
-                    if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != 3))
+                    switch (input.KeyChar)
                     {
-                        currentMap.DrawMap();
-                        eevee.Move(input.KeyChar);
-                    }
-                    else if (input.KeyChar == 's' && (currentMap.Collisions(eevee.X, eevee.Y + 1) != 3))
-                    {
-                        currentMap.DrawMap();
-                        eevee.Move(input.KeyChar);
-                    }
-                    else if (input.KeyChar == 'q' && (currentMap.Collisions(eevee.X - 1, eevee.Y) != 3))
-                    {
-                        currentMap.DrawMap();
-                        eevee.Move(input.KeyChar);
-                    }
-                    else if (input.KeyChar == 'd' && (currentMap.Collisions(eevee.X + 1, eevee.Y) != 3))
-                    {
-                        currentMap.DrawMap();
-                        eevee.Move(input.KeyChar);
-                    }
-                    else if (input.KeyChar == 'i')
-                    {
-                        Inventory.Open();
-                    }
-                    else if (input.KeyChar == 'p')
-                    {
-                        //Open Pokemon
-                    }
-                    else if (input.Key == ConsoleKey.Tab)
-                    {
-                        Game.CreateSave(eevee);
+                        case 'z':
+                            if (currentMap.Collisions(eevee.X, eevee.Y - 1) != 3)
+                            {
+                                currentMap.DrawMap();
+                                eevee.Move(input.KeyChar);
+                            }
+                            break;
+                        case 'q':
+                            if (currentMap.Collisions(eevee.X - 1, eevee.Y) != 3)
+                            {
+                                currentMap.DrawMap();
+                                eevee.Move(input.KeyChar);
+                            }
+                            break;
+                        case 's':
+                            if (currentMap.Collisions(eevee.X, eevee.Y + 1) != 3)
+                            {
+                                currentMap.DrawMap();
+                                eevee.Move(input.KeyChar);
+                            }
+                            break;
+                        case 'd':
+                            if (currentMap.Collisions(eevee.X + 1, eevee.Y) != 3)
+                            {
+                                currentMap.DrawMap();
+                                eevee.Move(input.KeyChar);
+                            }
+                            break;
+                        case 'i':
+                            Inventory.Open();
+                            break;
+                        case 'p':
+                            //Open Pokemon
+                            break;
+                        case 'n':
+                            Game.CreateSave(eevee);
+                            break;
                     }
                 }
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
