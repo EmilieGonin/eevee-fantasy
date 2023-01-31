@@ -76,10 +76,9 @@ namespace eevee_fantasy
                         case 'n':
                             Game.CreateSave(eevee);
                             break;
-                    }
-                    else if (input.KeyChar == 'b')
-                    {
-                        battle.Init();
+                        case 'b':
+                            battle.Init();
+                            break;
                     }
                 }
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
