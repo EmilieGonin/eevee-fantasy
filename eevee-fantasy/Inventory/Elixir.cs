@@ -10,6 +10,7 @@ namespace eevee_fantasy
     {
         public Elixir()
         {
+            Name = "Elixir";
             Price = 50;
         }
 

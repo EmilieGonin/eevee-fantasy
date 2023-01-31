@@ -10,6 +10,7 @@ namespace eevee_fantasy
     {
         public HyperPotion()
         {
+            Name = "Hyper Potion";
             Price = 100;
             Health = 200;
         }

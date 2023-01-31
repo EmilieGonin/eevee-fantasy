@@ -8,12 +8,62 @@ namespace eevee_fantasy
 {
 	public static class Inventory
 	{
+        private static int _cursorX;
+        private static int _cursorY;
         public static int PokeDollars { get; private set; }
         public static Item[]? Items { get; private set; }
+        public static bool IsOpen { get; private set; }
 
         public static void Init()
         {
+            _cursorY = 2;
+            IsOpen = false;
             Items = new Item[6] { new AtkPotion(), new Elixir(), new Revive(), new Potion(), new SuperPotion(), new HyperPotion() };
+        }
+
+        public static void Open()
+        {
+            IsOpen = true;
+            Console.Clear();
+            Menu menu = new Menu();
+            menu.DrawMap();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(30, 1);
+            Console.Write("Items Inventory");
+
+            for (int i = 0; i < Items!.Length; i++)
+            {
+                Console.SetCursorPosition(1, i + 2);
+                Console.Write("  " + Items[i].Name + " x" + Items[i].Number);
+            }
+
+            Console.SetCursorPosition(1, _cursorY);
+            Console.Write("►");
+        }
+
+        public static void Close()
+        {
+            IsOpen = false;
+        }
+
+        public static void MoveCursor(char input)
+        {
+            Console.SetCursorPosition(1, _cursorY);
+            Console.Write(" ");
+
+            switch (input)
+            {
+                case 'z':
+                    _cursorY = _cursorY == 2 ? _cursorY : _cursorY -= 1;
+                    break;
+                case 's':
+                    _cursorY = _cursorY == Items.Length + 1 ? _cursorY : _cursorY += 1;
+                    break;
+
+            }
+
+            Console.SetCursorPosition(1, _cursorY);
+            Console.Write("►");
         }
 
         public static void Buy(int id)

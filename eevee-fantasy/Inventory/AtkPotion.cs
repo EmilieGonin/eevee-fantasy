@@ -12,6 +12,7 @@ namespace eevee_fantasy
 
         public AtkPotion()
         {
+            Name = "Attack Potion";
             Price = 70;
             _attack = 100;
         }

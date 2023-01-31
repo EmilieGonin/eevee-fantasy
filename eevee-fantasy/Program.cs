@@ -19,6 +19,7 @@ namespace eevee_fantasy
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
             Game.Init(eevee);
+            Inventory.Init();
 
             Map[]? maps = new Map[4] { new MapZero(), new MapOne(), new MapTwo(), new MapThree() };
             int map = Game.GameLevel;
@@ -31,25 +32,42 @@ namespace eevee_fantasy
                 ConsoleKeyInfo input = Console.ReadKey(true);
                     //Console.WriteLine("test");
 
-                if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != true))
+                if (!Inventory.IsOpen)
                 {
-                    currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
+                    if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != true))
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.KeyChar == 's' && (currentMap.Collisions(eevee.X, eevee.Y + 1) != true))
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.KeyChar == 'q' && (currentMap.Collisions(eevee.X - 1, eevee.Y) != true))
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.KeyChar == 'd' && (currentMap.Collisions(eevee.X + 1, eevee.Y) != true))
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.Key == ConsoleKey.Escape)
+                    {
+                        Inventory.Open();
+                    }
                 }
-                else if (input.KeyChar == 's' && (currentMap.Collisions(eevee.X, eevee.Y + 1) != true))
+                else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
-                    currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
+                    Inventory.MoveCursor(input.KeyChar);
                 }
-                else if (input.KeyChar == 'q' && (currentMap.Collisions(eevee.X - 1, eevee.Y) != true))
+                else if (Inventory.IsOpen && input.Key == ConsoleKey.Escape)
                 {
+                    Inventory.Close();
                     currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
-                }
-                else if (input.KeyChar == 'd' && (currentMap.Collisions(eevee.X + 1, eevee.Y) != true))
-                {
-                    currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
+                    eevee.Spawn(eevee.X, eevee.Y);
                 }
                 //if (currentMap.Tp(eevee.X, eevee.Y))
                 //{
