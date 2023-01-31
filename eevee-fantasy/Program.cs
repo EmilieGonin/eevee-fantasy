@@ -18,16 +18,8 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
-          
+
             Game.Init(eevee);
-
-
-
-            //Game.GameLevel = 1;
-
-            //MapZero mapZero = new MapZero();
-            //mapZero.test();
-
             Inventory.Init();
 
             Map[]? maps = new Map[4] { new MapZero(), new MapOne(), new MapTwo(), new MapThree() };
@@ -98,7 +90,7 @@ namespace eevee_fantasy
                     currentMap.DrawMap();
                     eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                 }
-            }*/
+            }
 
             Battle battle = new Battle();
         }
