@@ -14,8 +14,6 @@ namespace eevee_fantasy
 
         public char Sprite { get; set; }
         public ConsoleColor Color { get; set; }
-        public int Friend_X { get; set; }
-        public int Friend_Y { get; set; }
 
         public string? Name { get; protected set; }
         public List<Skill>? Skills { get; protected set; }
@@ -129,7 +127,7 @@ namespace eevee_fantasy
         {
             if (!Recruited)
             {
-                Console.SetCursorPosition(Friend_X, Friend_Y); //À ajouter : empêcher le curseur de sortir de la console
+                Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
                 Console.ForegroundColor = Color;
                 Console.Write(Sprite);
                 Console.SetCursorPosition(0, 22);

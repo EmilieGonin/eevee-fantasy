@@ -8,5 +8,13 @@ namespace eevee_fantasy
 {
     internal class Vaporeon : Character
     {
+        public Vaporeon()
+        {
+            Sprite = 'V';
+            Color = ConsoleColor.Blue;
+
+            X = 73;
+            Y = 13;
+        }
     }
 }

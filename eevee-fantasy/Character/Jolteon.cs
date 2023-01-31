@@ -8,5 +8,13 @@ namespace eevee_fantasy
 {
     internal class Jolteon : Character
     {
+        public Jolteon()
+        {
+            Sprite = 'J';
+            Color = ConsoleColor.Yellow;
+
+            X = 0;
+            Y = 0;
+        }
     }
 }

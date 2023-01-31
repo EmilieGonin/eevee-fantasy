@@ -58,7 +58,7 @@ namespace eevee_fantasy
                     switch (item)
                     {
                         case '#':
-                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
                             break;
                         case '\\':
                         case '/':
@@ -78,7 +78,7 @@ namespace eevee_fantasy
                             break;
                         case '{':
                         case '}':
-                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
                             break;
                         default:
                             Console.ForegroundColor = ConsoleColor.White;
@@ -94,45 +94,9 @@ namespace eevee_fantasy
             Friend.Draw();
         }
 
-        public bool Collisions(int eeveeX, int eeveeY)
+        public int Collisions(int eeveeX, int eeveeY)
         {
             switch(myMap[eeveeY, eeveeX])
-            {
-                case '/':
-                    return true;
-                case '\\':
-                    return true;
-                case '-':
-                    return true;
-                case '|':
-                    return true;
-                case '+':
-                    return true;
-            }
-            return false;
-        }
-        //public bool Tp(int eeveeX, int eeveeY)
-        //{
-
-        //    switch (myMap[eeveeY, eeveeX])
-        //    {
-        //        case '>':
-        //        case '<':
-        //        case 'v':
-        //            Game.GameLevel += 1;
-        //            return true;
-        //        case '^':
-        //            Game.GameLevel -= 1;
-        //            return true;
-        //    }
-
-        //    return false;
-        //}
-
-        public int Tp(int eeveeX, int eeveeY)
-        {
-
-            switch (myMap[eeveeY, eeveeX])
             {
                 case '>':
                 case '<':
@@ -140,8 +104,17 @@ namespace eevee_fantasy
                     return 1;
                 case '^':
                     return 2;
+                case '/':
+                    return 3;
+                case '\\':
+                    return 3;
+                case '-':
+                    return 3;
+                case '|':
+                    return 3;
+                case '+':
+                    return 3;
             }
-            
             return 0;
         }
     }
