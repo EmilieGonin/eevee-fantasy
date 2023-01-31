@@ -21,7 +21,6 @@ namespace eevee_fantasy
             {
                 if (member.Alive == true)
                 {
-
                     Character = member;
 
                     Console.WriteLine(member.BattleHp);
@@ -49,7 +48,6 @@ namespace eevee_fantasy
                 Console.WriteLine("je calcule wsh");
                 if (Character?.Speed < Enemy?.Speed)
                 {
-
                     EnnemysTurn();
                     MyTurn();
                 }
@@ -57,7 +55,6 @@ namespace eevee_fantasy
                 {
                     MyTurn();
                     EnnemysTurn();
-
 
                 }
                 Play();
@@ -76,7 +73,6 @@ namespace eevee_fantasy
                 {
                     _choiceIndex += 1;
                     Console.WriteLine(_choiceIndex);
-
                 }
                 else if (Console.ReadKey().Key == ConsoleKey.DownArrow &&  _choiceIndex > 0) //var to check skill unlocked
                 {
@@ -87,7 +83,6 @@ namespace eevee_fantasy
                 {
                     _choiceDone = true;
                     Console.WriteLine("Je selectionne");
-
                 }
             } while (!_choiceDone);
 
@@ -100,17 +95,14 @@ namespace eevee_fantasy
                         if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 0)
                         {
                             _choiceIndex += 1;
-
                         }
                         else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex > Character.Skills.Count())//var to check skill unlocked
                         {
                             _choiceIndex -= 1;
-
                         }
                         if (Console.ReadKey().Key == ConsoleKey.Enter)
                         {
                             _choiceDone = true;
-
                         }
                     } while (!_choiceDone);
                     Console.WriteLine("skill" + _choiceIndex + "used");
@@ -127,6 +119,7 @@ namespace eevee_fantasy
         }
         private void EnnemysTurn()
         {
+
             Console.WriteLine("ennemy turn");
             Random rnd = new Random();
            

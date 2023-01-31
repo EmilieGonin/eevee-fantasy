@@ -12,6 +12,7 @@ namespace eevee_fantasy
 
         public Potion()
 		{
+			Name = "Potion";
 			Price = 10;
             Health = 40;
 		}

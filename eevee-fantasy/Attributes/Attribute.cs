@@ -16,8 +16,10 @@ namespace eevee_fantasy
 
         //1 = Normal, 2 = Fire, 3 = Water
         //4 = Thunder, 5 = Plant, 6 = Ice
+
         //Création d'un enum ?
         public bool isEffective(Attribute defenser)
+
         {
             if (Strengths != null && Strengths.Contains(defenser.Id))
             {

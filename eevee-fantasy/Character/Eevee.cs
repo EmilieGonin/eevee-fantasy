@@ -15,6 +15,7 @@ namespace eevee_fantasy
             TotalDef = 76;
             TotalAtk = 40;
             Speed = 110;
+            Recruited = true;
 
             for (int i = 0; i < 40; i++)
             {
@@ -30,7 +31,13 @@ namespace eevee_fantasy
 
             Attribute = new Fire();
             UnlockSkills();
-           
+
+            for (int i = 0;i < 5; i++) 
+            {
+                LevelUp();
+            }
+
+            Attribute = new Normal();
 
         }
 

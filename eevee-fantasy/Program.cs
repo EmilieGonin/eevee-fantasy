@@ -20,63 +20,83 @@ namespace eevee_fantasy
             Party.Fill(eevee);
           
             Game.Init(eevee);
-            Console.WriteLine("test" + eevee.BattleHp);
+
+
 
             //Game.GameLevel = 1;
 
             //MapZero mapZero = new MapZero();
             //mapZero.test();
 
+            Inventory.Init();
 
-
-            /*Map[]? maps = new Map[2] { new MapZero(), new MapOne() };
-            Map currentMap = maps[Game.GameLevel];
-
-            //currentMap.CreateMap();
+            Map[]? maps = new Map[4] { new MapZero(), new MapOne(), new MapTwo(), new MapThree() };
+            int map = Game.GameLevel;
+            Map currentMap = maps[map];
             currentMap.DrawMap();
             eevee.Spawn(currentMap.X, currentMap.Y);
 
             while (play != false)
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
-
-                if (currentMap.TpNext(eevee.X, eevee.Y) == true)
-                {
-                    Game.GameLevel += 1;
-                    currentMap = maps[Game.GameLevel];
-                    //currentMap.CreateMap();
-                    currentMap.DrawMap();
-                    eevee.Spawn(currentMap.X, currentMap.Y);
-                }
-                else if (currentMap.TpPrevious(eevee.X, eevee.Y) == true)
-                {
-                    Game.GameLevel -= 1;
-                    currentMap = maps[Game.GameLevel];
-                    //currentMap.CreateMap();
-                    currentMap.DrawMap();
-                    eevee.Spawn(currentMap.X, currentMap.Y);
-                }
                     //Console.WriteLine("test");
 
+                if (!Inventory.IsOpen)
+                {
                     if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != true))
-                {
-                    currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.KeyChar == 's' && (currentMap.Collisions(eevee.X, eevee.Y + 1) != true))
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.KeyChar == 'q' && (currentMap.Collisions(eevee.X - 1, eevee.Y) != true))
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.KeyChar == 'd' && (currentMap.Collisions(eevee.X + 1, eevee.Y) != true))
+                    {
+                        currentMap.DrawMap();
+                        eevee.Move(input.KeyChar);
+                    }
+                    else if (input.Key == ConsoleKey.Escape)
+                    {
+                        Inventory.Open();
+                    }
                 }
-                else if (input.KeyChar == 's' && (currentMap.Collisions(eevee.X, eevee.Y + 1) != true))
+                else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
-                    currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
+                    Inventory.MoveCursor(input.KeyChar);
                 }
-                else if (input.KeyChar == 'q' && (currentMap.Collisions(eevee.X - 1, eevee.Y) != true))
+                else if (Inventory.IsOpen && input.Key == ConsoleKey.Escape)
                 {
+                    Inventory.Close();
                     currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
+                    eevee.Spawn(eevee.X, eevee.Y);
                 }
-                else if (input.KeyChar == 'd' && (currentMap.Collisions(eevee.X + 1, eevee.Y) != true))
+                //if (currentMap.Tp(eevee.X, eevee.Y))
+                //{
+                //    currentMap = maps[Game.GameLevel];
+                //    currentMap.DrawMap();
+                //    eevee.Spawn(currentMap.X, currentMap.Y);
+                //}
+                if (currentMap.Tp(eevee.X, eevee.Y) == 1)
                 {
+                    map += 1;
+                    currentMap = maps[map];
                     currentMap.DrawMap();
-                    eevee.Move(input.KeyChar);
+                    eevee.Spawn(currentMap.X, currentMap.Y);
+                }
+                else if (currentMap.Tp(eevee.X, eevee.Y) == 2)
+                {
+                    map -= 1;
+                    currentMap = maps[map];
+                    currentMap.DrawMap();
+                    eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                 }
             }*/
 

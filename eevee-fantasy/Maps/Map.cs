@@ -14,6 +14,8 @@ namespace eevee_fantasy
         public string? MapLink { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public int X_Pre { get; set; }
+        public int Y_Pre { get; set; }
 
         public void CreateMap()
         {
@@ -24,8 +26,10 @@ namespace eevee_fantasy
                 string mapContent = maps.ReadToEnd(); //21x75
                 string[] rows = mapContent.Split('\n');
 
-                int rowLength = rows[0].Length; //75
-                int rowCount = rows.Length - 1; //21
+
+                int rowLength = rows[0].Length - 1; //75
+                int rowCount = rows.Length; //21
+
                 myMap = new char[rowCount, rowLength];
 
                 for (int i = 0; i < rowCount; i++)
@@ -49,30 +53,36 @@ namespace eevee_fantasy
                 {
                     char item = myMap[i, j];
 
-                    if (item == '#')
+                    switch (item)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                    }
-                    else if (item == '/')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                    }
-                    else if (item == '*')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    }
-                    else if (item == '.')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    }
-                    else if (item == '\\')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
+                        case '#':
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case '\\':
+                        case '/':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            break;
+                        case '*':
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
+                            break;
+                        case '.':
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            break;
+                        case '-':
+                        case '+':
+                        case '|':
+                        case '~':
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            break;
+                        case '{':
+                        case '}':
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+                        default:
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+                    }                
+                    
                     Console.Write(item);
                 }
                 Console.WriteLine();
@@ -82,25 +92,53 @@ namespace eevee_fantasy
 
         public bool Collisions(int eeveeX, int eeveeY)
         {
-            if (myMap[eeveeY, eeveeX] == '/') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '\\') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '-') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '|') { return true; }
-            else { return false;}
+            switch(myMap[eeveeY, eeveeX])
+            {
+                case '/':
+                    return true;
+                case '\\':
+                    return true;
+                case '-':
+                    return true;
+                case '|':
+                    return true;
+                case '+':
+                    return true;
+            }
+            return false;
         }
+        //public bool Tp(int eeveeX, int eeveeY)
+        //{
 
-        public bool TpNext(int eeveeX, int eeveeY)
-        {
-            if (myMap[eeveeY, eeveeX] == '>') { return true; }
-            else if (myMap[eeveeY, eeveeX] == '<') { return true; }
-            else if (myMap[eeveeY, eeveeX] == 'v') { return true; }
-            else { return false; }
-        }
+        //    switch (myMap[eeveeY, eeveeX])
+        //    {
+        //        case '>':
+        //        case '<':
+        //        case 'v':
+        //            Game.GameLevel += 1;
+        //            return true;
+        //        case '^':
+        //            Game.GameLevel -= 1;
+        //            return true;
+        //    }
 
-        public bool TpPrevious(int eeveeX, int eeveeY)
+        //    return false;
+        //}
+
+        public int Tp(int eeveeX, int eeveeY)
         {
-            if (myMap[eeveeY, eeveeX] == '^') { return true; }
-            else { return false; }
+
+            switch (myMap[eeveeY, eeveeX])
+            {
+                case '>':
+                case '<':
+                case 'v':
+                    return 1;
+                case '^':
+                    return 2;
+            }
+            
+            return 0;
         }
     }
 
