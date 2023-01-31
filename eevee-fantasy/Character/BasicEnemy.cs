@@ -22,7 +22,6 @@ namespace eevee_fantasy
             {
                 LevelUp();
             }
-
         }
 
         public void giveAttribute()
@@ -33,27 +32,27 @@ namespace eevee_fantasy
             switch (indexChoice)
             {
                 case 1:
-                    Console.WriteLine("My enemy is normal");
+                    //Console.WriteLine("My enemy is normal");
                     Attribute = new Normal();
                     break;
                 case 2:
-                    Console.WriteLine("My enemy is Fire");
+                    //Console.WriteLine("My enemy is Fire");
                     Attribute = new Fire();
                     break;
                 case 3:
-                    Console.WriteLine("My enemy is Water");
+                    //Console.WriteLine("My enemy is Water");
                     Attribute = new Water();
                     break;
                 case 4:
-                    Console.WriteLine("My enemy is Thunder");
+                    //Console.WriteLine("My enemy is Thunder");
                     Attribute = new Thunder();
                     break;
                 case 5:
-                    Console.WriteLine("My enemy is Plant");
+                    //Console.WriteLine("My enemy is Plant");
                     Attribute = new Plant();
                     break;
                 case 6:
-                    Console.WriteLine("My enemy is Ice");
+                    //Console.WriteLine("My enemy is Ice");
                     Attribute = new Ice();
                     break;
                 default:
