@@ -99,6 +99,9 @@ namespace eevee_fantasy
                     eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                 }
 
+            }
+
+
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
                 if (eevee.X == friend.X && eevee.Y == friend.Y)
                 {
@@ -106,6 +109,7 @@ namespace eevee_fantasy
                     friend.Recruited = true;
                 }
             }
+
 
             Battle battle = new Battle();
         }

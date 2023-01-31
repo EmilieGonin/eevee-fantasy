@@ -8,5 +8,11 @@ namespace eevee_fantasy
 {
     internal class SkillPound : Skill
     {
+        public SkillPound()
+        {
+            Name = "Pound";
+            Damage = 40;
+            PP = 35;
+        }
     }
 }
