@@ -11,7 +11,13 @@ namespace eevee_fantasy
     {
         public int X { get; set; }
         public int Y { get; set; }
+
         
+        public int Id { get; set; }
+
+        public char Sprite { get; set; }
+        public ConsoleColor Color { get; set; }
+
         public string? Name { get; protected set; }
         public List<Skill>? Skills { get; protected set; }
         public Attribute? Attribute { get; protected set; }
@@ -42,7 +48,7 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-            UnlockSkills();
+
         }
 
         public void LevelUp()
@@ -52,20 +58,20 @@ namespace eevee_fantasy
             lvl += 1;
             TotalHp += (int)(0.05 * TotalHp);
             BattleHp = TotalHp;
-            TotalDef += (int)(0.08 * TotalDef);
-            TotalAtk += (int)(0.08* TotalAtk);
+            TotalDef += (int)(0.04 * TotalDef);
+            TotalAtk += (int)(0.05* TotalAtk);
             XPToGet = lvl * lvl * lvl;
             Speed += 2;
             UnlockSkills();
         }
         public void UnlockSkills()
         {
-            if (Skills.Count == 0)
-
+            if (Skills.Count() == 0)
             {
-                
+              
                 Skills?.Add(NormalType?.NormalAttack); // tackle
                 Skills?.Add(Attribute?.SpecialAttacks?[0]); // first skill 
+            
             }
 
             if (lvl == 15)
@@ -77,6 +83,7 @@ namespace eevee_fantasy
             {
                 Skills?.Add(Attribute?.SpecialAttacks?[2]);
             }
+           
 
         }
         public void LooseHp(int amount)
@@ -114,18 +121,31 @@ namespace eevee_fantasy
             }
 
             Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write('E');
+            Console.ForegroundColor = Color;
+            Console.Write(Sprite);
             Console.SetCursorPosition(0, 22);
             //Console.WriteLine("test");
         }
+
+        public void Draw()
+        {
+            if (!Recruited)
+            {
+                Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
+                Console.ForegroundColor = Color;
+                Console.Write(Sprite);
+                Console.SetCursorPosition(0, 22);
+            }
+            
+        }
+
         public void Spawn(int mapX, int mapY)
         {
             X = mapX;
             Y = mapY;
             Console.SetCursorPosition(mapX, mapY);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write('E');
+            Console.ForegroundColor = Color;
+            Console.Write(Sprite);
             Console.SetCursorPosition(0, 22);
         }
         

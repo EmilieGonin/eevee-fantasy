@@ -10,12 +10,18 @@ namespace eevee_fantasy
     {
         public Eevee()
         {
+            Id= 0;
             Name = "Eevee";
             BattleHp = TotalHp = 110;
-            TotalDef = 76;
-            TotalAtk = 40;
+            TotalDef = 40;
+            TotalAtk = 76;
             Speed = 110;
             Recruited = true;
+
+            Attribute = new Fire();
+            Sprite = 'E';
+            Color = ConsoleColor.Magenta;
+
 
             for (int i = 0; i < 40; i++)
             {
@@ -29,15 +35,8 @@ namespace eevee_fantasy
             Alive = true;
             Recruited = true;
 
-            Attribute = new Fire();
-            UnlockSkills();
+        
 
-            for (int i = 0;i < 5; i++) 
-            {
-                LevelUp();
-            }
-
-            Attribute = new Normal();
 
         }
 
