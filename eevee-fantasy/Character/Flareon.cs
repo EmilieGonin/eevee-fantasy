@@ -8,13 +8,15 @@ namespace eevee_fantasy
 {
     internal class Flareon : Character
     {
+
         public Flareon()
         {
             Sprite = 'F';
             Color = ConsoleColor.Red;
-
+            Id = 1;
             X = 5;
             Y = 18;
         }
+
     }
 }

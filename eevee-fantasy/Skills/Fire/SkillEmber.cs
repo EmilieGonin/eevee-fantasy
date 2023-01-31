@@ -11,7 +11,7 @@ namespace eevee_fantasy
         public SkillEmber()
         {
             Name = "Ember";
-            Damage = 0;
+            Damage = 40;
             PP = 25;
         }
     }

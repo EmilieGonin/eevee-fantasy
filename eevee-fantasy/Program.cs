@@ -31,7 +31,7 @@ namespace eevee_fantasy
             while (play != false)
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
-                    //Console.WriteLine("test");
+                //Console.WriteLine("test");
 
                 if (!Inventory.IsOpen)
                 {
@@ -107,15 +107,18 @@ namespace eevee_fantasy
                     eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                 }
 
-                Character friend = Party.PartyMembers[currentMap.Friend_Id];
-                if (eevee.X == friend.X && eevee.Y == friend.Y)
-                {
-                    //Console.WriteLine("test");
-                    friend.Recruited = true;
-                }
             }
 
-            Battle battle = new Battle();
+
+            Character friend = Party.PartyMembers[currentMap.Friend_Id];
+            if (eevee.X == friend.X && eevee.Y == friend.Y)
+            {
+                //Console.WriteLine("test");
+                friend.Recruited = true;
+            }
         }
+
+
+        Battle battle = new Battle();
     }
 }

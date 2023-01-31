@@ -12,6 +12,9 @@ namespace eevee_fantasy
         public int X { get; set; }
         public int Y { get; set; }
 
+        
+        public int Id { get; set; }
+
         public char Sprite { get; set; }
         public ConsoleColor Color { get; set; }
 
@@ -45,7 +48,7 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-            UnlockSkills();
+
         }
 
         public void LevelUp()
@@ -55,20 +58,20 @@ namespace eevee_fantasy
             lvl += 1;
             TotalHp += (int)(0.05 * TotalHp);
             BattleHp = TotalHp;
-            TotalDef += (int)(0.08 * TotalDef);
-            TotalAtk += (int)(0.08* TotalAtk);
+            TotalDef += (int)(0.04 * TotalDef);
+            TotalAtk += (int)(0.05* TotalAtk);
             XPToGet = lvl * lvl * lvl;
             Speed += 2;
             UnlockSkills();
         }
         public void UnlockSkills()
         {
-            if (Skills.Count == 0)
-
+            if (Skills.Count() == 0)
             {
-                
+              
                 Skills?.Add(NormalType?.NormalAttack); // tackle
                 Skills?.Add(Attribute?.SpecialAttacks?[0]); // first skill 
+            
             }
 
             if (lvl == 15)
@@ -80,6 +83,7 @@ namespace eevee_fantasy
             {
                 Skills?.Add(Attribute?.SpecialAttacks?[2]);
             }
+           
 
         }
         public void LooseHp(int amount)
