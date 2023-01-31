@@ -9,7 +9,7 @@ namespace eevee_fantasy
 {
     internal class Map
     {
-
+        private static int _cursorY;
         public char[,]? myMap { get; set; }
         public string? MapLink { get; set; }
         public int X { get; set; }
@@ -118,7 +118,33 @@ namespace eevee_fantasy
             return 0;
         }
 
+        public static void AddCursor(int y)
+        {
+            _cursorY = y;
 
+            Console.SetCursorPosition(55, y);
+            Console.Write("►");
+        }
+
+        public static void MoveCursor(char input, int length)
+        {
+            Console.SetCursorPosition(1, _cursorY);
+            Console.Write(" ");
+
+            switch (input)
+            {
+                case 'z':
+                    _cursorY = _cursorY == 2 ? _cursorY : _cursorY -= 1;
+                    break;
+                case 's':
+                    _cursorY = _cursorY == length + 1 ? _cursorY : _cursorY += 1;
+                    break;
+
+            }
+
+            Console.SetCursorPosition(1, _cursorY);
+            Console.Write("►");
+        }
     }
 
 }

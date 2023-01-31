@@ -23,7 +23,7 @@ namespace eevee_fantasy
         {
             if (Strengths != null && Strengths.Contains(defenser.Id))
             {
-                Console.WriteLine("Super effective");
+                //Console.WriteLine("Super effective");
                 return true;
             }
             else
@@ -37,7 +37,7 @@ namespace eevee_fantasy
             if (Weaknesses != null && Weaknesses.Contains(defenser.   Id))
             {
 
-                Console.WriteLine("Weak");
+                //Console.WriteLine("Weak");
                 return true;
             }
             else

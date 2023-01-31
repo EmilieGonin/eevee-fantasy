@@ -10,42 +10,100 @@ namespace eevee_fantasy
     {
         private Character? Character;
         private Character? Enemy;
+        private BattleMap? BattleMap;
         private int _choiceIndex;
-        private bool _choiceDone, _battleState;
+        private bool _choiceDone;
+        public bool BattleState { get; set; }
 
         public Battle()
         {
-            Console.WriteLine("haha" + Party.BattlePartyMembers[0].BattleHp);
-        
+            BattleState = false;
+        }
+
+        public void Init()
+        {
+            BattleState = true;
+            _choiceDone = false;
+            _choiceIndex = 0;
+
+            //Drawing Battle Background
+            BattleMap = new BattleMap();
+            BattleMap.DrawMap();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(35, 1);
+            Console.Write("Battle !");
+
+            //Creating Enemy
+            Enemy = new BasicEnemy();
+            AttributeColor(Enemy.Attribute.Id);
+            Console.SetCursorPosition(50, 3);
+            Console.Write(Enemy.BattleHp + "/" + Enemy.TotalHp + " -- Enemy lvl " + Enemy.lvl);
+            Console.SetCursorPosition(60, 5);
+            Console.Write("@");
+
+            //Console.WriteLine(Enemy.Speed);
+
+            //Creating Character
             foreach (var member in Party.BattlePartyMembers!)
             {
                 if (member.Alive == true)
                 {
                     Character = member;
-                    Console.WriteLine(Character.Skills);
-                    Console.WriteLine(member.BattleHp);
                     break;
                 }
             }
 
-            _battleState = true;
-            _choiceDone = false;
+            AttributeColor(Character.Attribute.Id);
+            Console.SetCursorPosition(3, 7);
+            Console.Write(Character.BattleHp + "/" + Character.TotalHp + " -- " + Character.Name + " lvl " + Character.lvl);
+            Console.SetCursorPosition(10, 9);
+            Console.Write("E");
 
-            Enemy = new BasicEnemy();
+            //Create Menu
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(58, 15);
+            Console.Write("Attack");
+            Console.SetCursorPosition(58, 16);
+            Console.Write("Select Item");
+            Console.SetCursorPosition(58, 17);
+            Console.Write("Change Pokemon");
 
-            Console.WriteLine(Enemy.Speed);
-            _choiceIndex = 0;
+            BattleMap.AddCursor(15);
 
             Play();
         }
 
+        public void AttributeColor(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 2:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case 3:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case 4:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case 5:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case 6:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    break;
+            }
+        }
+
         public void Play()
         {
-
-            Console.WriteLine("Turn start");
-            if (_battleState == true)
+            //Console.WriteLine("start battle");
+            if (BattleState == true)
             {
-                Console.WriteLine("je calcule wsh");
+                //Console.WriteLine("je calcule wsh");
                 if (Character?.Speed < Enemy?.Speed)
                 {
                     EnnemysTurn();
@@ -68,7 +126,6 @@ namespace eevee_fantasy
 
         private void MyTurn()
         {
-
             if (Character.Alive == true)
             {
                 // choice between inventory, attack or party change
@@ -160,7 +217,6 @@ namespace eevee_fantasy
             {
                 Console.WriteLine("ennemy turn");
                 Random rnd = new Random();
-
 
                 if (Enemy!.Attribute!.isEffective(Character!.Attribute!))
                 {

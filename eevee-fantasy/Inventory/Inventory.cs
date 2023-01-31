@@ -8,7 +8,6 @@ namespace eevee_fantasy
 {
 	public static class Inventory
 	{
-        private static int _cursorX;
         private static int _cursorY;
         public static int PokeDollars { get; private set; }
         public static Item[]? Items { get; private set; }

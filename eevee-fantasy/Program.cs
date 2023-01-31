@@ -13,6 +13,7 @@ namespace eevee_fantasy
     {
         public static void Main()
         {
+            Console.SetWindowSize(75, 25);
             Console.CursorVisible = false;
             bool play = true;
 
@@ -28,12 +29,13 @@ namespace eevee_fantasy
             currentMap.DrawMap();
             eevee.Spawn(currentMap.X, currentMap.Y);
 
+            Battle battle = new Battle();
+
             while (play != false)
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
-                //Console.WriteLine("test");
 
-                if (!Inventory.IsOpen)
+                if (!Inventory.IsOpen && !battle.BattleState)
                 {
                     switch (input.KeyChar)
                     {
@@ -75,12 +77,16 @@ namespace eevee_fantasy
                             Game.CreateSave(eevee);
                             break;
                     }
+                    else if (input.KeyChar == 'b')
+                    {
+                        battle.Init();
+                    }
                 }
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
                     Inventory.MoveCursor(input.KeyChar);
                 }
-                else if (Inventory.IsOpen && input.Key == ConsoleKey.Escape)
+                else if (Inventory.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'i'))
                 {
                     Inventory.Close();
                     currentMap.DrawMap();
@@ -108,7 +114,6 @@ namespace eevee_fantasy
                 }
 
             }
-
 
             Character friend = Party.PartyMembers[currentMap.Friend_Id];
             if (eevee.X == friend.X && eevee.Y == friend.Y)
