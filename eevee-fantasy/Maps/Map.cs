@@ -14,6 +14,8 @@ namespace eevee_fantasy
         public string? MapLink { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public int X_Pre { get; set; }
+        public int Y_Pre { get; set; }
 
         public void CreateMap()
         {
@@ -103,23 +105,38 @@ namespace eevee_fantasy
             }
             return false;
         }
+        //public bool Tp(int eeveeX, int eeveeY)
+        //{
 
-        public bool Tp(int eeveeX, int eeveeY)
+        //    switch (myMap[eeveeY, eeveeX])
+        //    {
+        //        case '>':
+        //        case '<':
+        //        case 'v':
+        //            Game.GameLevel += 1;
+        //            return true;
+        //        case '^':
+        //            Game.GameLevel -= 1;
+        //            return true;
+        //    }
+
+        //    return false;
+        //}
+
+        public int Tp(int eeveeX, int eeveeY)
         {
 
-            switch(myMap[eeveeY, eeveeX])
+            switch (myMap[eeveeY, eeveeX])
             {
                 case '>':
                 case '<':
                 case 'v':
-                    Game.GameLevel += 1;
-                    return true;
+                    return 1;
                 case '^':
-                    Game.GameLevel -= 1;
-                    return true;
+                    return 2;
             }
-
-            return false;
+            
+            return 0;
         }
     }
 

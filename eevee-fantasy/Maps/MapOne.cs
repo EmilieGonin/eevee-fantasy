@@ -16,6 +16,8 @@ namespace eevee_fantasy
         {
             X = 33;
             Y = 18;
+            X_Pre = 72;
+            Y_Pre = 8;
 
             MapLink = "LevelOne.txt";
             CreateMap();

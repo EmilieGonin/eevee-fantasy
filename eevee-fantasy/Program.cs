@@ -21,7 +21,8 @@ namespace eevee_fantasy
             Game.Init(eevee);
 
             Map[]? maps = new Map[4] { new MapZero(), new MapOne(), new MapTwo(), new MapThree() };
-            Map currentMap = maps[Game.GameLevel];
+            int map = Game.GameLevel;
+            Map currentMap = maps[map];
             currentMap.DrawMap();
             eevee.Spawn(currentMap.X, currentMap.Y);
 
@@ -50,12 +51,25 @@ namespace eevee_fantasy
                     currentMap.DrawMap();
                     eevee.Move(input.KeyChar);
                 }
-
-                if (currentMap.Tp(eevee.X, eevee.Y))
+                //if (currentMap.Tp(eevee.X, eevee.Y))
+                //{
+                //    currentMap = maps[Game.GameLevel];
+                //    currentMap.DrawMap();
+                //    eevee.Spawn(currentMap.X, currentMap.Y);
+                //}
+                if (currentMap.Tp(eevee.X, eevee.Y) == 1)
                 {
-                    currentMap = maps[Game.GameLevel];
+                    map += 1;
+                    currentMap = maps[map];
                     currentMap.DrawMap();
                     eevee.Spawn(currentMap.X, currentMap.Y);
+                }
+                else if (currentMap.Tp(eevee.X, eevee.Y) == 2)
+                {
+                    map -= 1;
+                    currentMap = maps[map];
+                    currentMap.DrawMap();
+                    eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                 }
             }
 
