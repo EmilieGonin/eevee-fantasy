@@ -19,6 +19,9 @@ namespace eevee_fantasy
             Recruited = true;
 
             Attribute = new Fire();
+            Sprite = 'E';
+            Color = ConsoleColor.Magenta;
+
 
             for (int i = 0; i < 40; i++)
             {

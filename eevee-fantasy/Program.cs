@@ -19,7 +19,7 @@ namespace eevee_fantasy
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
 
-           /* Game.Init(eevee);
+            Game.Init(eevee);
             Inventory.Init();
 
             Map[]? maps = new Map[4] { new MapZero(), new MapOne(), new MapTwo(), new MapThree() };
@@ -35,29 +35,37 @@ namespace eevee_fantasy
 
                 if (!Inventory.IsOpen)
                 {
-                    if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != true))
+                    if (input.KeyChar == 'z' && (currentMap.Collisions(eevee.X, eevee.Y - 1) != 3))
                     {
                         currentMap.DrawMap();
                         eevee.Move(input.KeyChar);
                     }
-                    else if (input.KeyChar == 's' && (currentMap.Collisions(eevee.X, eevee.Y + 1) != true))
+                    else if (input.KeyChar == 's' && (currentMap.Collisions(eevee.X, eevee.Y + 1) != 3))
                     {
                         currentMap.DrawMap();
                         eevee.Move(input.KeyChar);
                     }
-                    else if (input.KeyChar == 'q' && (currentMap.Collisions(eevee.X - 1, eevee.Y) != true))
+                    else if (input.KeyChar == 'q' && (currentMap.Collisions(eevee.X - 1, eevee.Y) != 3))
                     {
                         currentMap.DrawMap();
                         eevee.Move(input.KeyChar);
                     }
-                    else if (input.KeyChar == 'd' && (currentMap.Collisions(eevee.X + 1, eevee.Y) != true))
+                    else if (input.KeyChar == 'd' && (currentMap.Collisions(eevee.X + 1, eevee.Y) != 3))
                     {
                         currentMap.DrawMap();
                         eevee.Move(input.KeyChar);
                     }
-                    else if (input.Key == ConsoleKey.Escape)
+                    else if (input.KeyChar == 'i')
                     {
                         Inventory.Open();
+                    }
+                    else if (input.KeyChar == 'p')
+                    {
+                        //Open Pokemon
+                    }
+                    else if (input.Key == ConsoleKey.Tab)
+                    {
+                        Game.CreateSave(eevee);
                     }
                 }
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
@@ -76,21 +84,32 @@ namespace eevee_fantasy
                 //    currentMap.DrawMap();
                 //    eevee.Spawn(currentMap.X, currentMap.Y);
                 //}
-                if (currentMap.Tp(eevee.X, eevee.Y) == 1)
+                if (currentMap.Collisions(eevee.X, eevee.Y) == 1)
                 {
                     map += 1;
                     currentMap = maps[map];
                     currentMap.DrawMap();
                     eevee.Spawn(currentMap.X, currentMap.Y);
                 }
-                else if (currentMap.Tp(eevee.X, eevee.Y) == 2)
+                else if (currentMap.Collisions(eevee.X, eevee.Y) == 2)
                 {
                     map -= 1;
                     currentMap = maps[map];
                     currentMap.DrawMap();
                     eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                 }
-            }*/
+
+            }
+
+
+                Character friend = Party.PartyMembers[currentMap.Friend_Id];
+                if (eevee.X == friend.X && eevee.Y == friend.Y)
+                {
+                    //Console.WriteLine("test");
+                    friend.Recruited = true;
+                }
+            }
+
 
             Battle battle = new Battle();
         }

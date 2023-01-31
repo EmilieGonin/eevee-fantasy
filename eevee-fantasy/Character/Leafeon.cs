@@ -8,9 +8,15 @@ namespace eevee_fantasy
 {
     internal class Leafeon : Character
     {
-        public Leafeon() 
+
+        public Leafeon()
         {
+            Sprite = 'L';
+            Color = ConsoleColor.Green;
             Id = 4;
+            X = 54;
+            Y = 3;
+
         }
     }
 }

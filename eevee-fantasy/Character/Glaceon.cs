@@ -10,7 +10,13 @@ namespace eevee_fantasy
     {
         public Glaceon()
         {
+
+            Sprite = 'G';
+            Color = ConsoleColor.Cyan;
             Id = 5;
+            X = 0;
+            Y = 0;
+
         }
     }
 }

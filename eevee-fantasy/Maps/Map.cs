@@ -17,6 +17,8 @@ namespace eevee_fantasy
         public int X_Pre { get; set; }
         public int Y_Pre { get; set; }
 
+        public int Friend_Id { get; set; }
+
         public void CreateMap()
         {
             var directory = "../../../res/" + MapLink;
@@ -56,7 +58,7 @@ namespace eevee_fantasy
                     switch (item)
                     {
                         case '#':
-                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
                             break;
                         case '\\':
                         case '/':
@@ -76,59 +78,25 @@ namespace eevee_fantasy
                             break;
                         case '{':
                         case '}':
-                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
                             break;
                         default:
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
-                    }                
-                    
+                    }
                     Console.Write(item);
                 }
+
                 Console.WriteLine();
             }
 
+            Character Friend = Party.PartyMembers[Friend_Id];
+            Friend.Draw();
         }
 
-        public bool Collisions(int eeveeX, int eeveeY)
+        public int Collisions(int eeveeX, int eeveeY)
         {
             switch(myMap[eeveeY, eeveeX])
-            {
-                case '/':
-                    return true;
-                case '\\':
-                    return true;
-                case '-':
-                    return true;
-                case '|':
-                    return true;
-                case '+':
-                    return true;
-            }
-            return false;
-        }
-        //public bool Tp(int eeveeX, int eeveeY)
-        //{
-
-        //    switch (myMap[eeveeY, eeveeX])
-        //    {
-        //        case '>':
-        //        case '<':
-        //        case 'v':
-        //            Game.GameLevel += 1;
-        //            return true;
-        //        case '^':
-        //            Game.GameLevel -= 1;
-        //            return true;
-        //    }
-
-        //    return false;
-        //}
-
-        public int Tp(int eeveeX, int eeveeY)
-        {
-
-            switch (myMap[eeveeY, eeveeX])
             {
                 case '>':
                 case '<':
@@ -136,8 +104,17 @@ namespace eevee_fantasy
                     return 1;
                 case '^':
                     return 2;
+                case '/':
+                    return 3;
+                case '\\':
+                    return 3;
+                case '-':
+                    return 3;
+                case '|':
+                    return 3;
+                case '+':
+                    return 3;
             }
-            
             return 0;
         }
     }

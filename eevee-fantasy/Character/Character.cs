@@ -11,8 +11,13 @@ namespace eevee_fantasy
     {
         public int X { get; set; }
         public int Y { get; set; }
+
         
         public int Id { get; set; }
+
+        public char Sprite { get; set; }
+        public ConsoleColor Color { get; set; }
+
         public string? Name { get; protected set; }
         public List<Skill>? Skills { get; protected set; }
         public Attribute? Attribute { get; protected set; }
@@ -116,18 +121,31 @@ namespace eevee_fantasy
             }
 
             Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write('E');
+            Console.ForegroundColor = Color;
+            Console.Write(Sprite);
             Console.SetCursorPosition(0, 22);
             //Console.WriteLine("test");
         }
+
+        public void Draw()
+        {
+            if (!Recruited)
+            {
+                Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
+                Console.ForegroundColor = Color;
+                Console.Write(Sprite);
+                Console.SetCursorPosition(0, 22);
+            }
+            
+        }
+
         public void Spawn(int mapX, int mapY)
         {
             X = mapX;
             Y = mapY;
             Console.SetCursorPosition(mapX, mapY);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write('E');
+            Console.ForegroundColor = Color;
+            Console.Write(Sprite);
             Console.SetCursorPosition(0, 22);
         }
         
