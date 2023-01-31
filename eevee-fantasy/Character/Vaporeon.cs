@@ -8,5 +8,9 @@ namespace eevee_fantasy
 {
     internal class Vaporeon : Character
     {
+        public Vaporeon() 
+        {
+            Id = 2;
+        }
     }
 }

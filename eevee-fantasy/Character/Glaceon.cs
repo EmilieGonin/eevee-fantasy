@@ -8,5 +8,9 @@ namespace eevee_fantasy
 {
     internal class Glaceon : Character
     {
+        public Glaceon()
+        {
+            Id = 5;
+        }
     }
 }

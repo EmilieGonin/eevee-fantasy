@@ -8,5 +8,9 @@ namespace eevee_fantasy
 {
     internal class Jolteon : Character
     {
+        public Jolteon() 
+        {
+            Id = 3;
+        }
     }
 }

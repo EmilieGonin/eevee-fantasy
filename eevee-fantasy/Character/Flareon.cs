@@ -8,5 +8,9 @@ namespace eevee_fantasy
 {
     internal class Flareon : Character
     {
+       public Flareon() 
+        {
+            Id = 1;
+        } 
     }
 }

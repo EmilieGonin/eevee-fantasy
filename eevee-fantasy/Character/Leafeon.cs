@@ -8,5 +8,9 @@ namespace eevee_fantasy
 {
     internal class Leafeon : Character
     {
+        public Leafeon() 
+        {
+            Id = 4;
+        }
     }
 }
