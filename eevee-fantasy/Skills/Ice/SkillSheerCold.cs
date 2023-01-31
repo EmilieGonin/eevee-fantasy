@@ -15,7 +15,7 @@ namespace eevee_fantasy
             PP = 5;
         }
 
-        public override void Use(Attribute attribute, Character target)
+        public override void Use(Character attacker, Character target)
         {
             //30 + UserLevel - TargetLevel
             //20 if Ice

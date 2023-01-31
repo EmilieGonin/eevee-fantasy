@@ -15,13 +15,16 @@ namespace eevee_fantasy
 
         public Battle()
         {
+            Console.WriteLine("haha" + Party.PartyMembers[0].BattleHp);
+        
             foreach (var member in Party.PartyMembers!)
             {
                 if (member.Alive == true)
                 {
 
                     Character = member;
-                    Console.WriteLine(Character.Speed);
+
+                    Console.WriteLine(member.BattleHp);
                     break;
                 }
             }
@@ -48,10 +51,12 @@ namespace eevee_fantasy
                 {
 
                     EnnemysTurn();
+                    MyTurn();
                 }
                 else if (Character?.Speed > Enemy?.Speed)
                 {
                     MyTurn();
+                    EnnemysTurn();
 
 
                 }
@@ -63,15 +68,17 @@ namespace eevee_fantasy
         {
             // choice between inventory, attack or party change
             //choose skill
+
+            Console.WriteLine("My turn");
             do
             {
-                if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex > 3)
+                if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 2)
                 {
                     _choiceIndex += 1;
                     Console.WriteLine(_choiceIndex);
 
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex < 2) //var to check skill unlocked
+                else if (Console.ReadKey().Key == ConsoleKey.DownArrow &&  _choiceIndex > 0) //var to check skill unlocked
                 {
                     _choiceIndex -= 1;
                     Console.WriteLine(_choiceIndex);
@@ -95,7 +102,7 @@ namespace eevee_fantasy
                             _choiceIndex += 1;
 
                         }
-                        else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex > Character.Skills.Length) //var to check skill unlocked
+                        else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex > Character.Skills.Count())//var to check skill unlocked
                         {
                             _choiceIndex -= 1;
 
@@ -107,7 +114,7 @@ namespace eevee_fantasy
                         }
                     } while (!_choiceDone);
                     Console.WriteLine("skill" + _choiceIndex + "used");
-                    //Attack(Character, Enemy, Character.Skills[_choiceIndex]);
+                    Attack(Character, Enemy, Character.Skills[_choiceIndex]);
                     break;
                 case 1:
                     Console.WriteLine("j'ouvre mon inventaire");
@@ -120,13 +127,34 @@ namespace eevee_fantasy
         }
         private void EnnemysTurn()
         {
-            
+            Console.WriteLine("ennemy turn");
+            Random rnd = new Random();
+           
+
+            if (Enemy!.Attribute!.isEffective(Character!.Attribute!)) 
+            {
+                int indexChoice = rnd.Next(1, Enemy.Skills.Count());
+                Console.WriteLine("It's gonna be super effective : skill n° " + indexChoice + " used ");
+                 Attack(Enemy, Character, Enemy.Skills[indexChoice]);
+            }
+            else if (Enemy!.Attribute!.isWeak(Character!.Attribute!))
+            {
+                Console.WriteLine("It's gonna be weak so tackle");
+                Attack(Enemy, Character, Enemy.Skills[0]);
+            }
+            else 
+            {
+                int indexChoice = rnd.Next(0, Enemy.Skills.Count());
+                Console.WriteLine("It's gonna be neutral  : skill n° " + indexChoice + " used ");
+                Attack(Enemy, Character, Enemy.Skills[indexChoice]);
+            }
+
         }
 
         private void Attack(Character attacker, Character target, Skill skillUsed)
         {
 
-            skillUsed.Use(attacker.Attribute, target);
+            skillUsed.Use(attacker, target);
 
         }
     }

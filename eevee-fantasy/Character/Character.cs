@@ -14,7 +14,7 @@ namespace eevee_fantasy
         public int Y { get; set; }
         
         public string? Name { get; protected set; }
-        public Skill[]? Skills { get; protected set; }
+        public List<Skill>? Skills { get; protected set; }
         public Attribute? Attribute { get; protected set; }
         public Normal? NormalType { get; protected set; }
 
@@ -34,6 +34,8 @@ namespace eevee_fantasy
 
         public Character()
         {
+
+            Skills = new List<Skill>();
             lvl = 1;
             TotalHp = TotalDef = TotalAtk = BattleHp = 0;
             Alive = true;
@@ -42,11 +44,14 @@ namespace eevee_fantasy
         }
 
         public void LevelUp()
+        
         {
+          
             lvl += 1;
-            TotalHp += 100 / 25 * TotalHp;
-            TotalDef += 100 / 10 * TotalDef;
-            TotalAtk += 100 / 20 * TotalAtk;
+            TotalHp += (int)(0.05 * TotalHp);
+            BattleHp = TotalHp;
+            TotalDef += (int)(0.08 * TotalDef);
+            TotalAtk += (int)(0.08* TotalAtk);
             XPToGet = lvl * lvl * lvl;
             Speed += 2;
             UnlockSkills();
@@ -54,20 +59,21 @@ namespace eevee_fantasy
         public void UnlockSkills()
         {
 
-            if (Skills == null)
+            if (Skills.Count == 0)
             {
-                Skills?.Append(NormalType?.NormalAttack); // tackle
-                Skills?.Append(Attribute?.SpecialAttacks?[0]); // first skill 
+                
+                Skills?.Add(NormalType?.NormalAttack); // tackle
+                Skills?.Add(Attribute?.SpecialAttacks?[0]); // first skill 
             }
 
             if (lvl == 15)
             {
-                Skills?.Append(Attribute?.SpecialAttacks?[1]);
+                Skills?.Add(Attribute?.SpecialAttacks?[1]);
             }
 
             if (lvl == 40)
             {
-                Skills?.Append(Attribute?.SpecialAttacks?[2]);
+                Skills?.Add(Attribute?.SpecialAttacks?[2]);
             }
 
         }
@@ -122,6 +128,7 @@ namespace eevee_fantasy
             Console.SetCursorPosition(0, 22);
 
         }
+        
 
     }
 }

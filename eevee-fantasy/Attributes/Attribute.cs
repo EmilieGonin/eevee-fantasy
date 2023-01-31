@@ -17,10 +17,11 @@ namespace eevee_fantasy
         //1 = Normal, 2 = Fire, 3 = Water
         //4 = Thunder, 5 = Plant, 6 = Ice
         //Création d'un enum ?
-        public bool isEffective(Attribute attack, Attribute defense)
+        public bool isEffective(Attribute defenser)
         {
-            if (attack.Strengths != null && attack.Strengths.Contains(defense.Id))
+            if (Strengths != null && Strengths.Contains(defenser.Id))
             {
+                Console.WriteLine("Super effective");
                 return true;
             }
             else
@@ -29,10 +30,12 @@ namespace eevee_fantasy
             }
         }
 
-        public bool isWeakness(Attribute attack, Attribute defense)
+        public bool isWeak(Attribute defenser)
         {
-            if (attack.Weaknesses != null && attack.Weaknesses.Contains(defense.Id))
+            if (Weaknesses != null && Weaknesses.Contains(defenser.   Id))
             {
+
+                Console.WriteLine("Weak");
                 return true;
             }
             else
@@ -43,11 +46,11 @@ namespace eevee_fantasy
 
         public float EffectivenessMultiplier(Attribute attack, Attribute defense)
         {
-            if (isEffective(attack, defense))
+            if (isEffective(defense))
             {
                 return (float)1.5;
             }
-            else if (isWeakness(attack, defense)) {
+            else if (isWeak(defense)) {
                 return (float)0.5;
             }
             else

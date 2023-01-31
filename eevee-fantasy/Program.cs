@@ -18,14 +18,18 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
+          
             Game.Init(eevee);
+            Console.WriteLine("test" + eevee.BattleHp);
+
             //Game.GameLevel = 1;
 
             //MapZero mapZero = new MapZero();
             //mapZero.test();
 
 
-            Map[]? maps = new Map[2] { new MapZero(), new MapOne() };
+
+            /*Map[]? maps = new Map[2] { new MapZero(), new MapOne() };
             Map currentMap = maps[Game.GameLevel];
 
             //currentMap.CreateMap();
@@ -74,9 +78,9 @@ namespace eevee_fantasy
                     currentMap.DrawMap();
                     eevee.Move(input.KeyChar);
                 }
-            }
+            }*/
 
-            //Battle battle = new Battle();
+            Battle battle = new Battle();
         }
     }
 }

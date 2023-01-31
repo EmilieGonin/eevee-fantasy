@@ -15,9 +15,9 @@ namespace eevee_fantasy
             PP = 15;
         }
 
-        public override void Use(Attribute attribute, Character target)
+        public override void Use(Character attacker, Character target)
         {
-            base.Use(attribute, target);
+            base.Use(attacker, target);
             //Attacker receveid 1/3 dmg
         }
     }
