@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-	internal class SuperPotion : Potion
-	{
-        public SuperPotion()
+    internal class Menu : Map
+    {
+        public Menu()
         {
-            Name = "Super Potion";
-            Price = 50;
-            Health = 100;
+            MapLink = "Inventory.txt";
+            CreateMap();
         }
     }
 }
-
