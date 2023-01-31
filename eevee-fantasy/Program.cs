@@ -55,9 +55,17 @@ namespace eevee_fantasy
                         currentMap.DrawMap();
                         eevee.Move(input.KeyChar);
                     }
-                    else if (input.Key == ConsoleKey.Escape)
+                    else if (input.KeyChar == 'i')
                     {
                         Inventory.Open();
+                    }
+                    else if (input.KeyChar == 'p')
+                    {
+                        //Open Pokemon
+                    }
+                    else if (input.Key == ConsoleKey.Tab)
+                    {
+                        Game.CreateSave(eevee);
                     }
                 }
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
