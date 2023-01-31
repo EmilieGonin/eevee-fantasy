@@ -17,6 +17,9 @@ namespace eevee_fantasy
             Speed = 110;
             Recruited = true;
 
+            Sprite = 'E';
+            Color = ConsoleColor.Magenta;
+
             for (int i = 0; i < 40; i++)
             {
                 LevelUp();

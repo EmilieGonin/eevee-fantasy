@@ -17,6 +17,8 @@ namespace eevee_fantasy
         public int X_Pre { get; set; }
         public int Y_Pre { get; set; }
 
+        public int Friend_Id { get; set; }
+
         public void CreateMap()
         {
             var directory = "../../../res/" + MapLink;
@@ -81,13 +83,15 @@ namespace eevee_fantasy
                         default:
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
-                    }                
-                    
+                    }
                     Console.Write(item);
                 }
+
                 Console.WriteLine();
             }
 
+            Character Friend = Party.PartyMembers[Friend_Id];
+            Friend.Draw();
         }
 
         public bool Collisions(int eeveeX, int eeveeY)
