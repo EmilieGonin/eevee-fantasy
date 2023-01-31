@@ -70,6 +70,10 @@ namespace eevee_fantasy
                         case '~':
                             Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             break;
+                        case '{':
+                        case '}':
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
                         default:
                             Console.ForegroundColor = ConsoleColor.White;
                             break;

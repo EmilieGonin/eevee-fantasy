@@ -20,7 +20,7 @@ namespace eevee_fantasy
             Party.Fill(eevee);
             Game.Init(eevee);
 
-            Map[]? maps = new Map[2] { new MapZero(), new MapOne() };
+            Map[]? maps = new Map[4] { new MapZero(), new MapOne(), new MapTwo(), new MapThree() };
             Map currentMap = maps[Game.GameLevel];
             currentMap.DrawMap();
             eevee.Spawn(currentMap.X, currentMap.Y);
