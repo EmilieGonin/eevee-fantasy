@@ -27,7 +27,7 @@ namespace eevee_fantasy
             int map = Game.GameLevel;
             Map currentMap = maps[map];
             currentMap.DrawMap();
-            eevee.Spawn(currentMap.X, currentMap.Y);
+            eevee.Spawn(eevee.X != 0 ? eevee.X : currentMap.X, eevee.Y != 0 ? eevee.Y : currentMap.Y);
 
             Battle battle = new Battle();
 
@@ -75,9 +75,17 @@ namespace eevee_fantasy
                             break;
                         case 'n':
                             Game.CreateSave(eevee);
+                            new Dialogue("Game saved !");
+                            currentMap.DrawMap();
+                            eevee.Spawn(eevee.X, eevee.Y);
                             break;
-                        case 'b':
+                        case 'b': //Debug only
                             battle.Init();
+                            break;
+                        case 'm': //Debug only
+                            new Dialogue("A tall mountain is right in front of you.");
+                            currentMap.DrawMap();
+                            eevee.Spawn(eevee.X, eevee.Y);
                             break;
                     }
                 }

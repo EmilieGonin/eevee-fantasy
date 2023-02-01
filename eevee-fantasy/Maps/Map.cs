@@ -16,8 +16,14 @@ namespace eevee_fantasy
         public int Y { get; set; }
         public int X_Pre { get; set; }
         public int Y_Pre { get; set; }
+        public int DrawY { get; set; }
 
         public int Friend_Id { get; set; }
+
+        public Map()
+        {
+            DrawY = 0;
+        }
 
         public void CreateMap()
         {
@@ -47,7 +53,7 @@ namespace eevee_fantasy
         }
         public void DrawMap()
         {
-            Console.SetCursorPosition(0,0);
+            Console.SetCursorPosition(0, DrawY);
 
             for (int i = 0; i < myMap.GetLength(0); i++)
             {
