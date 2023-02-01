@@ -19,14 +19,15 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
+            Party.Recruit(1);
+
 
             BossEnemy bossenemies = new BossEnemy();
             Bosses.Dead(bossenemies);
-
             Game.Init(eevee);
             Inventory.Init();
 
-            Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() }; 
+            Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() };
             int map = Game.GameLevel;
             Map currentMap = maps[map];
             currentMap.DrawMap();
@@ -161,7 +162,7 @@ namespace eevee_fantasy
                     new Dialogue(friend.Name + " has joined your team !");
                     currentMap.DrawMap();
                     eevee.Spawn(currentMap.X, currentMap.Y);
-                    friend.Recruited = true;
+                    Party.Recruit(currentMap.Friend_Id);
                 }
 
                 Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
@@ -170,11 +171,10 @@ namespace eevee_fantasy
                     //battle.Init();
                     enemy.Beaten = true;
                 }
+
             }
-            
         }
-
-
-        Battle battle = new Battle();
     }
 }
+
+

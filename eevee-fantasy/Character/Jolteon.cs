@@ -13,9 +13,29 @@ namespace eevee_fantasy
         {
             Sprite = 'J';
             Color = ConsoleColor.Yellow;
-            Id_Friend = 3;
+            Id  = 3;
             X = 6;
             Y = 11;
+
+            //stats
+            Name = "Jolteon";
+            BaseHp = 65;
+            BaseDef = 60;
+            BaseAtk = 100;
+            Speed = 140;
+
+            //state
+          
+            Alive = true;
+            Attribute = new Fire();
+
+            for (int i = 0; i < 40; i++)
+            {
+                LevelUp();
+            }
+
+            TotalXP = lvl * lvl * lvl;
+            XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
 
         }
     }

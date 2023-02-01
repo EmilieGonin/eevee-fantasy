@@ -34,7 +34,7 @@ namespace eevee_fantasy
 
         public bool isWeak(Attribute defenser)
         {
-            if (Weaknesses != null && Weaknesses.Contains(defenser.   Id))
+            if (Weaknesses != null && Weaknesses.Contains(defenser.Id))
             {
 
                 //Console.WriteLine("Weak");

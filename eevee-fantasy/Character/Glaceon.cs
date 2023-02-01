@@ -13,9 +13,29 @@ namespace eevee_fantasy
 
             Sprite = 'G';
             Color = ConsoleColor.Cyan;
-            Id_Friend = 5;
+             Id = 5;
             X = 37;
             Y = 9;
+
+            //stats
+            Name = "Glaceon";
+            BaseHp = 65;
+            BaseDef = 110;
+            BaseAtk = 80;
+            Speed = 100;
+
+            //state
+          
+            Alive = true;
+            Attribute = new Fire();
+
+            for (int i = 0; i < 40; i++)
+            {
+                LevelUp();
+            }
+
+            TotalXP = lvl * lvl * lvl;
+            XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
 
         }
     }

@@ -10,7 +10,7 @@ namespace eevee_fantasy
 	{
 		public BossEnemy()
 		{
-			Id_Enemy = 0;
+			Id= 0;
 			Recruited = true;
 		}
 	}
