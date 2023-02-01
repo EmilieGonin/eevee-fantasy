@@ -156,8 +156,11 @@ namespace eevee_fantasy
                 }
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
-                if (eevee.X == friend.X && eevee.Y == friend.Y)
+                if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))
                 {
+                    new Dialogue(friend.Name + " has joined your team !");
+                    currentMap.DrawMap();
+                    eevee.Spawn(currentMap.X, currentMap.Y);
                     friend.Recruited = true;
                 }
 
