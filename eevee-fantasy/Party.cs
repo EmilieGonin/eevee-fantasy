@@ -29,15 +29,17 @@ namespace eevee_fantasy
         {
             Character temp = BattlePartyMembers[0];
             BattlePartyMembers[0] = pokemon;
-            BattlePartyMembers[pokemon.Id] = temp;
+            BattlePartyMembers[pokemon.Id_Friend] = temp;
                 
         }
         public static void Swap(Character pokemon1, Character pokemon2)
         
         {
+
             Character temp = BattlePartyMembers[pokemon1.Id];
             BattlePartyMembers[pokemon1.Id] = BattlePartyMembers[pokemon2.Id];
             BattlePartyMembers[pokemon2.Id] = temp;
+
 
         }
 

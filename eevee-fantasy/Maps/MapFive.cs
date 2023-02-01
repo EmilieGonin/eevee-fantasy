@@ -9,21 +9,21 @@ using static System.Net.Mime.MediaTypeNames;
 namespace eevee_fantasy
 {
 
-    internal class MapTwo : Map
+    internal class MapFive : Map
     {
 
-        public MapTwo()
+        public MapFive()
         {
             X = 3;
-            Y = 8;
+            Y = 18;
 
-            X_Pre = 61;
-            Y_Pre = 18;
+            //X_Pre = 62;
+            //Y_Pre = 19;
 
-            Friend_Id = 4;
-            Enemy_Id = 2;
+            Friend_Id = 5;
+            Enemy_Id = 5;
 
-            MapLink = "LevelTwo.txt";
+            MapLink = "LevelFive.txt";
             CreateMap();
 
 

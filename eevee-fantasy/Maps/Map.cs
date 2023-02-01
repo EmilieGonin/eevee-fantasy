@@ -16,8 +16,17 @@ namespace eevee_fantasy
         public int Y { get; set; }
         public int X_Pre { get; set; }
         public int Y_Pre { get; set; }
+        public int DrawY { get; set; }
+        public int X_PreJolt { get; set; }
+        public int Y_PreJolt { get; set; }
 
         public int Friend_Id { get; set; }
+        public int Enemy_Id { get; set; }
+
+        public Map()
+        {
+            DrawY = 0;
+        }
 
         public void CreateMap()
         {
@@ -47,7 +56,7 @@ namespace eevee_fantasy
         }
         public void DrawMap()
         {
-            Console.SetCursorPosition(0,0);
+            Console.SetCursorPosition(0, DrawY);
 
             for (int i = 0; i < myMap.GetLength(0); i++)
             {
@@ -80,6 +89,9 @@ namespace eevee_fantasy
                         case '}':
                             Console.ForegroundColor = ConsoleColor.DarkBlue;
                             break;
+                        case ')':
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            break;
                         default:
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
@@ -92,16 +104,20 @@ namespace eevee_fantasy
 
             Character Friend = Party.PartyMembers[Friend_Id];
             Friend.Draw();
+
+            Character Enemy = Bosses.BossesToBeat[Enemy_Id];
+            Enemy.Draw();
         }
 
         public int Collisions(int eeveeX, int eeveeY)
         {
             switch(myMap[eeveeY, eeveeX])
             {
-                case '>':
                 case '<':
-                case 'v':
+                case '>':
                     return 1;
+                case 'v':
+                    return 4;
                 case '^':
                     return 2;
                 case '/':

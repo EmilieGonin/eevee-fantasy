@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    public class BossEnemy : Character
-    {
-        //Création des Boss dans les classes LevelOne, LevelTwo, etc.
-    }
+	public class BossEnemy : Character
+	{
+		public BossEnemy()
+		{
+			Id_Enemy = 0;
+			Recruited = true;
+		}
+	}
 }
+

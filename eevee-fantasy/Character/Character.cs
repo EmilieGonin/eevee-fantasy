@@ -13,9 +13,11 @@ namespace eevee_fantasy
         public int Y { get; set; }
 
         
-        public int Id { get; set; }
+        public int Id_Friend { get; set; }
+        public int Id_Enemy { get; set; }
 
         public char Sprite { get; set; }
+        public char Enemy { get; set; }
         public ConsoleColor Color { get; set; }
 
         public string? Name { get; protected set; }
@@ -37,6 +39,7 @@ namespace eevee_fantasy
         public int Speed { get; protected set; }
         public bool Alive { get; set; }
         public bool Recruited { get; set; }
+        public bool Beaten { get; set; }
 
         public Character()
         {
@@ -47,6 +50,7 @@ namespace eevee_fantasy
             BaseHp = BaseDef = BaseAtk = 0;
             Alive = true;
             Recruited = false;
+            Beaten = false;
             NormalType = new Normal();
 
             TotalXP = lvl * lvl * lvl;
@@ -139,7 +143,13 @@ namespace eevee_fantasy
                 Console.Write(Sprite);
                 Console.SetCursorPosition(0, 22);
             }
-            
+            if (!Beaten)
+            {
+                Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
+                Console.ForegroundColor = Color;
+                Console.Write(Enemy);
+                Console.SetCursorPosition(0, 22);
+            }
         }
 
         public void Spawn(int mapX, int mapY)
