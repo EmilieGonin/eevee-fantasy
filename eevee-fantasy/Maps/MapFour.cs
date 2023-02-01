@@ -11,6 +11,9 @@ namespace eevee_fantasy
             X_Pre = 3;
             Y_Pre = 3;
 
+            X_PreJolt = 19;
+            Y_PreJolt = 11;
+
             MapLink = "LevelFour.txt";
             CreateMap();
 

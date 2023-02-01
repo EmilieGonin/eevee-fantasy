@@ -18,7 +18,7 @@ namespace eevee_fantasy
             Y = 3;
 
             X_Pre = 3;
-            Y_Pre = 15;
+            Y_Pre = 14;
 
             Friend_Id = 2;
 

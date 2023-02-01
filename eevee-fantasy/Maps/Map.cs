@@ -17,6 +17,8 @@ namespace eevee_fantasy
         public int X_Pre { get; set; }
         public int Y_Pre { get; set; }
         public int DrawY { get; set; }
+        public int X_PreJolt { get; set; }
+        public int Y_PreJolt { get; set; }
 
         public int Friend_Id { get; set; }
 
@@ -104,10 +106,11 @@ namespace eevee_fantasy
         {
             switch(myMap[eeveeY, eeveeX])
             {
-                case '>':
                 case '<':
-                case 'v':
+                case '>':
                     return 1;
+                case 'v':
+                    return 4;
                 case '^':
                     return 2;
                 case '/':
