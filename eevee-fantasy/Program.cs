@@ -23,7 +23,7 @@ namespace eevee_fantasy
             Game.Init(eevee);
             Inventory.Init();
 
-            Map[]? maps = new Map[6] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapFive() }; //new MapJolteon()
+            Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() }; 
             int map = Game.GameLevel;
             Map currentMap = maps[map];
             currentMap.DrawMap();
@@ -91,25 +91,57 @@ namespace eevee_fantasy
                     currentMap.DrawMap();
                     eevee.Spawn(eevee.X, eevee.Y);
                 }
-                //if (currentMap.Tp(eevee.X, eevee.Y))
-                //{
-                //    currentMap = maps[Game.GameLevel];
-                //    currentMap.DrawMap();
-                //    eevee.Spawn(currentMap.X, currentMap.Y);
-                //}
                 if (currentMap.Collisions(eevee.X, eevee.Y) == 1)
                 {
                     map += 1;
+                    Game.GameLevel = map;
+                    currentMap = maps[map];
+                    currentMap.DrawMap();
+                    eevee.Spawn(currentMap.X, currentMap.Y);
+                    //Console.WriteLine(map);
+                    //Console.WriteLine(Game.GameLevel);
+                }
+                else if (currentMap.Collisions(eevee.X, eevee.Y) == 4)
+                {
+                    switch (Game.GameLevel)
+                    {
+                        case 4:
+                            map += 2;
+                            break;
+                        default:
+                            map += 1;
+                            break;
+                    }
+                    Game.GameLevel = map;
                     currentMap = maps[map];
                     currentMap.DrawMap();
                     eevee.Spawn(currentMap.X, currentMap.Y);
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 2)
                 {
-                    map -= 1;
-                    currentMap = maps[map];
-                    currentMap.DrawMap();
-                    eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
+                    switch (Game.GameLevel)
+                    {
+                        case 6:
+                            map -= 2;
+                            break;
+                        default:
+                            map -= 1;
+                            break;
+                    }
+                    Game.GameLevel = map;
+                    if (Game.GameLevel == 4)
+                    {
+                        currentMap = maps[map];
+                        currentMap.DrawMap();
+                        eevee.Spawn(currentMap.X_PreJolt, currentMap.Y_PreJolt);
+                    }
+                    else
+                    {
+                        currentMap = maps[map];
+                        currentMap.DrawMap();
+                        eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
+                    }
+                    Console.WriteLine(Game.GameLevel);
                 }
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
