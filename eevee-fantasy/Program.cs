@@ -90,6 +90,12 @@ namespace eevee_fantasy
                             currentMap.DrawMap();
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
+                        case 'k': //Debug only
+                            Game.DeleteSave();
+                            currentMap = maps[0];
+                            currentMap.DrawMap();
+                            eevee.Spawn(currentMap.X, currentMap.Y);
+                            break;
                     }
                 }
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))

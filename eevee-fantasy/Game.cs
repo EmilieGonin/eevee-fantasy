@@ -101,7 +101,7 @@ namespace eevee_fantasy
                     "\nPositionX=" + eevee.X.ToString() +
                     "\nPositionY=" + eevee.Y.ToString() +
                     "\nEevee=" + Convert.ToInt64(Party.PartyMembers![0].Recruited).ToString() +
-                    "\nEevee=" + Party.PartyMembers![0].BattleHp.ToString() +
+                    "\nEeveeHp=" + Party.PartyMembers![0].BattleHp.ToString() +
                     "\nFlareon=" + Convert.ToInt64(Party.PartyMembers![1].Recruited).ToString() +
                     "\nFlareonHp=" + Party.PartyMembers![1].BattleHp.ToString() +
                     "\nVaporeon=" + Convert.ToInt64(Party.PartyMembers![2].Recruited).ToString() +
@@ -111,6 +111,31 @@ namespace eevee_fantasy
                     "\nLeafeon=" + Convert.ToInt64(Party.PartyMembers![4].Recruited).ToString() +
                     "\nLeafeonHp=" + Party.PartyMembers![4].BattleHp.ToString() +
                     "\nGlaceon=" + Convert.ToInt64(Party.PartyMembers![5].Recruited).ToString() +
+                    "\nGlaceonHp=" + Party.PartyMembers![5].BattleHp.ToString();
+
+                save.Write(str);
+            }
+        }
+
+        public static void DeleteSave()
+        {
+            //Création du fichier texte de sauvegarde -- "false" permet de remplacer le texte déjà présent
+            using (StreamWriter save = new StreamWriter("save.txt", false))
+            {
+                string str = "GameLevel=0" +
+                    "\nPositionX=0" +
+                    "\nPositionY=0" +
+                    "\nEevee=1" +
+                    "\nEeveeHp=" + Party.PartyMembers![0].BattleHp.ToString() +
+                    "\nFlareon=0" +
+                    "\nFlareonHp=" + Party.PartyMembers![1].BattleHp.ToString() +
+                    "\nVaporeon=0" +
+                    "\nVaporeonHp=" + Party.PartyMembers![2].BattleHp.ToString() +
+                    "\nJolteon=0" +
+                    "\nJolteonHp=" + Party.PartyMembers![3].BattleHp.ToString() +
+                    "\nLeafeon=0" +
+                    "\nLeafeonHp=" + Party.PartyMembers![4].BattleHp.ToString() +
+                    "\nGlaceon=0" +
                     "\nGlaceonHp=" + Party.PartyMembers![5].BattleHp.ToString();
 
                 save.Write(str);
