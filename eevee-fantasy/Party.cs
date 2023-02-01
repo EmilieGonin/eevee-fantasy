@@ -8,8 +8,10 @@ namespace eevee_fantasy
 {
     public static class Party
     {
+        public static bool IsOpen { get; private set; }
         public static List<Character>? PartyMembers;
         public static List<Character>? BattlePartyMembers;
+        public static Menu PartyMenu { get; private set; }
 
         public static void Fill(Eevee eevee)
         {
@@ -51,6 +53,14 @@ namespace eevee_fantasy
                 number++;
             }
             return number;
+        }
+
+        public static void Open()
+        {
+            IsOpen = true;
+            PartyMenu = new Menu();
+            PartyMenu.DrawList(BattlePartyMembers);
+            PartyMenu.AddCursor(1, 2);
         }
 
        
