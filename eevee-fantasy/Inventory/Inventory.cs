@@ -23,21 +23,9 @@ namespace eevee_fantasy
         public static void Open()
         {
             IsOpen = true;
-            Console.Clear();
             Menu menu = new Menu();
-            menu.DrawMap();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(30, 1);
-            Console.Write("Items Inventory");
-
-            for (int i = 0; i < Items!.Length; i++)
-            {
-                Console.SetCursorPosition(1, i + 2);
-                Console.Write("  " + Items[i].Name + " x" + Items[i].Number);
-            }
-
-            Console.SetCursorPosition(1, _cursorY);
-            Console.Write("►");
+            menu.DrawList(Items);
+            menu.AddCursor(1, 2);
         }
 
         public static void Close()

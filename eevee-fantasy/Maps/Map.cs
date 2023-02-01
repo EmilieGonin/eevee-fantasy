@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Map
+    public class Map
     {
         private static int _cursorY;
         public char[,]? myMap { get; set; }
@@ -54,7 +54,7 @@ namespace eevee_fantasy
 
             
         }
-        public void DrawMap()
+        public virtual void DrawMap()
         {
             Console.SetCursorPosition(0, DrawY);
 
@@ -134,15 +134,16 @@ namespace eevee_fantasy
             return 0;
         }
 
-        public static void AddCursor(int y)
+        public void AddCursor(int x, int y)
         {
             _cursorY = y;
+            //battle x = 55
 
-            Console.SetCursorPosition(55, y);
+            Console.SetCursorPosition(x, y);
             Console.Write("►");
         }
 
-        public static void MoveCursor(char input, int length)
+        public void MoveCursor(char input, int length)
         {
             Console.SetCursorPosition(1, _cursorY);
             Console.Write(" ");

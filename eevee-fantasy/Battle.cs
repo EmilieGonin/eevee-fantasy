@@ -68,7 +68,7 @@ namespace eevee_fantasy
             Console.SetCursorPosition(58, 17);
             Console.Write("Change Pokemon");
 
-            BattleMap.AddCursor(15);
+            BattleMap.AddCursor(55, 15);
 
             Play();
         }

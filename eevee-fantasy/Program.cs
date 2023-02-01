@@ -39,7 +39,7 @@ namespace eevee_fantasy
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
 
-                if (!Inventory.IsOpen && !battle.BattleState)
+                if (!Inventory.IsOpen && !Party.IsOpen && !battle.BattleState)
                 {
                     switch (input.KeyChar)
                     {
@@ -75,7 +75,7 @@ namespace eevee_fantasy
                             Inventory.Open();
                             break;
                         case 'p':
-                            //Open Pokemon
+                            Party.Open();
                             break;
                         case 'n':
                             Game.CreateSave(eevee);
@@ -102,6 +102,10 @@ namespace eevee_fantasy
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
                     Inventory.MoveCursor(input.KeyChar);
+                }
+                else if (Party.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
+                {
+                    Party.PartyMenu.MoveCursor(input.KeyChar, Party.BattlePartyMembers.Count);
                 }
                 else if (Inventory.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'i'))
                 {
