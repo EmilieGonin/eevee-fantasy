@@ -10,7 +10,7 @@ namespace eevee_fantasy
     {
         public Eevee()
         {
-            Id= 0;
+            Id_Friend= 0;
             Name = "Eevee";
             BattleHp = TotalHp = 110;
             TotalDef = 40;

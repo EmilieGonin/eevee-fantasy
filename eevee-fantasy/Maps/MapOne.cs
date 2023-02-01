@@ -16,10 +16,12 @@ namespace eevee_fantasy
         {
             X = 33;
             Y = 18;
-            X_Pre = 72;
+            X_Pre = 71;
             Y_Pre = 8;
 
             Friend_Id = 1;
+
+            Enemy_Id = 1;
 
             MapLink = "LevelOne.txt";
             CreateMap();

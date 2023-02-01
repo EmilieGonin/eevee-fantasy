@@ -13,7 +13,7 @@ namespace eevee_fantasy
 
             Sprite = 'G';
             Color = ConsoleColor.Cyan;
-            Id = 5;
+            Id_Friend = 5;
             X = 37;
             Y = 9;
 

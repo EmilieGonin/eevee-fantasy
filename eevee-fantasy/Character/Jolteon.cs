@@ -13,7 +13,7 @@ namespace eevee_fantasy
         {
             Sprite = 'J';
             Color = ConsoleColor.Yellow;
-            Id = 3;
+            Id_Friend = 3;
             X = 6;
             Y = 11;
 

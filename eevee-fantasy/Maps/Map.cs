@@ -20,6 +20,7 @@ namespace eevee_fantasy
         public int Y_PreJolt { get; set; }
 
         public int Friend_Id { get; set; }
+        public int Enemy_Id { get; set; }
 
         public void CreateMap()
         {
@@ -82,6 +83,9 @@ namespace eevee_fantasy
                         case '}':
                             Console.ForegroundColor = ConsoleColor.DarkBlue;
                             break;
+                        case ')':
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            break;
                         default:
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
@@ -94,6 +98,9 @@ namespace eevee_fantasy
 
             Character Friend = Party.PartyMembers[Friend_Id];
             Friend.Draw();
+
+            Character Enemy = Bosses.BossesToBeat[Enemy_Id];
+            Enemy.Draw();
         }
 
         public int Collisions(int eeveeX, int eeveeY)
