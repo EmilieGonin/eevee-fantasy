@@ -167,7 +167,7 @@ namespace eevee_fantasy
                 {
                     new Dialogue(friend.Name + " has joined your team !");
                     currentMap.DrawMap();
-                    eevee.Spawn(currentMap.X, currentMap.Y);
+                    eevee.Spawn(eevee.X, eevee.Y);
                     Party.Recruit(currentMap.Friend_Id);
                 }
 
