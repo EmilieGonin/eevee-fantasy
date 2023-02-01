@@ -157,11 +157,12 @@ namespace eevee_fantasy
                 }
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
-                if (eevee.X == friend.X && eevee.Y == friend.Y)
+                if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))
                 {
-                    //Console.WriteLine("test");
+                    new Dialogue(friend.Name + " has joined your team !");
+                    currentMap.DrawMap();
+                    eevee.Spawn(currentMap.X, currentMap.Y);
                     Party.Recruit(currentMap.Friend_Id);
-
                 }
 
                 Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
