@@ -19,7 +19,7 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
-
+            Party.Recruit(1);
             Game.Init(eevee);
             Inventory.Init();
 
@@ -118,7 +118,7 @@ namespace eevee_fantasy
             if (eevee.X == friend.X && eevee.Y == friend.Y)
             {
                 //Console.WriteLine("test");
-                friend.Recruited = true;
+                Party.Recruit(currentMap.Friend_Id);
             }
         }
 

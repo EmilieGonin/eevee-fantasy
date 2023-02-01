@@ -29,8 +29,10 @@ namespace eevee_fantasy
 
         public int TotalHp { get; protected set; }
         public int TotalDef { get; protected set; }
-        public int TotalMagicDef { get; protected set; }
         public int TotalAtk { get; set; }
+        public int BaseHp { get; protected set; }
+        public int BaseDef { get; protected set; }
+        public int BaseAtk { get; set; }
         public int BattleHp { get; set; }
         public int Speed { get; protected set; }
         public bool Alive { get; set; }
@@ -42,6 +44,7 @@ namespace eevee_fantasy
             Skills = new List<Skill>();
             lvl = 1;
             TotalHp = TotalDef = TotalAtk = BattleHp = 0;
+            BaseHp = BaseDef = BaseAtk = 0;
             Alive = true;
             Recruited = false;
             NormalType = new Normal();
@@ -56,10 +59,10 @@ namespace eevee_fantasy
         {
           
             lvl += 1;
-            TotalHp += (int)(0.05 * TotalHp);
+            TotalHp = (int)((2 * BaseHp * lvl) / (100) + 5 + lvl + 10);
             BattleHp = TotalHp;
-            TotalDef += (int)(0.04 * TotalDef);
-            TotalAtk += (int)(0.05* TotalAtk);
+            TotalDef = (int)((2 * BaseDef * lvl) / (100) + 5 + lvl + 10);
+            TotalAtk = (int)((2 * BaseAtk * lvl) / (100) + 5 + lvl + 10);
             XPToGet = lvl * lvl * lvl;
             Speed += 2;
             UnlockSkills();
@@ -89,7 +92,7 @@ namespace eevee_fantasy
         public void LooseHp(int amount)
         {
             BattleHp -= amount;
-            if (BattleHp < 0)
+            if (BattleHp <= 0)
             {
                 Alive = false;
                 BattleHp = 0;
