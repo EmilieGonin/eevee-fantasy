@@ -1,198 +1,198 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="eevee_fantasy.Character" Collapsed="true">
-    <Position X="9" Y="3.5" Width="1.5" />
+    <Position X="15" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAEAAMACACBAAAgAAAQhIAgAAAQAAAAAAAAgAAA=</HashCode>
+      <HashCode>EQgAAgFAAMACAiBAAAEAAAQhIAgAAAQQABACgAAgYAE=</HashCode>
       <FileName>Character\Character.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Eevee" Collapsed="true">
-    <Position X="1.25" Y="4.75" Width="1.5" />
+    <Position X="1.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character\Eevee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Flareon" Collapsed="true">
-    <Position X="3.5" Y="4.75" Width="1.5" />
+    <Position X="3.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character\Flareon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Vaporeon" Collapsed="true">
-    <Position X="5.75" Y="4.75" Width="1.5" />
+    <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character\Vaporeon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Jolteon" Collapsed="true">
-    <Position X="8" Y="4.75" Width="1.5" />
+    <Position X="8.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character\Jolteon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Leafeon" Collapsed="true">
-    <Position X="10.25" Y="4.75" Width="1.5" />
+    <Position X="10.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character\Leafeon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Glaceon" Collapsed="true">
-    <Position X="12.5" Y="4.75" Width="1.5" />
+    <Position X="12.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character\Glaceon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Inventory" Collapsed="true">
-    <Position X="5.25" Y="9.5" Width="1.5" />
+    <Position X="5" Y="12.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIICISAAAQAAAAAACAAAAAAAAAAAAAAAAAgAAAAAEAA=</HashCode>
+      <HashCode>IAIAIAAAAAAALAAAAAAAAACAAAAAAAAAAAACAACAAAA=</HashCode>
       <FileName>Inventory\Inventory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Potion" Collapsed="true">
-    <Position X="8.75" Y="10.75" Width="1.5" />
+    <Position X="8.5" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory\Potion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.SuperPotion" Collapsed="true">
-    <Position X="7.5" Y="12.25" Width="1.5" />
+    <Position X="7.25" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory\SuperPotion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.HyperPotion" Collapsed="true">
-    <Position X="9.75" Y="12.25" Width="1.5" />
+    <Position X="9.5" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory\HyperPotion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Revive" Collapsed="true">
-    <Position X="0.75" Y="10.75" Width="1.5" />
+    <Position X="0.5" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory\Revive.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.AtkPotion" Collapsed="true">
-    <Position X="3" Y="10.75" Width="1.5" />
+    <Position X="2.75" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Inventory\AtkPotion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Game" Collapsed="true">
-    <Position X="42.5" Y="0.5" Width="1.5" />
+    <Position X="48.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAACACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAKAAAAAAQAAAAAACACAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Party" Collapsed="true">
-    <Position X="40.75" Y="1.5" Width="1.5" />
+    <Position X="45.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAAAAAEAAAEAAAAAAAAAAAAAAQBCAAAACAAAAAAIAA=</HashCode>
       <FileName>Party.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Fire" Collapsed="true">
-    <Position X="3.25" Y="7.75" Width="1.5" />
+    <Position X="3" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Attributes\Fire.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Ice" Collapsed="true">
-    <Position X="10" Y="7.75" Width="1.5" />
+    <Position X="9.75" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Attributes\Ice.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Normal" Collapsed="true">
-    <Position X="5.5" Y="7.75" Width="1.5" />
+    <Position X="5.25" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Attributes\Normal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Plant" Collapsed="true">
-    <Position X="12.25" Y="7.75" Width="1.5" />
+    <Position X="12" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Attributes\Plant.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Thunder" Collapsed="true">
-    <Position X="1" Y="7.75" Width="1.5" />
+    <Position X="0.75" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Attributes\Thunder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Water" Collapsed="true">
-    <Position X="7.75" Y="7.75" Width="1.5" />
+    <Position X="7.5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Attributes\Water.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Elixir" Collapsed="true">
-    <Position X="5.25" Y="10.75" Width="1.5" />
+    <Position X="5" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory\Elixir.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.BasicEnemy" Collapsed="true">
-    <Position X="14.75" Y="4.75" Width="1.5" />
+    <Position X="15" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Character\BasicEnemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.BossEnemy" Collapsed="true">
-    <Position X="17" Y="4.75" Width="1.5" />
+    <Position X="19.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character\BossEnemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Battle" Collapsed="true">
-    <Position X="40.75" Y="0.5" Width="1.5" />
+    <Position X="45.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAACAAAAAAAAAAAABAAIAAAAAAiAABAAAACBA=</HashCode>
+      <HashCode>AAAAEgAIACAAAAAAAAAAQAAAAIAAAAAAiIADAAAACBA=</HashCode>
       <FileName>Battle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.MapZero" Collapsed="true">
-    <Position X="0.5" Y="13.75" Width="1.5" />
+    <Position X="1.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Maps\MapZero.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Attribute" Collapsed="true">
-    <Position X="6.5" Y="6.5" Width="1.5" />
+    <Position X="6.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAACAAAAAAAQQAAAAAAAAAABABAAAAAAQAAAAAAA=</HashCode>
       <FileName>Attributes\Attribute.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Map" Collapsed="true">
-    <Position X="0.5" Y="12.5" Width="1.5" />
+    <Position X="11.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQg=</HashCode>
+      <HashCode>IAAAAAACAAAABACAAQCUAACAQAAQAAAAAAAAAAABcQg=</HashCode>
       <FileName>Maps\Map.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -218,7 +218,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Skill" Collapsed="true">
-    <Position X="20.25" Y="0.5" Width="1.5" />
+    <Position X="22.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAAAAAQAAEAEAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Skills\Skill.cs</FileName>
@@ -232,16 +232,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.SkillIceBeam" Collapsed="true">
-    <Position X="38.25" Y="1.75" Width="1.5" />
+    <Position X="42.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Skills\Ice\SkillIceBeam.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.SkillSheerCold" Collapsed="true">
-    <Position X="36" Y="1.75" Width="1.5" />
+    <Position X="40.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Skills\Ice\SkillSheerCold.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -295,7 +295,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.SkillThunderbolt" Collapsed="true">
-    <Position X="33.75" Y="1.75" Width="1.5" />
+    <Position X="38.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Skills\Thunder\SkillThunderbolt.cs</FileName>
@@ -323,10 +323,129 @@
     </TypeIdentifier>
   </Class>
   <Class Name="eevee_fantasy.Program" Collapsed="true">
-    <Position X="42.5" Y="1.5" Width="1.5" />
+    <Position X="47" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.Bosses" Collapsed="true">
+    <Position X="47" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAA=</HashCode>
+      <FileName>Bosses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.SkillDoubleEdge" Collapsed="true">
+    <Position X="33.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Skills\Normal\SkillDoubleEdge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.SkillPound" Collapsed="true">
+    <Position X="36" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Skills\Normal\SkillPound.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.BattleMap" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\BattleMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.MapFive" Collapsed="true">
+    <Position X="10.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\MapFive.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.MapFour" Collapsed="true">
+    <Position X="14.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\MapFour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.MapJolteon" Collapsed="true">
+    <Position X="19.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\MapJolteon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.MapOne" Collapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\MapOne.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.MapThree" Collapsed="true">
+    <Position X="12.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\MapThree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.MapTwo" Collapsed="true">
+    <Position X="17" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\MapTwo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.Menu" Collapsed="true">
+    <Position X="21.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.Dialogue" Collapsed="true">
+    <Position X="8" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Maps\Dialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.BossFive" Collapsed="true">
+    <Position X="17.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Character\BossFive.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.BossFour" Collapsed="true">
+    <Position X="24" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Character\BossFour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.BossOne" Collapsed="true">
+    <Position X="26.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Character\BossOne.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.BossThree" Collapsed="true">
+    <Position X="28.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Character\BossThree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eevee_fantasy.BossTwo" Collapsed="true">
+    <Position X="21.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Character\BossTwo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
