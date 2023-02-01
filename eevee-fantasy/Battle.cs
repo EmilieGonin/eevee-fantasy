@@ -101,13 +101,14 @@ namespace eevee_fantasy
         public void Play()
         {
             //Console.WriteLine("start battle");
-            if (BattleState == true)
+            if (BattleState == true )
             {
                 //Console.WriteLine("je calcule wsh");
                 if (Character?.Speed < Enemy?.Speed)
                 {
                     EnnemysTurn();
                     MyTurn();
+                
                 }
                 else if (Character?.Speed > Enemy?.Speed)
                 {
@@ -115,12 +116,18 @@ namespace eevee_fantasy
                     EnnemysTurn();
 
                 }
-                Play();
+                if (Enemy.Alive == false)
+                {
+                    BattleState = false;
+                }
+                else
+                {
+                    Play();
+                }
+
+
             }
-            if (Enemy.Alive == false)
-            {
-                // win battle;
-            }
+
 
         }
 
@@ -128,85 +135,46 @@ namespace eevee_fantasy
         {
             if (Character.Alive == true)
             {
-                // choice between inventory, attack or party change
-                //choose skill
-                _choiceDone = false;
-                _choiceIndex = 0;
-                Console.WriteLine("My turn");
-                do
-                {
-                    if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 2)
-                    {
-                        _choiceIndex += 1;
-                        Console.WriteLine(_choiceIndex);
-                    }
-                    else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex >= 0) //var to check skill unlocked
-                    {
-                        _choiceIndex -= 1;
-                        Console.WriteLine(_choiceIndex);
-                    }
-                    if (Console.ReadKey().Key == ConsoleKey.Enter)
-                    {
-                        _choiceDone = true;
-                        Console.WriteLine("Je selectionne");
-                    }
-                } while (!_choiceDone);
-
-                switch (_choiceIndex)
+                Console.WriteLine(Character.Name + "  Turn");
+                switch (Choice(2))
                 {
                     case 0:
-                        Console.WriteLine(_choiceIndex);
-                        _choiceDone = false;
-                        _choiceIndex= 0;
-                        do
-                        {
-                            if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < Character.Skills.Count() - 1)
-                            {
-                               
-                                _choiceIndex += 1;
-                                Console.WriteLine(_choiceIndex);
-                            }
-                            else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex >= 0)//var to check skill unlocked
-                            {
-                               
-                                _choiceIndex -= 1;
-                                Console.WriteLine(_choiceIndex);
-                            }
-                            if (Console.ReadKey().Key == ConsoleKey.Enter)
-                            {
-                                _choiceDone = true;
-                            }
-                        } while (!_choiceDone);
-                        Console.WriteLine(Character.Skills.Count());
-                        Console.WriteLine("skill" + _choiceIndex + "used");
-                        Attack(Character, Enemy, Character.Skills[_choiceIndex]);
+                        Attack(Character, Enemy, Character.Skills[Choice(Character.Skills.Count() - 1)]);
                         break;
                     case 1:
+                        Inventory.Open();
                         Console.WriteLine("j'ouvre mon inventaire");
                         break;
                     case 2:
-                        Console.WriteLine("je change de pokemon");
+                        Character pokemon;
+                        Console.WriteLine("Choose pokemon to swap");
+                        pokemon = Party.BattlePartyMembers[ChoosePokemon().Id];
+                        Party.Swap(Character, pokemon);
+                        Character = pokemon ;
+
                         break;
                 }
             }
             else
             {
-                bool partyAvailable = true;
+                bool partyAvailable = false;
                 for (int i = 0; i < Party.BattlePartyMembers.Count(); i++)
                 {
-                    if (Party.BattlePartyMembers[i].Alive == false)
+                    if (Party.BattlePartyMembers[i].Alive == true)
                     {
-                        partyAvailable = false;
+                        partyAvailable = true;
                         break;
                     }
                 }
                 if (partyAvailable)
                 {
+                    Character = ChoosePokemon();
                     Party.ReplaceDeadPokemon(ChoosePokemon());
                 }
                 else
                 {
                     Console.WriteLine("Game Over");
+                    BattleState = false;
                 }
             }
             //attack function
@@ -240,20 +208,43 @@ namespace eevee_fantasy
         }
         private Character ChoosePokemon()
         {
-            ConsoleKeyInfo input = Console.ReadKey(true);
-            _choiceIndex = 0;
-            _choiceDone = false;
 
+            int myChoice = 0;
             do
             {
-                if (Console.ReadKey().Key == ConsoleKey.UpArrow && _choiceIndex < 0)
+                myChoice = Choice(Party.BattlePartyMembers.Count() - 1);
+            } while (Party.BattlePartyMembers[myChoice].Alive == false);
+            
+            return Party.BattlePartyMembers[myChoice];
+        }
+
+        private void Attack(Character attacker, Character target, Skill skillUsed)
+        {
+
+            skillUsed.Use(attacker, target);
+
+
+        }
+
+        private int Choice(int choiceLimit)
+        {
+            ConsoleKeyInfo input = Console.ReadKey(true);
+            int Index = 0;
+            _choiceDone = false;
+            do
+            {
+
+                if (Console.ReadKey().Key == ConsoleKey.UpArrow && Index < choiceLimit)
                 {
-                    Console.WriteLine(_choiceIndex);
-                    _choiceIndex += 1;
+
+                    Index += 1;
+                    Console.WriteLine(Index);
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.DownArrow && _choiceIndex > Character.Skills.Count())//var to check skill unlocked
+                else if (Console.ReadKey().Key == ConsoleKey.DownArrow && Index > 0)//var to check skill unlocked
                 {
-                    _choiceIndex -= 1;
+
+                    Index -= 1;
+                    Console.WriteLine(Index);
                 }
                 if (Console.ReadKey().Key == ConsoleKey.Enter)
                 {
@@ -261,15 +252,7 @@ namespace eevee_fantasy
                 }
             } while (_choiceDone == false);
 
-            return Party.BattlePartyMembers[_choiceIndex];
-        }
-        
-        private void Attack(Character attacker, Character target, Skill skillUsed)
-        {
-
-            skillUsed.Use(attacker, target);
-
-
+            return Index;
         }
     }
 }

@@ -18,6 +18,26 @@ namespace eevee_fantasy
             X = 73;
             Y = 12;
 
+            //stats
+            Name = "Vaporoen";
+            BaseHp = 130;
+            BaseDef = 60;
+            BaseAtk = 90;
+            Speed = 90;
+
+            //state
+            Recruited = true;
+            Alive = true;
+            Attribute = new Fire();
+
+            for (int i = 0; i < 40; i++)
+            {
+                LevelUp();
+            }
+
+            TotalXP = lvl * lvl * lvl;
+            XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
+
         }
     }
 }

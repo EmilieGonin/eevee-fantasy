@@ -94,6 +94,9 @@ namespace eevee_fantasy
 
         public static void CreateSave(Eevee eevee)
         {
+
+            Console.WriteLine(Party.PartyMembers[1].BattleHp);
+            Console.WriteLine(Party.PartyMembers[1].TotalHp);
             //Création du fichier texte de sauvegarde -- "false" permet de remplacer le texte déjà présent
             using (StreamWriter save = new StreamWriter("save.txt", false))
             {

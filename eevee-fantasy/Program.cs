@@ -19,10 +19,11 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
+            Party.Recruit(1);
+
 
             BossEnemy bossenemies = new BossEnemy();
             Bosses.Dead(bossenemies);
-
             Game.Init(eevee);
             Inventory.Init();
 
@@ -161,12 +162,20 @@ namespace eevee_fantasy
                     friend.Recruited = true;
                 }
 
+
+            Character friend = Party.PartyMembers[currentMap.Friend_Id];
+            if (eevee.X == friend.X && eevee.Y == friend.Y)
+            {
+                //Console.WriteLine("test");
+                Party.Recruit(currentMap.Friend_Id);
+
                 Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
                 if (eevee.X == enemy.X && eevee.Y == enemy.Y)
                 {
                     //battle.Init();
                     enemy.Beaten = true;
                 }
+
             }
             
         }
