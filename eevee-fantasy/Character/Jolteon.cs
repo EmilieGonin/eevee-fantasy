@@ -14,8 +14,8 @@ namespace eevee_fantasy
             Sprite = 'J';
             Color = ConsoleColor.Yellow;
             Id = 3;
-            X = 0;
-            Y = 0;
+            X = 6;
+            Y = 11;
 
         }
     }

@@ -9,20 +9,17 @@ using static System.Net.Mime.MediaTypeNames;
 namespace eevee_fantasy
 {
 
-    internal class MapThree : Map
+    internal class MapJolteon : Map
     {
 
-        public MapThree()
+        public MapJolteon()
         {
-            X = 62;
-            Y = 3;
+            X = 17;
+            Y = 11;
 
-            X_Pre = 3;
-            Y_Pre = 15;
+            Friend_Id = 3;
 
-            Friend_Id = 2;
-
-            MapLink = "LevelThree.txt";
+            MapLink = "LevelJolteon.txt";
             CreateMap();
 
 

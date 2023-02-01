@@ -16,7 +16,7 @@ namespace eevee_fantasy
             Color = ConsoleColor.Blue;
             Id = 2;
             X = 73;
-            Y = 13;
+            Y = 12;
 
         }
     }

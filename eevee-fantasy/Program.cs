@@ -13,7 +13,7 @@ namespace eevee_fantasy
     {
         public static void Main()
         {
-            Console.SetWindowSize(75, 25);
+            //Console.SetWindowSize(75, 25);
             Console.CursorVisible = false;
             bool play = true;
 
@@ -23,7 +23,7 @@ namespace eevee_fantasy
             Game.Init(eevee);
             Inventory.Init();
 
-            Map[]? maps = new Map[4] { new MapZero(), new MapOne(), new MapTwo(), new MapThree() };
+            Map[]? maps = new Map[6] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapFive() }; //new MapJolteon()
             int map = Game.GameLevel;
             Map currentMap = maps[map];
             currentMap.DrawMap();
@@ -112,14 +112,14 @@ namespace eevee_fantasy
                     eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                 }
 
+                Character friend = Party.PartyMembers[currentMap.Friend_Id];
+                if (eevee.X == friend.X && eevee.Y == friend.Y)
+                {
+                    //Console.WriteLine("test");
+                    friend.Recruited = true;
+                }
             }
-
-            Character friend = Party.PartyMembers[currentMap.Friend_Id];
-            if (eevee.X == friend.X && eevee.Y == friend.Y)
-            {
-                //Console.WriteLine("test");
-                friend.Recruited = true;
-            }
+            
         }
 
 
