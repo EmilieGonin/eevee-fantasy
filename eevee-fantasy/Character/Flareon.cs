@@ -14,7 +14,6 @@ namespace eevee_fantasy
             Sprite = 'F';
             Color = ConsoleColor.Red;
             Id = 1;
-            Id_Friend = 1;
 
             X = 5;
             Y = 18;
@@ -28,7 +27,7 @@ namespace eevee_fantasy
             Speed = 110;
 
             //state
-            Recruited = true;
+
             Alive = true;
             Attribute = new Fire();
 

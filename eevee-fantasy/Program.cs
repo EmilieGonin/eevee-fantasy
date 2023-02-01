@@ -27,7 +27,7 @@ namespace eevee_fantasy
             Game.Init(eevee);
             Inventory.Init();
 
-            Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() }; 
+            Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() };
             int map = Game.GameLevel;
             Map currentMap = maps[map];
             currentMap.DrawMap();
@@ -159,15 +159,10 @@ namespace eevee_fantasy
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
                 if (eevee.X == friend.X && eevee.Y == friend.Y)
                 {
-                    friend.Recruited = true;
+                    //Console.WriteLine("test");
+                    Party.Recruit(currentMap.Friend_Id);
+
                 }
-
-
-            Character friend = Party.PartyMembers[currentMap.Friend_Id];
-            if (eevee.X == friend.X && eevee.Y == friend.Y)
-            {
-                //Console.WriteLine("test");
-                Party.Recruit(currentMap.Friend_Id);
 
                 Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
                 if (eevee.X == enemy.X && eevee.Y == enemy.Y)
@@ -177,10 +172,8 @@ namespace eevee_fantasy
                 }
 
             }
-            
         }
-
-
-        Battle battle = new Battle();
     }
 }
+
+

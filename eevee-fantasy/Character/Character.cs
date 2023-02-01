@@ -13,8 +13,8 @@ namespace eevee_fantasy
         public int Y { get; set; }
 
         
-        public int Id_Friend { get; set; }
-        public int Id_Enemy { get; set; }
+        public int Id { get; set; }
+
 
         public char Sprite { get; set; }
         public char Enemy { get; set; }

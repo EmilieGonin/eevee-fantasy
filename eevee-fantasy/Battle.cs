@@ -146,11 +146,13 @@ namespace eevee_fantasy
                         Console.WriteLine("j'ouvre mon inventaire");
                         break;
                     case 2:
-                        Character pokemon;
+
                         Console.WriteLine("Choose pokemon to swap");
-                        pokemon = Party.BattlePartyMembers[ChoosePokemon().Id];
+                        Character pokemon = ChoosePokemon();
+
                         Party.Swap(Character, pokemon);
-                        Character = pokemon ;
+                        Character = pokemon;
+                      
 
                         break;
                 }
@@ -168,7 +170,7 @@ namespace eevee_fantasy
                 }
                 if (partyAvailable)
                 {
-                    Character = ChoosePokemon();
+                    
                     Party.ReplaceDeadPokemon(ChoosePokemon());
                 }
                 else

@@ -10,7 +10,7 @@ namespace eevee_fantasy
     {
         public BossThree()
         {
-            Id_Enemy = 3;
+            Id = 3;
 
             Enemy = 'B';
             Color = ConsoleColor.DarkRed;

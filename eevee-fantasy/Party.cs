@@ -20,7 +20,7 @@ namespace eevee_fantasy
 
         public static void Recruit(int id)
         {
-            PartyMembers[id].Alive = true; 
+            PartyMembers[id].Recruited = true;
             BattlePartyMembers.Add(PartyMembers[id]);
 
         }
@@ -28,16 +28,16 @@ namespace eevee_fantasy
         public static void ReplaceDeadPokemon(Character pokemon)
         {
             Character temp = BattlePartyMembers[0];
-            BattlePartyMembers[0] = pokemon;
-            BattlePartyMembers[pokemon.Id_Friend] = temp;
+            BattlePartyMembers[0] = BattlePartyMembers[pokemon.Id];
+            BattlePartyMembers[pokemon.Id] = temp;
                 
         }
-        public static void Swap(Character pokemon1, Character pokemon2)
-        
+        public static void Swap(Character pokemon, Character pokemon2)
+
         {
 
-            Character temp = BattlePartyMembers[pokemon1.Id];
-            BattlePartyMembers[pokemon1.Id] = BattlePartyMembers[pokemon2.Id];
+            Character temp = BattlePartyMembers[pokemon.Id];
+            BattlePartyMembers[pokemon.Id] = BattlePartyMembers[pokemon2.Id];
             BattlePartyMembers[pokemon2.Id] = temp;
 
 

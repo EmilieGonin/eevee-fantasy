@@ -11,10 +11,10 @@ namespace eevee_fantasy
         public Eevee()
         {
 
-            Id= 0;
+            Id = 0;
             //stats
 
-            Id_Friend= 0;
+            
 
             Name = "Eevee";
             BaseHp = 55;
