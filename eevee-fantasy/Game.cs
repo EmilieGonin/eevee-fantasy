@@ -42,11 +42,11 @@ namespace eevee_fantasy
                         line = save.ReadLine();
                         string setting = line.Split("=")[0];
                         string value = line.Split("=")[1];
+                        string[] values = value.Split("#");
 
                         switch (setting)
                         {
                             case "Party":
-                                string[] values = value.Split("#");
                                 Party.PartyMembers[0] = JsonSerializer.Deserialize<Eevee>(values[0]);
                                 Party.PartyMembers[1] = JsonSerializer.Deserialize<Flareon>(values[1]);
                                 Party.PartyMembers[2] = JsonSerializer.Deserialize<Vaporeon>(values[2]);
@@ -59,10 +59,19 @@ namespace eevee_fantasy
                                 Party.BattlePartyMembers = JsonSerializer.Deserialize<List<int>>(value);
                                 break;
                             case "Bosses":
-                                Bosses.BossesToBeat = JsonSerializer.Deserialize<List<BossEnemy>>(value);
+                                Bosses.BossesToBeat[0] = JsonSerializer.Deserialize<BossOne>(values[0]);
+                                Bosses.BossesToBeat[1] = JsonSerializer.Deserialize<BossTwo>(values[1]);
+                                Bosses.BossesToBeat[2] = JsonSerializer.Deserialize<BossThree>(values[2]);
+                                Bosses.BossesToBeat[3] = JsonSerializer.Deserialize<BossFour>(values[3]);
+                                Bosses.BossesToBeat[4] = JsonSerializer.Deserialize<BossFive>(values[4]);
                                 break;
                             case "Inventory":
-                                Inventory.Items = JsonSerializer.Deserialize<Item[]>(value);
+                                Inventory.Items[0] = JsonSerializer.Deserialize<AtkPotion>(values[0]);
+                                Inventory.Items[1] = JsonSerializer.Deserialize<Elixir>(values[1]);
+                                Inventory.Items[2] = JsonSerializer.Deserialize<Revive>(values[2]);
+                                Inventory.Items[3] = JsonSerializer.Deserialize<Potion>(values[3]);
+                                Inventory.Items[4] = JsonSerializer.Deserialize<SuperPotion>(values[4]);
+                                Inventory.Items[5] = JsonSerializer.Deserialize<HyperPotion>(values[5]);
                                 break;
                             case "GameLevel":
                                 GameLevel = Int32.Parse(value);
@@ -82,29 +91,29 @@ namespace eevee_fantasy
         public static void CreateSave(Eevee eevee)
         {
             //Création du fichier texte de sauvegarde -- "false" permet de remplacer le texte déjà présent
-            string partyJson = JsonSerializer.Serialize(Party.PartyMembers);
-            string battlePartyJson = JsonSerializer.Serialize(Party.BattlePartyMembers);
-            string bossesJson = JsonSerializer.Serialize(Bosses.BossesToBeat);
-            string inventoryJson = JsonSerializer.Serialize(Inventory.Items);
 
             StringBuilder json = new StringBuilder();
-            json.Append("BattleParty=");
-            json.Append(battlePartyJson);
-            json.AppendLine();
-            json.Append("Bosses=");
-            json.Append(bossesJson);
-            json.AppendLine();
-            json.Append("Inventory=");
-            json.Append(inventoryJson);
-            json.AppendLine();
-            json.Append("GameLevel=");
-            json.Append(GameLevel);
-            json.AppendLine();
+            json.Append("BattleParty=").Append(JsonSerializer.Serialize(Party.BattlePartyMembers)).AppendLine();
+            json.Append("GameLevel=").Append(GameLevel).AppendLine();
             json.Append("Party=");
 
             foreach (var character in Party.PartyMembers)
             {
                 json.Append(JsonSerializer.Serialize(character)).Append("#");
+            }
+
+            json.AppendLine().Append("Bosses=");
+
+            foreach (var character in Bosses.BossesToBeat)
+            {
+                json.Append(JsonSerializer.Serialize(character)).Append("#");
+            }
+
+            json.AppendLine().Append("Inventory=");
+
+            foreach (var item in Inventory.Items)
+            {
+                json.Append(JsonSerializer.Serialize(item)).Append("#");
             }
 
             using (StreamWriter save = new StreamWriter("save.txt", false))

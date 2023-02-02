@@ -19,7 +19,7 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
-            Party.Recruit(1);
+            //Party.Recruit(1);
             Bosses.Init();
             Inventory.Init();
             eevee = Game.Init(eevee);
@@ -79,9 +79,6 @@ namespace eevee_fantasy
                             new Dialogue("Game saved !");
                             currentMap.DrawMap();
                             eevee.Spawn(eevee.X, eevee.Y);
-                            break;
-                        case 'b': //Debug only
-                            //battle.Init();
                             break;
                         case 'm': //Debug only
                             new Dialogue("A tall mountain is right in front of you.");
