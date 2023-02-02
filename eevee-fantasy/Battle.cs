@@ -35,6 +35,7 @@ namespace eevee_fantasy
 
             //Creating Enemy
             Enemy = enemy;
+
             AttributeColor(enemy.Attribute.Id);
             Console.SetCursorPosition(50, 3);
             Console.Write(enemy.BattleHp + "/" + enemy.TotalHp + " -- Enemy lvl " + enemy.lvl);

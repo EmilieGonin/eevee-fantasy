@@ -22,7 +22,7 @@ namespace eevee_fantasy
             BaseDef = 50;
             BaseAtk = 55;
             Speed = 100; // random 100 -> 110;
-            giveBestAttribute();
+           
         }
 	}
 }

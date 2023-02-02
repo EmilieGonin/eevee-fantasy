@@ -52,7 +52,7 @@ namespace eevee_fantasy
                                 Party.BattlePartyMembers = JsonSerializer.Deserialize<List<Character>>(value);
                                 break;
                             case "Bosses":
-                                Bosses.BossesToBeat = JsonSerializer.Deserialize<List<Character>>(value);
+                                Bosses.BossesToBeat = JsonSerializer.Deserialize<List<BossEnemy>>(value);
                                 break;
                             case "Inventory":
                                 Inventory.Items = JsonSerializer.Deserialize<Item[]>(value);

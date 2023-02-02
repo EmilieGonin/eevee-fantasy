@@ -35,11 +35,11 @@ namespace eevee_fantasy
 
 			Random rnd = new Random();
 
-			if(temp.Attribute.Weaknesses.Length != 0 )
+			if(temp.Attribute.Weaknesses != null  )
 			{
-                giveAttribute(temp.Attribute.Weaknesses[rnd.Next(1, temp.Attribute.Strengths.Length)]);
+                giveAttribute(temp.Attribute.Weaknesses[rnd.Next(0, temp.Attribute.Weaknesses.Length - 1)]);
             }
-			else if(temp.Attribute.Strengths.Length != 0)
+			else if(temp.Attribute.Strengths != null)
 			{
 				do
 				{
