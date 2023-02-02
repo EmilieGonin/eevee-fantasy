@@ -132,6 +132,13 @@ namespace eevee_fantasy
                     return 4;
                 case '#':
                     return 5;
+                case '{':
+                case '}':
+                    return 6;
+                case ')':
+                    return 7;
+
+
             }
             return 0;
         }

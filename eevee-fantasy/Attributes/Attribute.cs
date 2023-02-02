@@ -11,8 +11,8 @@ namespace eevee_fantasy
         public int Id { get; protected set; }
         public Skill[]? SpecialAttacks { get; protected set; }
        
-        protected int[]? Strengths { get; set; }
-        protected int[]? Weaknesses { get; set; }
+        public int[]? Strengths { get; set; }
+        public int[]? Weaknesses { get; set; }
 
         //1 = Normal, 2 = Fire, 3 = Water
         //4 = Thunder, 5 = Plant, 6 = Ice

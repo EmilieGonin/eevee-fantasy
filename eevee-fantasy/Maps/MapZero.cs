@@ -17,7 +17,7 @@ namespace eevee_fantasy
         {
             X = 34;
             Y = 18;
-            
+            levelCap = 5;
             MapLink = "Map_Basic.txt";
             CreateMap();
             

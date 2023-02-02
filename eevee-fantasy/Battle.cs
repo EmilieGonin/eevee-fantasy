@@ -20,7 +20,7 @@ namespace eevee_fantasy
             BattleState = false;
         }
 
-        public void Init()
+        public void Init(Character enemy)
         {
             BattleState = true;
             _choiceDone = false;
@@ -34,10 +34,10 @@ namespace eevee_fantasy
             Console.Write("Battle !");
 
             //Creating Enemy
-            Enemy = new BasicEnemy(25);
-            AttributeColor(Enemy.Attribute.Id);
+            Enemy = enemy;
+            AttributeColor(enemy.Attribute.Id);
             Console.SetCursorPosition(50, 3);
-            Console.Write(Enemy.BattleHp + "/" + Enemy.TotalHp + " -- Enemy lvl " + Enemy.lvl);
+            Console.Write(enemy.BattleHp + "/" + enemy.TotalHp + " -- Enemy lvl " + enemy.lvl);
             Console.SetCursorPosition(60, 5);
             Console.Write("@");
 

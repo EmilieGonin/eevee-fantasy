@@ -167,8 +167,25 @@ namespace eevee_fantasy
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 5)
                 {
-                    battle.Init();
+                    Random rnd = new Random();
+
+                    Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel-1].levelCap,currentMap.levelCap), rnd.Next(1,6));
+                    battle.Init(myEnemyToFight);
                 }
+                else if (currentMap.Collisions(eevee.X, eevee.Y) == 6)
+                {
+                    Random rnd = new Random();
+                    Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap),3);
+                    battle.Init(myEnemyToFight);
+                }
+                else if (currentMap.Collisions(eevee.X, eevee.Y) == 7)
+                {
+                    Random rnd = new Random();
+                    Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap),4);
+                    battle.Init(myEnemyToFight);
+                }
+
+
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
                 if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))
@@ -182,7 +199,7 @@ namespace eevee_fantasy
                 Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
                 if (eevee.X == enemy.X && eevee.Y == enemy.Y)
                 {
-                    //battle.Init();
+                    battle.Init(enemy);
                     enemy.Beaten = true;
                 }
 
