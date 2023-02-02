@@ -10,9 +10,7 @@ namespace eevee_fantasy
 	{
 		public BossEnemy()
 		{
-
             XpGain = 300;
-          
 		}
 
 		public void giveBestAttribute()
@@ -29,7 +27,6 @@ namespace eevee_fantasy
 				else if (Party.PartyMembers[Party.BattlePartyMembers[i]].lvl > temp.lvl)
 				{
 					temp = Party.PartyMembers[Party.BattlePartyMembers[i]];
-
                 }
 			}
 
@@ -52,7 +49,6 @@ namespace eevee_fantasy
                 attributeIndex = rnd.Next(1, 6);
                 giveAttribute(attributeIndex);
             }
-			
 		}
 	}
 }

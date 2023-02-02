@@ -25,8 +25,6 @@ namespace eevee_fantasy
 
             MapLink = "LevelTwo.txt";
             CreateMap();
-
-
         }
     }
 }

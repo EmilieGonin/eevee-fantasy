@@ -11,10 +11,8 @@ namespace eevee_fantasy
     {
         public int X { get; set; }
         public int Y { get; set; }
-
         
         public int Id { get; set; }
-
 
         public char Sprite { get; set; }
         public char Enemy { get; set; }
@@ -56,13 +54,11 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-
         }
 
         public void LevelUp()
         
         {
-          
             lvl += 1;
             TotalHp = (int)((2 * BaseHp * lvl) / (100) + 5 + lvl + 10);
             BattleHp = TotalHp;
@@ -76,7 +72,6 @@ namespace eevee_fantasy
         {
             if (Skills.Count() == 0)
             {
-              
                 Skills?.Add(NormalType?.NormalAttack); // tackle
                 Skills?.Add(Attribute?.SpecialAttacks?[0]); // first skill 
             
@@ -91,14 +86,10 @@ namespace eevee_fantasy
             {
                 Skills?.Add(Attribute?.SpecialAttacks?[2]);
             }
-           
-
         }
 
         public void giveAttribute(int attribute)
         {
-
-
             switch (attribute)
             {
                 case 1:
@@ -129,7 +120,8 @@ namespace eevee_fantasy
                     break;
             }
         }
-            public void LooseHp(int amount)
+        
+        public void LooseHp(int amount)
         {
             BattleHp -= amount;
             if (BattleHp <= 0)
@@ -141,9 +133,6 @@ namespace eevee_fantasy
 
         public void Move(char input)
         {
-            //Console.WriteLine("test");
-
-            //Console.WriteLine("test");
             Console.SetCursorPosition(X, Y);
 
             switch (input)
@@ -160,14 +149,12 @@ namespace eevee_fantasy
                 case 'd':
                     X += 1;
                     break;
-
             }
 
             Console.SetCursorPosition(X, Y); //À ajouter : empêcher le curseur de sortir de la console
             Console.ForegroundColor = Color;
             Console.Write(Sprite);
             Console.SetCursorPosition(0, 22);
-            //Console.WriteLine("test");
         }
 
         public void Draw()

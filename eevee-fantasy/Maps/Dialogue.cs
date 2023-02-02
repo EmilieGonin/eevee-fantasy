@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    internal class Dialogue : Map
+    public class Dialogue : Map
     {
         public Dialogue(string text)
         {

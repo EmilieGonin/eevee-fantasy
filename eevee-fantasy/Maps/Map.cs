@@ -12,6 +12,7 @@ namespace eevee_fantasy
         private static int _cursorY;
         public char[,]? myMap { get; set; }
         public string? MapLink { get; set; }
+        public string[]? Histories { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public int X_Pre { get; set; }
@@ -22,11 +23,13 @@ namespace eevee_fantasy
         public int levelCap { get; set; }
         public int Friend_Id { get; set; }
         public int Enemy_Id { get; set; }
+        public bool StoryDone { get; set; }
 
         public Map()
         {
             DrawY = 0;
             Enemy_Id = -1;
+            StoryDone = false;
         }
 
         public void CreateMap()
@@ -37,7 +40,6 @@ namespace eevee_fantasy
             {
                 string mapContent = maps.ReadToEnd(); //21x75
                 string[] rows = mapContent.Split('\n');
-
 
                 int rowLength = rows[0].Length - 1; //75
                 int rowCount = rows.Length; //21
@@ -111,6 +113,11 @@ namespace eevee_fantasy
 
             Character Friend = Party.PartyMembers[Friend_Id];
             Friend.Draw();
+
+            if (!StoryDone && Histories != null)
+            {
+                StoryWrite();
+            }
         }
 
         public int Collisions(int eeveeX, int eeveeY)
@@ -141,8 +148,6 @@ namespace eevee_fantasy
                     return 6;
                 case ')':
                     return 7;
-
-
             }
             return 0;
         }
@@ -169,16 +174,20 @@ namespace eevee_fantasy
                 case 's':
                     _cursorY = _cursorY == length + 1 ? _cursorY : _cursorY += 1;
                     break;
-
             }
 
             Console.SetCursorPosition(1, _cursorY);
             Console.Write("►");
         }
 
-        public void GrassBattle()
+        public void StoryWrite()
         {
-
+            foreach (var item in Histories)
+            {
+                new Dialogue(item);
+            }
+            StoryDone = true;
+            DrawMap();
         }
     }
 
