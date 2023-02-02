@@ -19,7 +19,7 @@ namespace eevee_fantasy
             Name = "Eevee";
             BaseHp = 55;
             BaseDef = 50;
-            BaseAtk = 55;
+            BaseAtk = 70;
             Speed = 110;
 
             //state
@@ -32,7 +32,7 @@ namespace eevee_fantasy
             Color = ConsoleColor.Magenta;
 
             
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5; i++)
             {
                 LevelUp();
             }

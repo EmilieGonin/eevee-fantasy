@@ -15,6 +15,7 @@ namespace eevee_fantasy
             Y_PreJolt = 11;
 
             Enemy_Id = 3;
+            levelCap = 40;
 
             MapLink = "LevelFour.txt";
             CreateMap();

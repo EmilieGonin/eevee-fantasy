@@ -34,7 +34,7 @@ namespace eevee_fantasy
             Console.Write("Battle !");
 
             //Creating Enemy
-            Enemy = new BasicEnemy();
+            Enemy = new BasicEnemy(25);
             AttributeColor(Enemy.Attribute.Id);
             Console.SetCursorPosition(50, 3);
             Console.Write(Enemy.BattleHp + "/" + Enemy.TotalHp + " -- Enemy lvl " + Enemy.lvl);
@@ -104,21 +104,13 @@ namespace eevee_fantasy
             if (BattleState == true )
             {
                 //Console.WriteLine("je calcule wsh");
-                if (Character?.Speed < Enemy?.Speed)
-                {
-                    EnnemysTurn();
-                    MyTurn();
-                
-                }
-                else if (Character?.Speed > Enemy?.Speed)
-                {
-                    MyTurn();
-                    EnnemysTurn();
-
-                }
+                MyTurn();
                 if (Enemy.Alive == false)
                 {
+                    
                     BattleState = false;
+                    Character.WinXp((int)(Enemy.lvl * Enemy.XpGain) / 7);
+                    // vous avez gagné tant d'xp
                 }
                 else
                 {
@@ -139,11 +131,31 @@ namespace eevee_fantasy
                 switch (Choice(2))
                 {
                     case 0:
-                        Attack(Character, Enemy, Character.Skills[Choice(Character.Skills.Count() - 1)]);
+                        if (Character?.Speed < Enemy?.Speed)
+                        {
+                            Skill skillUsed = Character.Skills[Choice(Character.Skills.Count() - 1)];
+                            EnnemysTurn();
+                            if(Character.Alive == true)
+                            {
+                                Attack(Character, Enemy, skillUsed);
+                            }
+                           
+
+                        }
+                        else if (Character?.Speed > Enemy?.Speed)
+                        {
+                            Skill skillUsed = Character.Skills[Choice(Character.Skills.Count() - 1)];
+                            Attack(Character, Enemy, Character.Skills[Choice(Character.Skills.Count() - 1)]);
+                            EnnemysTurn();
+
+                        }
+                       
                         break;
                     case 1:
                         Inventory.Open();
                         Console.WriteLine("j'ouvre mon inventaire");
+
+                        EnnemysTurn();
                         break;
                     case 2:
 
@@ -152,7 +164,7 @@ namespace eevee_fantasy
 
                         Party.Swap(Character, pokemon);
                         Character = pokemon;
-                      
+                        EnnemysTurn();
 
                         break;
                 }
@@ -170,8 +182,10 @@ namespace eevee_fantasy
                 }
                 if (partyAvailable)
                 {
-                    
-                    Party.ReplaceDeadPokemon(ChoosePokemon());
+                    Character pokemon2 = ChoosePokemon();
+                    Party.Swap(Character, pokemon2) ;
+                    Character = pokemon2;
+
                 }
                 else
                 {
@@ -214,9 +228,12 @@ namespace eevee_fantasy
             int myChoice = 0;
             do
             {
+                
                 myChoice = Choice(Party.BattlePartyMembers.Count() - 1);
+                ;
             } while (Party.BattlePartyMembers[myChoice].Alive == false);
-            
+
+            Console.WriteLine(Party.BattlePartyMembers[myChoice].Name);
             return Party.BattlePartyMembers[myChoice];
         }
 

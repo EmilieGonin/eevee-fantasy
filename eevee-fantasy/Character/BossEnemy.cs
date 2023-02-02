@@ -10,8 +10,9 @@ namespace eevee_fantasy
 	{
 		public BossEnemy()
 		{
-			Id= 0;
-			Recruited = true;
+
+            XpGain = 300;
+          
 		}
 	}
 }

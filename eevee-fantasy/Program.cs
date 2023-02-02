@@ -84,7 +84,7 @@ namespace eevee_fantasy
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
                         case 'b': //Debug only
-                            battle.Init();
+                            //battle.Init();
                             break;
                         case 'm': //Debug only
                             new Dialogue("A tall mountain is right in front of you.");
@@ -164,6 +164,10 @@ namespace eevee_fantasy
                     }
                     Game.GameLevel = map;
                     //Console.WriteLine(Game.GameLevel);
+                }
+                else if (currentMap.Collisions(eevee.X, eevee.Y) == 5)
+                {
+                    battle.Init();
                 }
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];

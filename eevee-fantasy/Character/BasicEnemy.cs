@@ -10,15 +10,15 @@ namespace eevee_fantasy
     public class BasicEnemy : Character
     {
         //Création des ennemis de façon aléatoire dans la classe Battle
-        public BasicEnemy()
+        public BasicEnemy(int level)
         {
             BaseHp = 60;
             BaseDef = 50;
             BaseAtk = 55;
             Speed = 100; // random 100 -> 110;
-
+            XpGain = 100;
             giveAttribute();
-            for (int i = 0; i < 101; i++) //remplacer 5 par un rand
+            for (int i = 0; i < level; i++)
             {
                 LevelUp();
             }

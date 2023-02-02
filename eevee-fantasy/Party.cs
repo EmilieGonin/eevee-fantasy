@@ -27,13 +27,6 @@ namespace eevee_fantasy
 
         }
 
-        public static void ReplaceDeadPokemon(Character pokemon)
-        {
-            Character temp = BattlePartyMembers[0];
-            BattlePartyMembers[0] = BattlePartyMembers[pokemon.Id];
-            BattlePartyMembers[pokemon.Id] = temp;
-                
-        }
         public static void Swap(Character pokemon, Character pokemon2)
 
         {
