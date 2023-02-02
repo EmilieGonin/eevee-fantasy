@@ -86,7 +86,8 @@ namespace eevee_fantasy
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
                         case 'k': //Debug only
-                            Game.DeleteSave();
+                            //Game.DeleteSave();
+                            Game.GameOver();
                             currentMap = maps[0];
                             currentMap.DrawMap();
                             eevee.Spawn(currentMap.X, currentMap.Y);
@@ -104,6 +105,12 @@ namespace eevee_fantasy
                 else if (Inventory.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'i'))
                 {
                     Inventory.Close();
+                    currentMap.DrawMap();
+                    eevee.Spawn(eevee.X, eevee.Y);
+                }
+                else if (Party.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'p'))
+                {
+                    Party.Close();
                     currentMap.DrawMap();
                     eevee.Spawn(eevee.X, eevee.Y);
                 }
@@ -162,7 +169,7 @@ namespace eevee_fantasy
                     if (rnd.Next(1, 100) >= 90)
                     {
                         Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap), rnd.Next(1, 6));
-                        battle.Init(myEnemyToFight);
+                        battle.Init(myEnemyToFight, currentMap);
                     }
                 }
 
@@ -172,7 +179,7 @@ namespace eevee_fantasy
                     if (rnd.Next(1, 100) >= 90)
                     {
                         Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap), 3);
-                        battle.Init(myEnemyToFight);
+                        battle.Init(myEnemyToFight, currentMap);
                     }
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 7)
@@ -181,18 +188,20 @@ namespace eevee_fantasy
                     if (rnd.Next(1, 100) >= 90)
                     {
                         Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap), 4);
-                        battle.Init(myEnemyToFight);
+                        battle.Init(myEnemyToFight, currentMap);
                     }
                 }
                 
-
-                Character friend = Party.PartyMembers[currentMap.Friend_Id];
-                if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))
+                if (currentMap.Friend_Id > 0)
                 {
-                    new Dialogue(friend.Name + " has joined your team !");
-                    currentMap.DrawMap();
-                    eevee.Spawn(eevee.X, eevee.Y);
-                    Party.Recruit(currentMap.Friend_Id);
+                    Character friend = Party.PartyMembers[currentMap.Friend_Id];
+                    if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))
+                    {
+                        new Dialogue(friend.Name + " has joined your team !");
+                        currentMap.DrawMap();
+                        eevee.Spawn(eevee.X, eevee.Y);
+                        Party.Recruit(currentMap.Friend_Id);
+                    }
                 }
 
                 if (currentMap.Enemy_Id >= 0)
@@ -201,7 +210,7 @@ namespace eevee_fantasy
                     if (eevee.X == enemy.X && eevee.Y == enemy.Y)
                     {
                         enemy.giveBestAttribute();
-                        battle.Init(enemy);
+                        battle.Init(enemy, currentMap);
                         enemy.Beaten = true;
                     }
 

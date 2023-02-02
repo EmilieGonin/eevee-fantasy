@@ -56,6 +56,9 @@ namespace eevee_fantasy
             PartyMenu.AddCursor(1, 2);
         }
 
-       
+        public static void Close()
+        {
+            IsOpen = false;
+        }
     }
 }

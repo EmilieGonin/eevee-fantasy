@@ -27,10 +27,10 @@ namespace eevee_fantasy
             PP -= 1;
             //add accuracy check
             int damage = Convert.ToInt32((((attacker.lvl * 0.4 + 2) * Damage * attacker.TotalAtk) / (target.TotalDef * 1 * 50)) * attacker?.Attribute!.EffectivenessMultiplier(attacker.Attribute, target.Attribute!));
-            Console.WriteLine("Damage done " + damage);
+            //Console.WriteLine("Damage done " + damage);
             
             target.LooseHp(damage);
-            Console.WriteLine("Remaining HP : " + target.BattleHp);
+            //Console.WriteLine("Remaining HP : " + target.BattleHp);
         }
     }
 }

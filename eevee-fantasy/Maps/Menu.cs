@@ -44,10 +44,36 @@ namespace eevee_fantasy
             {
                 if (list[i].Recruited)
                 {
+                    AttributeColor(list[i].Attribute.Id);
                     Console.SetCursorPosition(1, i + 2);
                     Console.Write("  " + list[i].Name + " lvl " + list[i].lvl + " -- "
                         + "HP=" + list[i].BattleHp + "/" + list[i].TotalHp + " ATK=" + list[i].TotalAtk + " DEF=" + list[i].TotalDef + " SPD=" + list[i].Speed);
                 }
+            }
+        }
+
+        public void AttributeColor(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 2:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case 3:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case 4:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case 5:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case 6:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    break;
             }
         }
     }
