@@ -21,6 +21,22 @@ namespace eevee_fantasy
             Friend_Id = 5;
             Enemy_Id = 4;
 
+            //Histories = new string[]
+            //{
+            //    ("WHAATTT!!?"),
+            //    ("How did you make it to level 5!"),
+            //    ("I must have miss calculated something in my plans..."),
+            //    ("urgh, well no worries, we'll initiate plan b"),
+            //    ("Now you have no chance of getting out alive!"),
+            //    ("The dungeon's exit will be destroyed in 10 minutes!"),
+            //    ("You won't have time to beat the last boss before then"),
+            //    ("You will be trapped here for ever!"),
+            //    ("MUAHAHAHAH!!!... I'm a genius"),
+            //    ("Oh no!, did you here that?"),
+            //    ("This monster is planning to destroy the exit!"),
+            //    ("We have to get ready for the final boss and get out of here!")
+            //};
+
             MapLink = "LevelFive.txt";
             CreateMap();
         }

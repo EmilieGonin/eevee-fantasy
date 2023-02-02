@@ -21,6 +21,18 @@ namespace eevee_fantasy
             Friend_Id = 2;
             Enemy_Id = 2;
 
+            //Histories = new string[]
+            //{
+            //    ("MWUAHAHAHAH!!!..."),
+            //    ("Well, well, well"),
+            //    ("Look who's made it to level 3!"),
+            //    ("Unfortunately for you, it only gets harder from here!"),
+            //    ("You will soon see the limit of your powers"),
+            //    ("MWUAHAHAHAHA!!!..."),
+            //    ("*yawn* Yeah whatever man we're strolling this dungeon!"),
+            //    ("We'll be out in no time!")
+            //};
+
             MapLink = "LevelThree.txt";
             CreateMap();
         }

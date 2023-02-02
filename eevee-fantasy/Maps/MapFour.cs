@@ -17,6 +17,14 @@ namespace eevee_fantasy
             Enemy_Id = 3;
             levelCap = 40;
 
+            //Histories = new string[]
+            //{
+            //    ("hmmmmm..."),
+            //    ("It's wierd, he's not talking although we've made it to level 4"),
+            //    ("Guess he must be busy or died in his chair"),
+            //    (" Well let's focus on what's ahead of us!")
+            //};
+
             MapLink = "LevelFour.txt";
             CreateMap();
         }
