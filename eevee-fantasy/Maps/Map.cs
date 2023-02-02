@@ -12,6 +12,7 @@ namespace eevee_fantasy
         private static int _cursorY;
         public char[,]? myMap { get; set; }
         public string? MapLink { get; set; }
+        public string[]? Histories { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public int X_Pre { get; set; }
@@ -22,11 +23,13 @@ namespace eevee_fantasy
         public int levelCap { get; set; }
         public int Friend_Id { get; set; }
         public int Enemy_Id { get; set; }
+        public bool StoryDone { get; set; }
 
         public Map()
         {
             DrawY = 0;
             Enemy_Id = -1;
+            StoryDone = false;
         }
 
         public void CreateMap()
@@ -111,6 +114,11 @@ namespace eevee_fantasy
 
             Character Friend = Party.PartyMembers[Friend_Id];
             Friend.Draw();
+
+            if (!StoryDone && Histories != null)
+            {
+                StoryWrite();
+            }
         }
 
         public int Collisions(int eeveeX, int eeveeY)
@@ -176,9 +184,14 @@ namespace eevee_fantasy
             Console.Write("►");
         }
 
-        public void GrassBattle()
+        public void StoryWrite()
         {
-
+            foreach (var item in Histories)
+            {
+                new Dialogue(item);
+            }
+            StoryDone = true;
+            DrawMap();
         }
     }
 

@@ -18,6 +18,9 @@ namespace eevee_fantasy
             X = 34;
             Y = 18;
             levelCap = 5;
+
+            Histories = new string[2] { ("MWUAHAAHAHHAHA!!!!!!"), ("Eevee! I have your friends! If you dare enter my dungeon then head to the top of the Mountain") }; 
+
             MapLink = "Map_Basic.txt";
             CreateMap();
             
