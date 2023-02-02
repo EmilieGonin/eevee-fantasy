@@ -26,6 +26,7 @@ namespace eevee_fantasy
         public Map()
         {
             DrawY = 0;
+            Enemy_Id = -1;
         }
 
         public void CreateMap()
@@ -102,11 +103,14 @@ namespace eevee_fantasy
                 Console.WriteLine();
             }
 
+            if (Enemy_Id >= 0)
+            {
+                Character Enemy = Bosses.BossesToBeat[Enemy_Id];
+                Enemy.Draw();
+            }
+
             Character Friend = Party.PartyMembers[Friend_Id];
             Friend.Draw();
-
-            Character Enemy = Bosses.BossesToBeat[Enemy_Id];
-            Enemy.Draw();
         }
 
         public int Collisions(int eeveeX, int eeveeY)

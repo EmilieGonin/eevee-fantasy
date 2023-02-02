@@ -21,7 +21,7 @@ namespace eevee_fantasy
             levelCap = 10;
             Friend_Id = 1;
 
-            Enemy_Id = 1;
+            Enemy_Id = 0;
 
             MapLink = "LevelOne.txt";
             CreateMap();

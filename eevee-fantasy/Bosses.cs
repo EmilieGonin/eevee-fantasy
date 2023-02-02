@@ -10,9 +10,9 @@ namespace eevee_fantasy
     {
         public static List<Character>? BossesToBeat;
 
-        public static void Dead(BossEnemy bossenemies)
+        public static void Init()
         {
-            BossesToBeat = new List<Character> { bossenemies, new BossOne(), new BossTwo(), new BossThree(), new BossFour(), new BossFive() };
+            BossesToBeat = new List<Character> { new BossOne(), new BossTwo(), new BossThree(), new BossFour(), new BossFive() };
         }
     }
 }

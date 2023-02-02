@@ -21,11 +21,11 @@ namespace eevee_fantasy
             Party.Fill(eevee);
             Party.Recruit(1);
 
-
-            BossEnemy bossenemies = new BossEnemy();
-            Bosses.Dead(bossenemies);
-            Game.Init(eevee);
+            Bosses.Init();
             Inventory.Init();
+            eevee = Game.Init(eevee);
+            Console.WriteLine("test " + eevee.X);
+            //while (true) ;
 
             Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() };
             int map = Game.GameLevel;
@@ -196,11 +196,15 @@ namespace eevee_fantasy
                     Party.Recruit(currentMap.Friend_Id);
                 }
 
-                Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
-                if (eevee.X == enemy.X && eevee.Y == enemy.Y)
+                if (currentMap.Enemy_Id >= 0)
                 {
-                    battle.Init(enemy);
-                    enemy.Beaten = true;
+                    Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
+                    if (eevee.X == enemy.X && eevee.Y == enemy.Y)
+                    {
+                          battle.Init(enemy);
+                          enemy.Beaten = true;
+                    }
+
                 }
 
             }

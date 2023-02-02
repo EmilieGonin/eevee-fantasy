@@ -10,7 +10,7 @@ namespace eevee_fantasy
 	{
         private static int _cursorY;
         public static int PokeDollars { get; private set; }
-        public static Item[]? Items { get; private set; }
+        public static Item[]? Items { get; set; }
         public static bool IsOpen { get; private set; }
 
         public static void Init()
