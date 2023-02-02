@@ -21,9 +21,10 @@ namespace eevee_fantasy
             Party.Fill(eevee);
             Party.Recruit(1);
 
-            Bosses.Init();
+     
             Inventory.Init();
             eevee = Game.Init(eevee);
+            Bosses.Init();
             Console.WriteLine("test " + eevee.X);
             //while (true) ;
 
@@ -170,7 +171,7 @@ namespace eevee_fantasy
                     Random rnd = new Random();
 
                     Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel-1].levelCap,currentMap.levelCap), rnd.Next(1,6));
-                    battle.Init(myEnemyToFight);
+                    //battle.Init(myEnemyToFight);
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 6)
                 {
@@ -198,10 +199,12 @@ namespace eevee_fantasy
 
                 if (currentMap.Enemy_Id >= 0)
                 {
-                    Character enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
+                    BossEnemy enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
                     if (eevee.X == enemy.X && eevee.Y == enemy.Y)
                     {
-                          battle.Init(enemy);
+                        enemy.giveBestAttribute();
+                        battle.Init(enemy);
+                          
                           enemy.Beaten = true;
                     }
 

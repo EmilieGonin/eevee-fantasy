@@ -32,7 +32,7 @@ namespace eevee_fantasy
             Color = ConsoleColor.Magenta;
 
             
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1001; i++)
             {
                 LevelUp();
             }
