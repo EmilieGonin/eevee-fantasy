@@ -19,8 +19,6 @@ namespace eevee_fantasy
 
             MapLink = "LevelFour.txt";
             CreateMap();
-
-
         }
     }
 }

@@ -36,8 +36,6 @@ namespace eevee_fantasy
         {
             if (Weaknesses != null && Weaknesses.Contains(defenser.Id))
             {
-
-                //Console.WriteLine("Weak");
                 return true;
             }
             else

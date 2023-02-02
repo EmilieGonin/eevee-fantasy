@@ -8,7 +8,6 @@ namespace eevee_fantasy
 {
     internal class Flareon : Character
     {
-
         public Flareon()
         {
             Sprite = 'F';
@@ -18,7 +17,6 @@ namespace eevee_fantasy
             X = 5;
             Y = 18;
 
-
             //stats
             Name = "Flareon";
             BaseHp = 65;
@@ -27,7 +25,6 @@ namespace eevee_fantasy
             Speed = 110;
 
             //state
-
             Alive = true;
             Attribute = new Fire();
 
@@ -39,6 +36,5 @@ namespace eevee_fantasy
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
         }
-
     }
 }

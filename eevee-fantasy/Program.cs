@@ -21,12 +21,9 @@ namespace eevee_fantasy
             Party.Fill(eevee);
             Party.Recruit(1);
 
-     
             Inventory.Init();
             eevee = Game.Init(eevee);
             Bosses.Init();
-            Console.WriteLine("test " + eevee.X);
-            //while (true) ;
 
             Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() };
             int map = Game.GameLevel;
@@ -121,8 +118,6 @@ namespace eevee_fantasy
                     currentMap = maps[map];
                     currentMap.DrawMap();
                     eevee.Spawn(currentMap.X, currentMap.Y);
-                    //Console.WriteLine(map);
-                    //Console.WriteLine(Game.GameLevel);
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 4)
                 {
@@ -164,14 +159,12 @@ namespace eevee_fantasy
                         eevee.Spawn(currentMap.X_Pre, currentMap.Y_Pre);
                     }
                     Game.GameLevel = map;
-                    //Console.WriteLine(Game.GameLevel);
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 5)
                 {
                     Random rnd = new Random();
 
                     Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel-1].levelCap,currentMap.levelCap), rnd.Next(1,6));
-                    //battle.Init(myEnemyToFight);
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 6)
                 {
@@ -185,8 +178,6 @@ namespace eevee_fantasy
                     Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap),4);
                     battle.Init(myEnemyToFight);
                 }
-
-
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
                 if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))
@@ -204,8 +195,7 @@ namespace eevee_fantasy
                     {
                         enemy.giveBestAttribute();
                         battle.Init(enemy);
-                          
-                          enemy.Beaten = true;
+                        enemy.Beaten = true;
                     }
 
                 }

@@ -10,7 +10,6 @@ namespace eevee_fantasy
     {
         public Glaceon()
         {
-
             Sprite = 'G';
             Color = ConsoleColor.Cyan;
              Id = 5;
@@ -25,7 +24,6 @@ namespace eevee_fantasy
             Speed = 100;
 
             //state
-          
             Alive = true;
             Attribute = new Fire();
 
@@ -36,7 +34,6 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-
         }
     }
 }

@@ -22,8 +22,6 @@ namespace eevee_fantasy
 			base.Use(character);
 			character.BattleHp += Health;
 		}
-
-		
     }
 }
 

@@ -8,11 +8,8 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace eevee_fantasy
 {
-
     internal class MapZero : Map
 	{
-
-
         public MapZero()
         {
             X = 34;
@@ -23,7 +20,6 @@ namespace eevee_fantasy
 
             MapLink = "Map_Basic.txt";
             CreateMap();
-            
         }
     }
 }

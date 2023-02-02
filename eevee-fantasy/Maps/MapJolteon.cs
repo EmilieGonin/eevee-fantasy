@@ -8,10 +8,8 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace eevee_fantasy
 {
-
     internal class MapJolteon : Map
     {
-
         public MapJolteon()
         {
             X = 17;
@@ -21,8 +19,6 @@ namespace eevee_fantasy
 
             MapLink = "LevelJolteon.txt";
             CreateMap();
-
-
         }
     }
 }
