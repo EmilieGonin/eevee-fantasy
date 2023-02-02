@@ -19,7 +19,7 @@ namespace eevee_fantasy
         public int DrawY { get; set; }
         public int X_PreJolt { get; set; }
         public int Y_PreJolt { get; set; }
-
+        public int levelCap { get; set; }
         public int Friend_Id { get; set; }
         public int Enemy_Id { get; set; }
 

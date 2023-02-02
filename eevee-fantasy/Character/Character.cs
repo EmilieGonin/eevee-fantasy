@@ -28,6 +28,7 @@ namespace eevee_fantasy
         public int TotalXP { get; protected set; }
         public int lvl { get; protected set; }
         public int XPToGet { get; protected set; }
+        public int XpGain { get; protected set; }
 
         public int TotalHp { get; protected set; }
         public int TotalDef { get; protected set; }
@@ -162,6 +163,10 @@ namespace eevee_fantasy
             Console.SetCursorPosition(0, 22);
         }
         
-
+        public void WinXp(int amount)
+        {
+            TotalXP += amount;
+            LevelUp();
+        }
     }
 }
