@@ -84,7 +84,7 @@ namespace eevee_fantasy
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
                         case 'b': //Debug only
-                            battle.Init();
+                            //battle.Init();
                             break;
                         case 'm': //Debug only
                             new Dialogue("A tall mountain is right in front of you.");

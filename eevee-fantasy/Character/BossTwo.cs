@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eevee_fantasy
 {
-    public class BossTwo : Character
+    public class BossTwo : BossEnemy
     {
         public BossTwo()
         {
@@ -14,7 +14,7 @@ namespace eevee_fantasy
 
             Enemy = 'B';
             Color = ConsoleColor.DarkRed;
-
+            XpGain = 550;
             X = 61;
             Y = 13;
         }

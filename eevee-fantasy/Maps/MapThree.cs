@@ -19,7 +19,7 @@ namespace eevee_fantasy
 
             X_Pre = 3;
             Y_Pre = 14;
-
+            levelCap = 30;
             Friend_Id = 2;
             Enemy_Id = 3;
 
