@@ -44,7 +44,26 @@ namespace eevee_fantasy
 
             //Console.WriteLine(Enemy.Speed);
 
-            //Creating Character
+            DrawCharacter();
+
+            //Create Menu
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(58, 15);
+            Console.Write("Attack");
+            Console.SetCursorPosition(58, 16);
+            Console.Write("Select Item");
+            Console.SetCursorPosition(58, 17);
+            Console.Write("Change Pokemon");
+
+            BattleMap.AddCursor(55, 15);
+
+            //Add default text
+
+            Play();
+        }
+
+        public void DrawCharacter()
+        {
             foreach (var member in Party.BattlePartyMembers!)
             {
                 if (Party.PartyMembers[member].Alive == true)
@@ -59,19 +78,6 @@ namespace eevee_fantasy
             Console.Write(Character.BattleHp + "/" + Character.TotalHp + " -- " + Character.Name + " lvl " + Character.lvl);
             Console.SetCursorPosition(10, 9);
             Console.Write("E");
-
-            //Create Menu
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(58, 15);
-            Console.Write("Attack");
-            Console.SetCursorPosition(58, 16);
-            Console.Write("Select Item");
-            Console.SetCursorPosition(58, 17);
-            Console.Write("Change Pokemon");
-
-            BattleMap.AddCursor(55, 15);
-
-            Play();
         }
 
         public void AttributeColor(int id)
@@ -110,8 +116,10 @@ namespace eevee_fantasy
                 {
                     
                     BattleState = false;
-                    Character.WinXp((int)(Enemy.lvl * Enemy.XpGain) / 7);
+                    int xp = (Enemy.lvl * Enemy.XpGain) / 7;
+                    Character.WinXp((int)(xp));
                     // vous avez gagné tant d'xp
+                    new Dialogue("You gain " + xp + "exp !");
                 }
                 else
                 {
@@ -182,7 +190,7 @@ namespace eevee_fantasy
                 }
                 else
                 {
-                    Console.WriteLine("Game Over");
+                    new Dialogue("Game Over.");
                     BattleState = false;
                 }
             }
@@ -241,17 +249,19 @@ namespace eevee_fantasy
             _choiceDone = false;
             do
             {
-                if (Console.ReadKey().Key == ConsoleKey.UpArrow && Index < choiceLimit)
+                BattleMap.MoveCursor(input.KeyChar, choiceLimit);
+
+                if (input.Key == ConsoleKey.UpArrow && Index < choiceLimit)
                 {
                     Index += 1;
                     Console.WriteLine(Index);
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.DownArrow && Index > 0)//var to check skill unlocked
+                else if (input.Key == ConsoleKey.DownArrow && Index > 0)//var to check skill unlocked
                 {
                     Index -= 1;
                     Console.WriteLine(Index);
                 }
-                if (Console.ReadKey().Key == ConsoleKey.Enter)
+                if (input.Key == ConsoleKey.Enter)
                 {
                     _choiceDone = true;
                 }
