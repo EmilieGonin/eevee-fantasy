@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Security;
+using System.Text.Json;
 
 namespace eevee_fantasy
 {
@@ -12,15 +13,22 @@ namespace eevee_fantasy
     {
         public static int GameLevel { get; set; }
 
-        public static void Init(Eevee eevee)
+        public static Eevee Init(Eevee eevee)
         {
-            if (!GetSave(eevee))
+            Eevee savedEevee = GetSave(eevee);
+
+            if (savedEevee == null)
             {
                 CreateSave(eevee);
+                return eevee;
+            }
+            else
+            {
+                return savedEevee;
             }
         }
 
-        private static bool GetSave(Eevee eevee)
+        private static Eevee GetSave(Eevee eevee)
         {
             try
             {
@@ -29,94 +37,67 @@ namespace eevee_fantasy
                 {
                     string? line = null;
 
-                    while ((line = save.ReadLine()) != null && !save.EndOfStream)
+                    while (!save.EndOfStream)
                     {
+                        line = save.ReadLine();
                         string setting = line.Split("=")[0];
-                        int value = Int32.Parse(line.Split("=")[1]);
+                        string value = line.Split("=")[1];
 
                         switch (setting)
                         {
-                            case "GameLevel":
-                                GameLevel = value;
-                                break;
-                            case "PositionX":
-                                eevee.X = value;
-                                break;
-                            case "PositionY":
-                                eevee.Y = value;
-                                break;
                             case "Eevee":
-                                Party.PartyMembers![0].Recruited = Convert.ToBoolean(value);
+                                eevee = JsonSerializer.Deserialize<Eevee>(value);
                                 break;
-                            case "Flareon":
-                                Party.PartyMembers![1].Recruited = Convert.ToBoolean(value);
+                            case "Party":
+                                Party.BattlePartyMembers = JsonSerializer.Deserialize<List<Character>>(value);
                                 break;
-                            case "FlareonHp":
-                                Party.PartyMembers![1].BattleHp = value;
+                            case "Bosses":
+                                Bosses.BossesToBeat = JsonSerializer.Deserialize<List<Character>>(value);
                                 break;
-                            case "Vaporeon":
-                                Party.PartyMembers![2].Recruited = Convert.ToBoolean(value);
+                            case "Inventory":
+                                Inventory.Items = JsonSerializer.Deserialize<Item[]>(value);
                                 break;
-                            case "VaporeonHp":
-                                Party.PartyMembers![2].BattleHp = value;
-                                break;
-                            case "Jolteon":
-                                Party.PartyMembers![3].Recruited = Convert.ToBoolean(value);
-                                break;
-                            case "JolteonHp":
-                                Party.PartyMembers![3].BattleHp = value;
-                                break;
-                            case "Leafeon":
-                                Party.PartyMembers![4].Recruited = Convert.ToBoolean(value);
-                                break;
-                            case "LeafeonHp":
-                                Party.PartyMembers![4].BattleHp = value;
-                                break;
-                            case "Glaceon":
-                                Party.PartyMembers![5].Recruited = Convert.ToBoolean(value);
-                                break;
-                            case "GlaceonHp":
-                                Party.PartyMembers![5].BattleHp = value;
-                                break;
-                            default:
+                            case "GameLevel":
+                                GameLevel = Int32.Parse(value);
                                 break;
                         }
                     }
                 }
-                return true;
+                return eevee;
             }
             catch (Exception e)
             {
-                //Console.WriteLine(e.Message);
-                return false;
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public static void CreateSave(Eevee eevee)
         {
-
-            Console.WriteLine(Party.PartyMembers[1].BattleHp);
-            Console.WriteLine(Party.PartyMembers[1].TotalHp);
             //Création du fichier texte de sauvegarde -- "false" permet de remplacer le texte déjà présent
+            string eeveeJson = JsonSerializer.Serialize(eevee);
+            string partyJson = JsonSerializer.Serialize(Party.BattlePartyMembers);
+            string bossesJson = JsonSerializer.Serialize(Bosses.BossesToBeat);
+            string inventoryJson = JsonSerializer.Serialize(Inventory.Items);
+
+            StringBuilder json = new StringBuilder("Eevee=");
+            json.Append(eeveeJson);
+            json.AppendLine();
+            json.Append("Party=");
+            json.Append(partyJson);
+            json.AppendLine();
+            json.Append("Bosses=");
+            json.Append(bossesJson);
+            json.AppendLine();
+            json.Append("Inventory=");
+            json.Append(inventoryJson);
+            json.AppendLine();
+            json.Append("GameLevel=");
+            json.Append(GameLevel);
+
             using (StreamWriter save = new StreamWriter("save.txt", false))
             {
-                string str = "GameLevel=" + GameLevel.ToString() +
-                    "\nPositionX=" + eevee.X.ToString() +
-                    "\nPositionY=" + eevee.Y.ToString() +
-                    "\nEevee=" + Convert.ToInt64(Party.PartyMembers![0].Recruited).ToString() +
-                    "\nEeveeHp=" + Party.PartyMembers![0].BattleHp.ToString() +
-                    "\nFlareon=" + Convert.ToInt64(Party.PartyMembers![1].Recruited).ToString() +
-                    "\nFlareonHp=" + Party.PartyMembers![1].BattleHp.ToString() +
-                    "\nVaporeon=" + Convert.ToInt64(Party.PartyMembers![2].Recruited).ToString() +
-                    "\nVaporeonHp=" + Party.PartyMembers![2].BattleHp.ToString() +
-                    "\nJolteon=" + Convert.ToInt64(Party.PartyMembers![3].Recruited).ToString() +
-                    "\nJolteonHp=" + Party.PartyMembers![3].BattleHp.ToString() +
-                    "\nLeafeon=" + Convert.ToInt64(Party.PartyMembers![4].Recruited).ToString() +
-                    "\nLeafeonHp=" + Party.PartyMembers![4].BattleHp.ToString() +
-                    "\nGlaceon=" + Convert.ToInt64(Party.PartyMembers![5].Recruited).ToString() +
-                    "\nGlaceonHp=" + Party.PartyMembers![5].BattleHp.ToString();
-
-                save.Write(str);
+                save.Write(json);
             }
         }
 
