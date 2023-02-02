@@ -20,15 +20,12 @@ namespace eevee_fantasy
             BattleState = false;
         }
 
-        public void Init(enemy)
+        public void Init()
         {
             BattleState = true;
             _choiceDone = false;
             _choiceIndex = 0;
-/           if (enemy is BossEnemy )
-            {
 
-            }
             //Drawing Battle Background
             BattleMap = new BattleMap();
             BattleMap.DrawMap();
