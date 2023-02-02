@@ -43,7 +43,8 @@ namespace eevee_fantasy
             for (int i = 0; i < list!.Count; i++)
             {
                 Console.SetCursorPosition(1, i + 2);
-                Console.Write("  " + list[i].Name);
+                Console.Write("  " + list[i].Name + " lvl " + list[i].lvl + " -- "
+                    + "HP=" + list[i].BattleHp + "/" + list[i].TotalHp + " ATK=" + list[i].TotalAtk + " DEF=" + list[i].TotalDef + " SPD=" + list[i].Speed);
             }
         }
     }
