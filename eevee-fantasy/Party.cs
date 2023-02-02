@@ -52,7 +52,7 @@ namespace eevee_fantasy
         {
             IsOpen = true;
             PartyMenu = new Menu();
-            //PartyMenu.DrawList(BattlePartyMembers);
+            PartyMenu.DrawList(PartyMembers);
             PartyMenu.AddCursor(1, 2);
         }
 
