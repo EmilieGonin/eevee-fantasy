@@ -8,7 +8,6 @@ namespace eevee_fantasy
 {
     internal class Jolteon : Character
     {
-
         public Jolteon()
         {
             Sprite = 'J';
@@ -25,7 +24,6 @@ namespace eevee_fantasy
             Speed = 140;
 
             //state
-          
             Alive = true;
             Attribute = new Fire();
 
@@ -36,7 +34,6 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-
         }
     }
 }

@@ -18,13 +18,11 @@ namespace eevee_fantasy
             Speed = 100; // random 100 -> 110;
             XpGain = 100;
             giveAttribute(attribute);
+
             for (int i = 0; i < level; i++)
             {
                 LevelUp();
             }
         }
-
-       
-      
     }
 }

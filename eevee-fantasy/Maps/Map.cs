@@ -41,7 +41,6 @@ namespace eevee_fantasy
                 string mapContent = maps.ReadToEnd(); //21x75
                 string[] rows = mapContent.Split('\n');
 
-
                 int rowLength = rows[0].Length - 1; //75
                 int rowCount = rows.Length; //21
 
@@ -149,8 +148,6 @@ namespace eevee_fantasy
                     return 6;
                 case ')':
                     return 7;
-
-
             }
             return 0;
         }
@@ -177,7 +174,6 @@ namespace eevee_fantasy
                 case 's':
                     _cursorY = _cursorY == length + 1 ? _cursorY : _cursorY += 1;
                     break;
-
             }
 
             Console.SetCursorPosition(1, _cursorY);

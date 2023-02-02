@@ -8,7 +8,6 @@ namespace eevee_fantasy
 {
     internal class Leafeon : Character
     {
-
         public Leafeon()
         {
             Sprite = 'L';
@@ -16,7 +15,6 @@ namespace eevee_fantasy
              Id = 4;
             X = 54;
             Y = 3;
-
 
             //stats
             Name = "Leafeon";
@@ -26,7 +24,6 @@ namespace eevee_fantasy
             Speed = 95;
 
             //state
-
             Alive = true;
             Attribute = new Fire();
 
@@ -37,7 +34,6 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-
         }
     }
 }

@@ -8,7 +8,6 @@ namespace eevee_fantasy
 {
     public class Normal : Attribute
     {
-
         public Skill? NormalAttack { get; set; }
         public Normal()
         {

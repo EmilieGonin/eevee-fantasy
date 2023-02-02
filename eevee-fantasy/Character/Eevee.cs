@@ -10,12 +10,8 @@ namespace eevee_fantasy
     {
         public Eevee()
         {
-
             Id = 0;
             //stats
-
-            
-
             Name = "Eevee";
             BaseHp = 55;
             BaseDef = 50;
@@ -30,7 +26,6 @@ namespace eevee_fantasy
             //graphic
             Sprite = 'E';
             Color = ConsoleColor.Magenta;
-
             
             for (int i = 0; i < 1001; i++)
             {
@@ -39,17 +34,6 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-            
-
-      
-
-
-        
-
-
         }
-
-
-
     }
 }

@@ -8,10 +8,8 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace eevee_fantasy
 {
-
     internal class MapFive : Map
     {
-
         public MapFive()
         {
             X = 3;
@@ -25,8 +23,6 @@ namespace eevee_fantasy
 
             MapLink = "LevelFive.txt";
             CreateMap();
-
-
         }
     }
 }

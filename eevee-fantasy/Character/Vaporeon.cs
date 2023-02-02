@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace eevee_fantasy
 {
     internal class Vaporeon : Character
-    {
-
-         
+    {  
         public Vaporeon()
         {
             Sprite = 'V';
@@ -26,7 +24,6 @@ namespace eevee_fantasy
             Speed = 90;
 
             //state
-           
             Alive = true;
             Attribute = new Fire();
 
@@ -37,7 +34,6 @@ namespace eevee_fantasy
 
             TotalXP = lvl * lvl * lvl;
             XPToGet = (lvl + 1) * (lvl + 1) * (lvl + 1);
-
         }
     }
 }

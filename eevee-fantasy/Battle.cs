@@ -117,11 +117,7 @@ namespace eevee_fantasy
                 {
                     Play();
                 }
-
-
             }
-
-
         }
 
         private void MyTurn()
@@ -140,15 +136,12 @@ namespace eevee_fantasy
                             {
                                 Attack(Character, Enemy, skillUsed);
                             }
-                           
-
                         }
                         else if (Character?.Speed > Enemy?.Speed)
                         {
                             Skill skillUsed = Character.Skills[Choice(Character.Skills.Count() - 1)];
                             Attack(Character, Enemy, Character.Skills[Choice(Character.Skills.Count() - 1)]);
                             EnnemysTurn();
-
                         }
                        
                         break;
@@ -186,7 +179,6 @@ namespace eevee_fantasy
                     Character pokemon2 = ChoosePokemon();
                     Party.Swap(Character, pokemon2) ;
                     Character = pokemon2;
-
                 }
                 else
                 {
@@ -229,9 +221,7 @@ namespace eevee_fantasy
             int myChoice = 0;
             do
             {
-                
                 myChoice = Choice(Party.BattlePartyMembers.Count() - 1);
-                ;
             } while (Party.BattlePartyMembers[myChoice].Alive == false);
 
             Console.WriteLine(Party.BattlePartyMembers[myChoice].Name);
@@ -240,10 +230,7 @@ namespace eevee_fantasy
 
         private void Attack(Character attacker, Character target, Skill skillUsed)
         {
-
             skillUsed.Use(attacker, target);
-
-
         }
 
         private int Choice(int choiceLimit)
@@ -253,16 +240,13 @@ namespace eevee_fantasy
             _choiceDone = false;
             do
             {
-
                 if (Console.ReadKey().Key == ConsoleKey.UpArrow && Index < choiceLimit)
                 {
-
                     Index += 1;
                     Console.WriteLine(Index);
                 }
                 else if (Console.ReadKey().Key == ConsoleKey.DownArrow && Index > 0)//var to check skill unlocked
                 {
-
                     Index -= 1;
                     Console.WriteLine(Index);
                 }
