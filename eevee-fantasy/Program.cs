@@ -24,7 +24,7 @@ namespace eevee_fantasy
             Inventory.Init();
             eevee = Game.Init(eevee);
 
-            Map[]? maps = new Map[7] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive() };
+            Map[]? maps = new Map[9] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive(), new MapZero2(), new MapEnd() };
             int map = Game.GameLevel;
             Map currentMap = maps[map];
             currentMap.DrawMap();
