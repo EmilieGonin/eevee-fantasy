@@ -122,7 +122,24 @@ namespace eevee_fantasy
             }
         }
 
-        public static void DeleteSave()
+        public static void GameOver()
+        {
+            GameLevel = 0;
+            foreach (var member in Party.PartyMembers)
+            {
+                if (member.Name != "Eevee")
+                {
+                    member.Recruited = false;
+                }
+            }
+
+            Party.BattlePartyMembers = new List<int> { 0 };
+            Inventory.Items = new Item[6] { new AtkPotion(), new Elixir(), new Revive(), new Potion(), new SuperPotion(), new HyperPotion() };
+
+            CreateSave(Party.PartyMembers[0] as Eevee);
+        }
+
+        public static void DeleteSave() //Debug Only
         {
             //Création du fichier texte de sauvegarde -- "false" permet de remplacer le texte déjà présent
             using (StreamWriter save = new StreamWriter("save.txt", false))

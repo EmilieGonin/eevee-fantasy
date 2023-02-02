@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace eevee_fantasy
 {
     public class Battle
     {
+        private Map _currentMap;
         private Character? Character;
         private Character? Enemy;
         private BattleMap? BattleMap;
@@ -20,11 +22,12 @@ namespace eevee_fantasy
             BattleState = false;
         }
 
-        public void Init(Character enemy)
+        public void Init(Character enemy, Map map)
         {
             BattleState = true;
             _choiceDone = false;
             _choiceIndex = 0;
+            _currentMap = map;
 
             //Drawing Battle Background
             BattleMap = new BattleMap();
@@ -35,34 +38,24 @@ namespace eevee_fantasy
 
             //Creating Enemy
             Enemy = enemy;
-
-            AttributeColor(enemy.Attribute.Id);
-            Console.SetCursorPosition(50, 3);
-            Console.Write(enemy.BattleHp + "/" + enemy.TotalHp + " -- Enemy lvl " + enemy.lvl);
-            Console.SetCursorPosition(60, 5);
-            Console.Write("@");
+            DrawEnemy();
 
             //Console.WriteLine(Enemy.Speed);
 
             DrawCharacter();
 
             //Create Menu
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(58, 15);
-            Console.Write("Attack");
-            Console.SetCursorPosition(58, 16);
-            Console.Write("Select Item");
-            Console.SetCursorPosition(58, 17);
-            Console.Write("Change Pokemon");
+            DrawMenu();
 
             BattleMap.AddCursor(55, 15);
 
             //Add default text
+            Write("Choose an action.");
 
             Play();
         }
 
-        public void DrawCharacter()
+        private void DrawCharacter()
         {
             foreach (var member in Party.BattlePartyMembers!)
             {
@@ -78,6 +71,41 @@ namespace eevee_fantasy
             Console.Write(Character.BattleHp + "/" + Character.TotalHp + " -- " + Character.Name + " lvl " + Character.lvl);
             Console.SetCursorPosition(10, 9);
             Console.Write("E");
+        }
+
+        private void DrawEnemy()
+        {
+            AttributeColor(Enemy.Attribute.Id);
+            Console.SetCursorPosition(50, 3);
+            Console.Write(Enemy.BattleHp + "/" + Enemy.TotalHp + " -- Enemy lvl " + Enemy.lvl);
+            Console.SetCursorPosition(60, 5);
+            Console.Write("@");
+        }
+
+        private void DrawMenu()
+        {
+            ResetChoices();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(58, 15);
+            Console.Write("Attack");
+            Console.SetCursorPosition(58, 16);
+            Console.Write("Select Item");
+            Console.SetCursorPosition(58, 17);
+            Console.Write("Change Pokemon");
+        }
+
+        private void DrawSkillsMenu()
+        {
+            ResetChoices();
+            Write("Choose a move.");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(58, 15);
+
+            for (int i = 0; i < Character.Skills.Count; i++)
+            {
+                Console.SetCursorPosition(58, 15 + i);
+                Console.Write(Character.Skills[i].Name);
+            }
         }
 
         public void AttributeColor(int id)
@@ -114,12 +142,11 @@ namespace eevee_fantasy
                 MyTurn();
                 if (Enemy.Alive == false)
                 {
-                    
                     BattleState = false;
                     int xp = (Enemy.lvl * Enemy.XpGain) / 7;
                     Character.WinXp((int)(xp));
-                    // vous avez gagné tant d'xp
                     new Dialogue("You gain " + xp + "exp !");
+                    _currentMap.DrawMap();
                 }
                 else
                 {
@@ -132,57 +159,59 @@ namespace eevee_fantasy
         {
             if (Character.Alive == true)
             {
-                Console.WriteLine(Character.Name + "  Turn");
+                //Console.WriteLine(Character.Name + "  Turn");
                 switch (Choice(2))
                 {
-                    case 0:
+                    case 0: //Attack
+                        DrawSkillsMenu();
+
                         if (Character?.Speed < Enemy?.Speed)
                         {
                             Skill skillUsed = Character.Skills[Choice(Character.Skills.Count() - 1)];
                             EnnemysTurn();
                             if(Character.Alive == true)
                             {
+                                Write(Character.Name + " use " + skillUsed.Name);
                                 Attack(Character, Enemy, skillUsed);
                             }
                         }
                         else if (Character?.Speed > Enemy?.Speed)
                         {
                             Skill skillUsed = Character.Skills[Choice(Character.Skills.Count() - 1)];
-                            Attack(Character, Enemy, Character.Skills[Choice(Character.Skills.Count() - 1)]);
+                            Write(Character.Name + " use " + skillUsed.Name);
+                            Attack(Character, Enemy, skillUsed);
                             EnnemysTurn();
                         }
-                       
+                        DrawMenu();
+
                         break;
-                    case 1:
+                    case 1: //Inventory
                         Inventory.Open();
-                        Console.WriteLine("j'ouvre mon inventaire");
+                        //Console.WriteLine("j'ouvre mon inventaire");
 
                         EnnemysTurn();
                         break;
-                    case 2:
+                    case 2: //Choose Pokemon
+                        if (Party.BattlePartyMembers.Count < 2 && isPartyAvailable())
+                        {
+                            Write("You have no Pokemon available to swap.");
+                            Choice(2);
+                        }
+                        else
+                        {
+                            Party.Open();
+                            Character pokemon = ChoosePokemon();
 
-                        Console.WriteLine("Choose pokemon to swap");
-                        Character pokemon = ChoosePokemon();
-
-                        Party.Swap(Character, pokemon);
-                        Character = pokemon;
-                        EnnemysTurn();
-
+                            Party.Swap(Character, pokemon);
+                            Character = pokemon;
+                            EnnemysTurn();
+                        }
                         break;
                 }
             }
             else
             {
-                bool partyAvailable = false;
-                for (int i = 0; i < Party.BattlePartyMembers.Count(); i++)
-                {
-                    if (Party.PartyMembers[Party.BattlePartyMembers[i]].Alive == true)
-                    {
-                        partyAvailable = true;
-                        break;
-                    }
-                }
-                if (partyAvailable)
+                if (isPartyAvailable())
                 {
                     Character pokemon2 = ChoosePokemon();
                     Party.Swap(Character, pokemon2) ;
@@ -190,42 +219,58 @@ namespace eevee_fantasy
                 }
                 else
                 {
-                    new Dialogue("Game Over.");
                     BattleState = false;
+                    new Dialogue("Game Over.");
+                    _currentMap = new MapZero();
+                    _currentMap.DrawMap();
                 }
             }
             //attack function
+        }
+        private bool isPartyAvailable()
+        {
+            for (int i = 0; i < Party.BattlePartyMembers.Count(); i++)
+            {
+                if (Party.PartyMembers[Party.BattlePartyMembers[i]].Alive == true)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
         private void EnnemysTurn()
         {
             if (Enemy.Alive == true)
             {
-                Console.WriteLine("ennemy turn");
+                //Console.WriteLine("ennemy turn");
                 Random rnd = new Random();
 
                 if (Enemy!.Attribute!.isEffective(Character!.Attribute!))
                 {
                     int indexChoice = rnd.Next(1, Enemy.Skills.Count());
-                    Console.WriteLine("It's gonna be super effective : skill n° " + indexChoice + " used ");
+                    //Console.WriteLine("It's gonna be super effective : skill n° " + indexChoice + " used ");
                     Attack(Enemy, Character, Enemy.Skills[indexChoice]);
+                    Write("The ennemy use " + Enemy.Skills[indexChoice].Name + ". It's super effective !");
                 }
                 else if (Enemy!.Attribute!.isWeak(Character!.Attribute!))
                 {
-                    Console.WriteLine("It's gonna be weak so tackle");
+                    //Console.WriteLine("It's gonna be weak so tackle");
                     Attack(Enemy, Character, Enemy.Skills[0]);
+                    Write("The ennemy use Tackle.");
                 }
                 else
                 {
                     int indexChoice = rnd.Next(0, Enemy.Skills.Count());
-                    Console.WriteLine("It's gonna be neutral  : skill n° " + indexChoice + " used ");
+                    //Console.WriteLine("It's gonna be neutral  : skill n° " + indexChoice + " used ");
                     Attack(Enemy, Character, Enemy.Skills[indexChoice]);
+                    Write("The ennemy use " + Enemy.Skills[indexChoice].Name + ".");
                 }
             }
 
         }
         private Character ChoosePokemon()
         {
-
             int myChoice = 0;
             do
             {
@@ -233,7 +278,7 @@ namespace eevee_fantasy
             } while (Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Alive == false);
 
 
-            Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
+            //Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
             return Party.PartyMembers[Party.BattlePartyMembers[myChoice]];
         }
 
@@ -244,30 +289,64 @@ namespace eevee_fantasy
 
         private int Choice(int choiceLimit)
         {
-            ConsoleKeyInfo input = Console.ReadKey(true);
+            BattleMap.ResetCursor(55, 15);
             int Index = 0;
             _choiceDone = false;
             do
             {
-                BattleMap.MoveCursor(input.KeyChar, choiceLimit);
+                ConsoleKeyInfo input = Console.ReadKey(true);
 
-                if (input.Key == ConsoleKey.UpArrow && Index < choiceLimit)
+                if (input.Key == ConsoleKey.UpArrow || input.Key == ConsoleKey.DownArrow || input.KeyChar == 'z' || input.KeyChar == 's')
                 {
-                    Index += 1;
-                    Console.WriteLine(Index);
+
+                    if ((input.Key == ConsoleKey.UpArrow || input.KeyChar == 'z') && Index > 0)
+                    {
+                        Index -= 1;
+                        //Console.WriteLine(Index);
+                        BattleMap.MoveCursor(input.KeyChar, choiceLimit);
+                    }
+                    else if ((input.Key == ConsoleKey.DownArrow || input.KeyChar == 's') && Index < choiceLimit)//var to check skill unlocked
+                    {
+                        Index += 1;
+                        //Console.WriteLine(Index);
+                        BattleMap.MoveCursor(input.KeyChar, choiceLimit);
+                    }
                 }
-                else if (input.Key == ConsoleKey.DownArrow && Index > 0)//var to check skill unlocked
+                else if (input.Key == ConsoleKey.Enter)
                 {
-                    Index -= 1;
-                    Console.WriteLine(Index);
-                }
-                if (input.Key == ConsoleKey.Enter)
-                {
+                    Reset();
                     _choiceDone = true;
                 }
             } while (_choiceDone == false);
 
             return Index;
+        }
+
+        private void Write(string text)
+        {
+            Console.SetCursorPosition(2, 15);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(text);
+        }
+
+        private void Reset()
+        {
+            Console.SetCursorPosition(2, 15);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("                                                ");
+            Write("Choose an action.");
+        }
+
+        private void ResetChoices()
+        {
+            Console.SetCursorPosition(55, 15);
+            Console.ForegroundColor = ConsoleColor.White;
+
+            for (int i = 0; i < 4; i++)
+            {
+                Console.SetCursorPosition(55, 15 + i);
+                Console.Write("                   ");
+            }
         }
     }
 }

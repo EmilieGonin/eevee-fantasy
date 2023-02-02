@@ -9,6 +9,7 @@ namespace eevee_fantasy
 {
     public class Map
     {
+        private static int _cursorX;
         private static int _cursorY;
         public char[,]? myMap { get; set; }
         public string? MapLink { get; set; }
@@ -154,6 +155,7 @@ namespace eevee_fantasy
 
         public void AddCursor(int x, int y)
         {
+            _cursorX = x;
             _cursorY = y;
             //battle x = 55
 
@@ -163,7 +165,7 @@ namespace eevee_fantasy
 
         public void MoveCursor(char input, int length)
         {
-            Console.SetCursorPosition(1, _cursorY);
+            Console.SetCursorPosition(_cursorX, _cursorY);
             Console.Write(" ");
 
             switch (input)
@@ -176,8 +178,16 @@ namespace eevee_fantasy
                     break;
             }
 
-            Console.SetCursorPosition(1, _cursorY);
+            Console.SetCursorPosition(_cursorX, _cursorY);
             Console.Write("►");
+        }
+
+        public void ResetCursor(int x, int y)
+        {
+            Console.SetCursorPosition(_cursorX, _cursorY);
+            Console.Write(" ");
+
+            AddCursor(x, y);
         }
 
         public void StoryWrite()
