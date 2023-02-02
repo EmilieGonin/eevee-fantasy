@@ -45,10 +45,17 @@ namespace eevee_fantasy
 
                         switch (setting)
                         {
-                            case "Eevee":
-                                eevee = JsonSerializer.Deserialize<Eevee>(value);
-                                break;
                             case "Party":
+                                string[] values = value.Split("#");
+                                Party.PartyMembers[0] = JsonSerializer.Deserialize<Eevee>(values[0]);
+                                Party.PartyMembers[1] = JsonSerializer.Deserialize<Flareon>(values[1]);
+                                Party.PartyMembers[2] = JsonSerializer.Deserialize<Vaporeon>(values[2]);
+                                Party.PartyMembers[3] = JsonSerializer.Deserialize<Jolteon>(values[3]);
+                                Party.PartyMembers[4] = JsonSerializer.Deserialize<Leafeon>(values[4]);
+                                Party.PartyMembers[5] = JsonSerializer.Deserialize<Glaceon>(values[5]);
+                                eevee = Party.PartyMembers[0] as Eevee;
+                                break;
+                            case "BattleParty":
                                 Party.BattlePartyMembers = JsonSerializer.Deserialize<List<int>>(value);
                                 break;
                             case "Bosses":
@@ -75,16 +82,14 @@ namespace eevee_fantasy
         public static void CreateSave(Eevee eevee)
         {
             //Création du fichier texte de sauvegarde -- "false" permet de remplacer le texte déjà présent
-            string eeveeJson = JsonSerializer.Serialize(eevee);
-            string partyJson = JsonSerializer.Serialize(Party.BattlePartyMembers);
+            string partyJson = JsonSerializer.Serialize(Party.PartyMembers);
+            string battlePartyJson = JsonSerializer.Serialize(Party.BattlePartyMembers);
             string bossesJson = JsonSerializer.Serialize(Bosses.BossesToBeat);
             string inventoryJson = JsonSerializer.Serialize(Inventory.Items);
 
-            StringBuilder json = new StringBuilder("Eevee=");
-            json.Append(eeveeJson);
-            json.AppendLine();
-            json.Append("Party=");
-            json.Append(partyJson);
+            StringBuilder json = new StringBuilder();
+            json.Append("BattleParty=");
+            json.Append(battlePartyJson);
             json.AppendLine();
             json.Append("Bosses=");
             json.Append(bossesJson);
@@ -94,6 +99,13 @@ namespace eevee_fantasy
             json.AppendLine();
             json.Append("GameLevel=");
             json.Append(GameLevel);
+            json.AppendLine();
+            json.Append("Party=");
+
+            foreach (var character in Party.PartyMembers)
+            {
+                json.Append(JsonSerializer.Serialize(character)).Append("#");
+            }
 
             using (StreamWriter save = new StreamWriter("save.txt", false))
             {
