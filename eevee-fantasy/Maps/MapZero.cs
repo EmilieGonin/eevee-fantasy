@@ -23,6 +23,7 @@ namespace eevee_fantasy
             //    ("battle bosses, and other Pokemons in tall grass."),
             //    ("In order to move Eevee you will have to use the keys: Z,Q,S,D"),
             //    ("In order to save your progress press the N key"),
+            //    ("In order to open the shop press the b key"),
             //    ("In order to open your inventory and Party, press I and P respectively."),
             //    ("Without further ado, let the story begin!"),
             //    ("MWUAHAAHAHHAHA!!!!!!"),

@@ -22,6 +22,7 @@ namespace eevee_fantasy
             //Party.Recruit(1);
             Bosses.Init();
             Inventory.Init();
+            Shop.Init();
             eevee = Game.Init(eevee);
 
             Map[]? maps = new Map[9] { new MapZero(), new MapOne(), new MapTwo(), new MapThree(), new MapFour(), new MapJolteon(), new MapFive(), new MapZero2(), new MapEnd() };
@@ -36,7 +37,7 @@ namespace eevee_fantasy
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
 
-                if (!Inventory.IsOpen && !Party.IsOpen && !battle.BattleState)
+                if (!Inventory.IsOpen && !Party.IsOpen && !Shop.IsOpen && !battle.BattleState)
                 {
                     switch (input.KeyChar)
                     {
@@ -80,6 +81,9 @@ namespace eevee_fantasy
                             currentMap.DrawMap();
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
+                        case 'b':
+                            Shop.Open();
+                            break;
                         case 'm': //Debug only
                             new Dialogue("A tall mountain is right in front of you.");
                             currentMap.DrawMap();
@@ -102,6 +106,10 @@ namespace eevee_fantasy
                 {
                     Party.PartyMenu.MoveCursor(input.KeyChar, Party.BattlePartyMembers.Count);
                 }
+                else if (Shop.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
+                {
+                    Inventory.MoveCursor(input.KeyChar);
+                }
                 else if (Inventory.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'i'))
                 {
                     Inventory.Close();
@@ -111,6 +119,12 @@ namespace eevee_fantasy
                 else if (Party.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'p'))
                 {
                     Party.Close();
+                    currentMap.DrawMap();
+                    eevee.Spawn(eevee.X, eevee.Y);
+                }
+                else if (Shop.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'b'))
+                {
+                    Shop.Close();
                     currentMap.DrawMap();
                     eevee.Spawn(eevee.X, eevee.Y);
                 }
