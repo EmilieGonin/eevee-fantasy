@@ -47,9 +47,9 @@ namespace eevee_fantasy
             //Creating Character
             foreach (var member in Party.BattlePartyMembers!)
             {
-                if (member.Alive == true)
+                if (Party.PartyMembers[member].Alive == true)
                 {
-                    Character = member;
+                    Character = Party.PartyMembers[member];
                     break;
                 }
             }
@@ -168,7 +168,7 @@ namespace eevee_fantasy
                 bool partyAvailable = false;
                 for (int i = 0; i < Party.BattlePartyMembers.Count(); i++)
                 {
-                    if (Party.BattlePartyMembers[i].Alive == true)
+                    if (Party.PartyMembers[Party.BattlePartyMembers[i]].Alive == true)
                     {
                         partyAvailable = true;
                         break;
@@ -222,10 +222,11 @@ namespace eevee_fantasy
             do
             {
                 myChoice = Choice(Party.BattlePartyMembers.Count() - 1);
-            } while (Party.BattlePartyMembers[myChoice].Alive == false);
+            } while (Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Alive == false);
 
-            Console.WriteLine(Party.BattlePartyMembers[myChoice].Name);
-            return Party.BattlePartyMembers[myChoice];
+
+            Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
+            return Party.PartyMembers[Party.BattlePartyMembers[myChoice]];
         }
 
         private void Attack(Character attacker, Character target, Skill skillUsed)

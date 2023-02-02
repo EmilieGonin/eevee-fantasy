@@ -20,7 +20,6 @@ namespace eevee_fantasy
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
             Party.Recruit(1);
-
             Inventory.Init();
             eevee = Game.Init(eevee);
             Bosses.Init();
@@ -163,21 +162,32 @@ namespace eevee_fantasy
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 5)
                 {
                     Random rnd = new Random();
-
-                    Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel-1].levelCap,currentMap.levelCap), rnd.Next(1,6));
+                    if (rnd.Next(1, 100) >= 90)
+                    {
+                        Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap), rnd.Next(1, 6));
+                        battle.Init(myEnemyToFight);
+                    }
                 }
+
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 6)
                 {
                     Random rnd = new Random();
-                    Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap),3);
-                    battle.Init(myEnemyToFight);
+                    if (rnd.Next(1, 100) >= 90)
+                    {
+                        Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap), 3);
+                        battle.Init(myEnemyToFight);
+                    }
                 }
                 else if (currentMap.Collisions(eevee.X, eevee.Y) == 7)
                 {
                     Random rnd = new Random();
-                    Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap),4);
-                    battle.Init(myEnemyToFight);
+                    if (rnd.Next(1, 100) >= 90)
+                    {
+                        Character myEnemyToFight = new BasicEnemy(rnd.Next(maps[Game.GameLevel - 1].levelCap, currentMap.levelCap), 4);
+                        battle.Init(myEnemyToFight);
+                    }
                 }
+                
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
                 if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))

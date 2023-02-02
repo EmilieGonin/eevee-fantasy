@@ -22,11 +22,11 @@ namespace eevee_fantasy
 			{
 				if (temp == null ) 
 				{ 
-					temp = Party.BattlePartyMembers[i];
+					temp = Party.PartyMembers[Party.BattlePartyMembers[i]];
 				}
-				else if (Party.BattlePartyMembers[i].lvl > temp.lvl)
+				else if (Party.PartyMembers[Party.BattlePartyMembers[i]].lvl > temp.lvl)
 				{
-					temp = Party.BattlePartyMembers[i];
+					temp = Party.PartyMembers[Party.BattlePartyMembers[i]];
                 }
 			}
 
