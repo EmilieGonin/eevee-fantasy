@@ -165,6 +165,10 @@ namespace eevee_fantasy
                     Game.GameLevel = map;
                     //Console.WriteLine(Game.GameLevel);
                 }
+                else if (currentMap.Collisions(eevee.X, eevee.Y) == 5)
+                {
+                    battle.Init();
+                }
 
                 Character friend = Party.PartyMembers[currentMap.Friend_Id];
                 if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))

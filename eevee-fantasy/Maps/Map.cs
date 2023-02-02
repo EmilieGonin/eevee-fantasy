@@ -116,8 +116,6 @@ namespace eevee_fantasy
                 case '<':
                 case '>':
                     return 1;
-                case 'v':
-                    return 4;
                 case '^':
                     return 2;
                 case '/':
@@ -130,6 +128,10 @@ namespace eevee_fantasy
                     return 3;
                 case '+':
                     return 3;
+                case 'v':
+                    return 4;
+                case '#':
+                    return 5;
             }
             return 0;
         }
@@ -161,6 +163,11 @@ namespace eevee_fantasy
 
             Console.SetCursorPosition(1, _cursorY);
             Console.Write("►");
+        }
+
+        public void GrassBattle()
+        {
+
         }
     }
 
