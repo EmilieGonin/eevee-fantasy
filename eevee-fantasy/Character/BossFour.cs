@@ -11,7 +11,7 @@ namespace eevee_fantasy
         public BossFour()
         {
             Id = 4;
-
+            //give random type according to pokemons levels
             Enemy = 'B';
             Color = ConsoleColor.DarkRed;
             XpGain = 650;

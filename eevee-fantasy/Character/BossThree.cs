@@ -11,7 +11,7 @@ namespace eevee_fantasy
         public BossThree()
         {
             Id = 3;
-
+            Attribute = new Fire();
             Enemy = 'B';
             Color = ConsoleColor.DarkRed;
             XpGain = 600;

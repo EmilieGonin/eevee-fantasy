@@ -14,6 +14,46 @@ namespace eevee_fantasy
             XpGain = 300;
           
 		}
+
+		public void giveBestAttribute()
+		{
+			Character temp = null;
+			int attributeIndex;
+
+            for (int i = 0; i < Party.BattlePartyMembers.Count(); i++)
+			{
+				if (temp == null ) 
+				{ 
+					temp = Party.BattlePartyMembers[i];
+				}
+				else if (Party.BattlePartyMembers[i].lvl > temp.lvl)
+				{
+					temp = Party.BattlePartyMembers[i];
+
+                }
+			}
+
+			Random rnd = new Random();
+
+			if(temp.Attribute.Weaknesses.Length != 0 )
+			{
+                giveAttribute(temp.Attribute.Weaknesses[rnd.Next(1, temp.Attribute.Strengths.Length)]);
+            }
+			else if(temp.Attribute.Strengths.Length != 0)
+			{
+				do
+				{
+					attributeIndex = rnd.Next(1, 6);
+				} while (temp.Attribute.Strengths.Contains(attributeIndex));
+				giveAttribute(attributeIndex);
+            }
+			else
+			{
+                attributeIndex = rnd.Next(1, 6);
+                giveAttribute(attributeIndex);
+            }
+			
+		}
 	}
 }
 

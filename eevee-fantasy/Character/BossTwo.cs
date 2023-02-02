@@ -11,7 +11,7 @@ namespace eevee_fantasy
         public BossTwo()
         {
             Id = 2;
-
+            Attribute = new Water();
             Enemy = 'B';
             Color = ConsoleColor.DarkRed;
             XpGain = 550;
