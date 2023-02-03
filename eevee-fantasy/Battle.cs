@@ -30,6 +30,12 @@ namespace eevee_fantasy
             _currentMap = map;
 
             //Drawing Battle Background
+
+            DrawMyBackground(enemy);
+            Play();
+        }
+        public void DrawMyBackground(Character enemy)
+        {
             BattleMap = new BattleMap();
             BattleMap.DrawMap();
             Console.ForegroundColor = ConsoleColor.White;
@@ -51,10 +57,7 @@ namespace eevee_fantasy
 
             //Add default text
             Write("Choose an action.");
-
-            Play();
         }
-
         private void DrawCharacter()
         {
             foreach (var member in Party.BattlePartyMembers!)
@@ -135,6 +138,8 @@ namespace eevee_fantasy
 
         public void Play()
         {
+            BattleMap.ResetCursor(55, 15);
+            DrawMyBackground(Enemy);
             //Console.WriteLine("start battle");
             if (BattleState == true )
             {
@@ -157,6 +162,7 @@ namespace eevee_fantasy
 
         private void MyTurn()
         {
+          
             if (Character.Alive == true)
             {
                 //Console.WriteLine(Character.Name + "  Turn");
@@ -171,40 +177,49 @@ namespace eevee_fantasy
                             EnnemysTurn();
                             if(Character.Alive == true)
                             {
-                                Write(Character.Name + " use " + skillUsed.Name);
+                                new Dialogue(Character.Name + " use " + skillUsed.Name);
                                 Attack(Character, Enemy, skillUsed);
                             }
                         }
                         else if (Character?.Speed > Enemy?.Speed)
                         {
                             Skill skillUsed = Character.Skills[Choice(Character.Skills.Count() - 1)];
-                            Write(Character.Name + " use " + skillUsed.Name);
+                            new Dialogue(Character.Name + " use " + skillUsed.Name);
                             Attack(Character, Enemy, skillUsed);
+                            
                             EnnemysTurn();
+                            
                         }
                         DrawMenu();
 
                         break;
                     case 1: //Inventory
                         Inventory.Open();
-                        //Console.WriteLine("j'ouvre mon inventaire");
-
+                        Inventory.Choice();
+                        
+                        DrawMyBackground(Enemy);
+                        DrawMenu();
                         EnnemysTurn();
+ 
                         break;
                     case 2: //Choose Pokemon
                         if (Party.BattlePartyMembers.Count < 2 && isPartyAvailable())
                         {
-                            Write("You have no Pokemon available to swap.");
+                            new Dialogue("You have no Pokemon available to swap.");
                             Choice(2);
                         }
                         else
                         {
-                            Party.Open();
+                            
                             Character pokemon = ChoosePokemon();
-
+                            
                             Party.Swap(Character, pokemon);
                             Character = pokemon;
+                           
+                            DrawMyBackground(Enemy);
+                            DrawMenu();
                             EnnemysTurn();
+                            DrawMyBackground(Enemy);
                         }
                         break;
                 }
@@ -245,42 +260,45 @@ namespace eevee_fantasy
             {
                 //Console.WriteLine("ennemy turn");
                 Random rnd = new Random();
-
                 if (Enemy!.Attribute!.isEffective(Character!.Attribute!))
                 {
                     int indexChoice = rnd.Next(1, Enemy.Skills.Count());
                     //Console.WriteLine("It's gonna be super effective : skill n° " + indexChoice + " used ");
                     Attack(Enemy, Character, Enemy.Skills[indexChoice]);
-                    Write("The ennemy use " + Enemy.Skills[indexChoice].Name + ". It's super effective !");
+                    new Dialogue("The ennemy use " + Enemy.Skills[indexChoice].Name + ". It's super effective !");
                 }
                 else if (Enemy!.Attribute!.isWeak(Character!.Attribute!))
                 {
                     //Console.WriteLine("It's gonna be weak so tackle");
                     Attack(Enemy, Character, Enemy.Skills[0]);
-                    Write("The ennemy use Tackle.");
+                    new Dialogue("The ennemy use Tackle.");
                 }
                 else
                 {
                     int indexChoice = rnd.Next(0, Enemy.Skills.Count());
                     //Console.WriteLine("It's gonna be neutral  : skill n° " + indexChoice + " used ");
                     Attack(Enemy, Character, Enemy.Skills[indexChoice]);
-                    Write("The ennemy use " + Enemy.Skills[indexChoice].Name + ".");
+                    new Dialogue("The ennemy use " + Enemy.Skills[indexChoice].Name + ".");
                 }
             }
 
         }
-        private Character ChoosePokemon()
+        public Character ChoosePokemon()
         {
+            Party.Open();
+            //BattleMap.AddCursor(1, 2);
+            Console.SetCursorPosition(1, 2);
             int myChoice = 0;
             do
             {
                 myChoice = Choice(Party.BattlePartyMembers.Count() - 1);
             } while (Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Alive == false);
 
-
+            Party.Close();
             //Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
             return Party.PartyMembers[Party.BattlePartyMembers[myChoice]];
         }
+
 
         private void Attack(Character attacker, Character target, Skill skillUsed)
         {
@@ -289,7 +307,6 @@ namespace eevee_fantasy
 
         private int Choice(int choiceLimit)
         {
-            BattleMap.ResetCursor(55, 15);
             int Index = 0;
             _choiceDone = false;
             do
@@ -302,14 +319,12 @@ namespace eevee_fantasy
                     if ((input.Key == ConsoleKey.UpArrow || input.KeyChar == 'z') && Index > 0)
                     {
                         Index -= 1;
-                        //Console.WriteLine(Index);
-                        BattleMap.MoveCursor(input.KeyChar, choiceLimit);
+                        BattleMap.MoveCursor(input.KeyChar, choiceLimit + 1) ;
                     }
                     else if ((input.Key == ConsoleKey.DownArrow || input.KeyChar == 's') && Index < choiceLimit)//var to check skill unlocked
                     {
                         Index += 1;
-                        //Console.WriteLine(Index);
-                        BattleMap.MoveCursor(input.KeyChar, choiceLimit);
+                        BattleMap.MoveCursor(input.KeyChar, choiceLimit + 1);
                     }
                 }
                 else if (input.Key == ConsoleKey.Enter)

@@ -47,20 +47,20 @@ namespace eevee_fantasy
             }
         }
 
-        public void DrawList(List<Character> list)
+        public void DrawListPokemon(List<Character> list, List<int> pokemonOrder)
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(30, 1);
             Console.Write("Pokemons");
 
-            for (int i = 0; i < list!.Count; i++)
+            for (   int i = 0; i < pokemonOrder!.Count; i++)
             {
-                if (list[i].Recruited)
+                if (list[pokemonOrder[i]].Recruited)
                 {
-                    AttributeColor(list[i].Attribute.Id);
+                    AttributeColor(list[pokemonOrder[i]].Attribute.Id);
                     Console.SetCursorPosition(1, i + 2);
-                    Console.Write("  " + list[i].Name + " lvl " + list[i].lvl + " -- "
-                        + "HP=" + list[i].BattleHp + "/" + list[i].TotalHp + " ATK=" + list[i].TotalAtk + " DEF=" + list[i].TotalDef + " SPD=" + list[i].Speed);
+                    Console.Write("  " + list[pokemonOrder[i]].Name + " lvl " + list[pokemonOrder[i]].lvl + " -- "
+                        + "HP=" + list[pokemonOrder[i]].BattleHp + "/" + list[pokemonOrder[i]].TotalHp + " ATK=" + list[pokemonOrder[i]].TotalAtk + " DEF=" + list[pokemonOrder[i]].TotalDef + " SPD=" + list[pokemonOrder[i]].Speed);
                 }
             }
         }

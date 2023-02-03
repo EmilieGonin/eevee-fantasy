@@ -17,6 +17,16 @@ namespace eevee_fantasy
             XpGain = 650;
             X = 2;
             Y = 3;
+
+
+            BaseHp = 60;
+            BaseDef = 50;
+            BaseAtk = 60;
+            Speed = 100; // random 100 -> 110;
+            for (int i = 0; i < 45; i++)
+            {
+                LevelUp();
+            }
         }
     }
 }

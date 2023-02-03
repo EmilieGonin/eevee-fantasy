@@ -30,12 +30,11 @@ namespace eevee_fantasy
         public static void Swap(Character pokemon, Character pokemon2)
 
         {
-
-            int temp = BattlePartyMembers[pokemon.Id];
-            BattlePartyMembers[pokemon.Id] = BattlePartyMembers[pokemon2.Id];
-            BattlePartyMembers[pokemon2.Id] = temp;
-
-
+            int temp = pokemon.Id;
+            int index = BattlePartyMembers.IndexOf(temp);
+            int index2 = BattlePartyMembers.IndexOf(pokemon2.Id);
+            BattlePartyMembers[index] = pokemon2.Id;
+            BattlePartyMembers[index2] = temp;
         }
 
         public static int GetNumberRecruited()
@@ -52,8 +51,58 @@ namespace eevee_fantasy
         {
             IsOpen = true;
             PartyMenu = new Menu();
-            PartyMenu.DrawList(PartyMembers);
+            PartyMenu.DrawListPokemon(PartyMembers, BattlePartyMembers);
             PartyMenu.AddCursor(1, 2);
+        }
+
+
+        public static Character ChoosePokemon()
+        {
+            Open();
+            //BattleMap.AddCursor(1, 2);
+            Console.SetCursorPosition(1, 2);
+            int myChoice = 0;
+            do
+            {
+                myChoice = Choice(BattlePartyMembers.Count() - 1);
+            } while (PartyMembers[BattlePartyMembers[myChoice]].Alive == false);
+
+            Close();
+            //Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
+            return PartyMembers[BattlePartyMembers[myChoice]];
+        }
+
+
+        private static int Choice(int choiceLimit)
+        {
+         
+            int Index = 0;
+            bool  _choiceDone = false;
+            do
+            {
+                ConsoleKeyInfo input = Console.ReadKey(true);
+
+                if (input.Key == ConsoleKey.UpArrow || input.Key == ConsoleKey.DownArrow || input.KeyChar == 'z' || input.KeyChar == 's')
+                {
+
+                    if ((input.Key == ConsoleKey.UpArrow || input.KeyChar == 'z') && Index > 0)
+                    {
+                        Index -= 1;
+                        PartyMenu.MoveCursor(input.KeyChar, choiceLimit + 1);
+                    }
+                    else if ((input.Key == ConsoleKey.DownArrow || input.KeyChar == 's') && Index < choiceLimit)//var to check skill unlocked
+                    {
+                        Index += 1;
+                        PartyMenu.MoveCursor(input.KeyChar, choiceLimit + 1);
+                    }
+                }
+                else if (input.Key == ConsoleKey.Enter)
+                {
+                    _choiceDone = true;
+                }
+            } while (_choiceDone == false);
+
+            return Index;
         }
 
         public static void Close()
