@@ -11,8 +11,8 @@ namespace eevee_fantasy
         public SkillSpark()
         {
             Name = "Spark";
-            Damage = 0;
-            PP = 0;
+            Damage = 50;
+            PP = 15;
         }
     }
 }

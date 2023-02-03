@@ -24,6 +24,15 @@ namespace eevee_fantasy
 
         public void Init(Character enemy, Map map)
         {
+
+             foreach (var member in Party.BattlePartyMembers!)
+            {
+                if (Party.PartyMembers[member].Alive == true)
+                {
+                    Character = Party.PartyMembers[member];
+                    break;
+                }
+            }
             BattleState = true;
             _choiceDone = false;
             _choiceIndex = 0;
@@ -60,14 +69,7 @@ namespace eevee_fantasy
         }
         private void DrawCharacter()
         {
-            foreach (var member in Party.BattlePartyMembers!)
-            {
-                if (Party.PartyMembers[member].Alive == true)
-                {
-                    Character = Party.PartyMembers[member];
-                    break;
-                }
-            }
+           
 
             AttributeColor(Character.Attribute.Id);
             Console.SetCursorPosition(3, 7);
@@ -147,11 +149,16 @@ namespace eevee_fantasy
                 MyTurn();
                 if (Enemy.Alive == false)
                 {
+                    
                     BattleState = false;
                     int xp = (Enemy.lvl * Enemy.XpGain) / 7;
-                    Character.WinXp((int)(xp));
-                    new Dialogue("You gain " + xp + "exp !");
+                    int money = (Enemy.lvl * 2) + 20;
+                    Inventory.PokeDollars += money;
+                    
+                    Character.WinXp(xp);
+                    new Dialogue("You gain " + xp + "exp and " + money +" pokedollars");
                     _currentMap.DrawMap();
+                    
                 }
                 else
                 {
@@ -181,26 +188,31 @@ namespace eevee_fantasy
                                 Attack(Character, Enemy, skillUsed);
                             }
                         }
-                        else if (Character?.Speed > Enemy?.Speed)
+                        else if (Character?.Speed >= Enemy?.Speed)
                         {
                             Skill skillUsed = Character.Skills[Choice(Character.Skills.Count() - 1)];
                             new Dialogue(Character.Name + " use " + skillUsed.Name);
                             Attack(Character, Enemy, skillUsed);
-                            
                             EnnemysTurn();
                             
                         }
                         DrawMenu();
-
                         break;
                     case 1: //Inventory
                         Inventory.Open();
-                        Inventory.Choice();
-                        
-                        DrawMyBackground(Enemy);
-                        DrawMenu();
-                        EnnemysTurn();
- 
+
+                        if (Inventory.Choice() == false)
+                        {
+                            DrawMyBackground(Enemy);
+                            DrawMenu();
+                            break;
+                        }
+                        else
+                        {
+                            DrawMyBackground(Enemy);
+                            DrawMenu();
+                            EnnemysTurn();
+                        }
                         break;
                     case 2: //Choose Pokemon
                         if (Party.BattlePartyMembers.Count < 2 && isPartyAvailable())
@@ -211,15 +223,22 @@ namespace eevee_fantasy
                         else
                         {
                             
-                            Character pokemon = ChoosePokemon();
-                            
-                            Party.Swap(Character, pokemon);
-                            Character = pokemon;
+                            Character pokemon = Party.ChoosePokemon();
+                            if (Party.Swap(Character, pokemon))
+                            {
+                                Character = pokemon; 
+                                DrawMyBackground(Enemy);
+                                DrawMenu();
+                                EnnemysTurn();
+                                DrawMyBackground(Enemy);
+                            }
+                            else
+                            {
+                                Console.WriteLine("hihi");
+                                break;
+                            }
                            
-                            DrawMyBackground(Enemy);
-                            DrawMenu();
-                            EnnemysTurn();
-                            DrawMyBackground(Enemy);
+                           
                         }
                         break;
                 }
@@ -228,9 +247,10 @@ namespace eevee_fantasy
             {
                 if (isPartyAvailable())
                 {
-                    Character pokemon2 = ChoosePokemon();
+                    Character pokemon2 = Party.ChoosePokemon();
                     Party.Swap(Character, pokemon2) ;
                     Character = pokemon2;
+                    
                 }
                 else
                 {
@@ -283,21 +303,7 @@ namespace eevee_fantasy
             }
 
         }
-        public Character ChoosePokemon()
-        {
-            Party.Open();
-            //BattleMap.AddCursor(1, 2);
-            Console.SetCursorPosition(1, 2);
-            int myChoice = 0;
-            do
-            {
-                myChoice = Choice(Party.BattlePartyMembers.Count() - 1);
-            } while (Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Alive == false);
 
-            Party.Close();
-            //Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
-            return Party.PartyMembers[Party.BattlePartyMembers[myChoice]];
-        }
 
 
         private void Attack(Character attacker, Character target, Skill skillUsed)

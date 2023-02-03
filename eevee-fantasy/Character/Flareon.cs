@@ -19,9 +19,9 @@ namespace eevee_fantasy
 
             //stats
             Name = "Flareon";
-            BaseHp = 65;
+            BaseHp = 70;
             BaseDef = 60;
-            BaseAtk = 130;
+            BaseAtk = 150;
             Speed = 110;
 
             //state

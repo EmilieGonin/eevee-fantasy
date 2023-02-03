@@ -25,7 +25,7 @@ namespace eevee_fantasy
 
             //state
             Alive = true;
-            Attribute = new Fire();
+            Attribute = new Thunder();
 
             for (int i = 0; i < 25; i++)
             {

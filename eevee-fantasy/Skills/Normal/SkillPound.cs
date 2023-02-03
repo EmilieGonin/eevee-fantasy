@@ -11,7 +11,7 @@ namespace eevee_fantasy
         public SkillPound()
         {
             Name = "Pound";
-            Damage = 40;
+            Damage = 60;
             PP = 35;
         }
     }

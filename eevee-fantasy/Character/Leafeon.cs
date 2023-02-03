@@ -25,9 +25,9 @@ namespace eevee_fantasy
 
             //state
             Alive = true;
-            Attribute = new Fire();
+            Attribute = new Plant();
 
-            for (int i = 0; i < 35; i++)
+            for (int i = 0; i < 12; i++)
             {
                 LevelUp();
             }

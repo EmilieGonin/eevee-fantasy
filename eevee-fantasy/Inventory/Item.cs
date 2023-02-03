@@ -14,7 +14,12 @@ namespace eevee_fantasy
 
         public virtual void Use(Character character)
         {
-            this.Number--;
+            if(character != null)
+            {
+                if (this.Number > 0) { this.Number--; }
+            }
+          
+           
         }
     }
 }

@@ -19,8 +19,7 @@ namespace eevee_fantasy
 
         public override void Use(Character character)
         {
-            base.Use(character);
-            character.TotalAtk += _attack;
+            new Dialogue("Not yet implemented");
         }
     }
 }
