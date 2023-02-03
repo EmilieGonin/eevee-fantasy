@@ -14,7 +14,7 @@ namespace eevee_fantasy
     {
         public static void Main()
         {
-            //Console.SetWindowSize(75, 25);
+            Console.SetWindowSize(75, 25);
             Console.CursorVisible = false;
             bool play = true;
 
@@ -89,7 +89,7 @@ namespace eevee_fantasy
                             currentMap.DrawMap();
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
-                        case 'm': //Debug only
+/*                        case 'm': //Debug only
                             new Dialogue("A tall mountain is right in front of you.");
                             currentMap.DrawMap();
                             eevee.Spawn(eevee.X, eevee.Y);
@@ -100,7 +100,7 @@ namespace eevee_fantasy
                             currentMap = maps[0];
                             currentMap.DrawMap();
                             eevee.Spawn(currentMap.X, currentMap.Y);
-                            break;
+                            break;*/
                     }
                 }
                 if (currentMap.Collisions(eevee.X, eevee.Y) == 1)

@@ -165,7 +165,6 @@ namespace eevee_fantasy
 
         public void MoveCursor(char input, int length)
         {
-            Console.WriteLine(_cursorY);
             Console.SetCursorPosition(_cursorX, _cursorY);
             Console.Write(" ");
 
@@ -173,11 +172,9 @@ namespace eevee_fantasy
             {
                 case 'z':
                     _cursorY = _cursorY == 2 ? _cursorY : _cursorY -= 1;
-                    Console.WriteLine(_cursorY);
                     break;
                 case 's':
                     _cursorY = _cursorY == length + 1 ? _cursorY : _cursorY += 1;
-                    Console.WriteLine(_cursorY);
                     break;
             }
 

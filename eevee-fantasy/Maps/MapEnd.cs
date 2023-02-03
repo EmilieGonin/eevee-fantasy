@@ -17,16 +17,16 @@ namespace eevee_fantasy
             X = 10;
             Y = 8;
 
-            //Histories = new string[]
-            //{
-            //    ("Thank you for playing our game till the end!"),
-            //    ("We, Tom Le Gros, Emilie Gonin and Jimmy Dutto, can't thank you enough."),
-            //    ("We have put a lot of effort in the last 2 weeks to make this game."),
-            //    ("We hope it was enjoyale, and wish you the best!"),
-            //    ("We hope to see you playing other games from our ever growing company..."),
-            //    ("FrownGate"),
-            //    ("See you soon!")
-            //};
+            Histories = new string[]
+            {
+                ("Thank you for playing our game till the end!"),
+                ("We, Tom Le Gros, Emilie Gonin and Jimmy Dutto, can't thank you enough."),
+                ("We have put a lot of effort in the last 2 weeks to make this game."),
+                ("We hope it was enjoyale, and wish you the best!"),
+                ("We hope to see you playing other games from our ever growing company..."),
+                ("FrownGate"),
+                ("See you soon!")
+            };
 
             MapLink = "EndScreen.txt";
             CreateMap();

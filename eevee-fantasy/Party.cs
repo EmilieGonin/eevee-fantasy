@@ -134,7 +134,6 @@ namespace eevee_fantasy
                 }
                 if (input.Key == ConsoleKey.Escape)
                 {
-                    Console.WriteLine("hahahaa");
                     Close();
                     Index = -1;
                     break;
