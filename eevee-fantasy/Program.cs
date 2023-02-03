@@ -103,30 +103,22 @@ namespace eevee_fantasy
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
                     Inventory.MoveCursor(input.KeyChar);
-                    Console.WriteLine(Inventory._cursorY);
+                    //Console.WriteLine(Inventory._cursorY);
                 }
                 else if (Party.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
                     Party.PartyMenu.MoveCursor(input.KeyChar, Party.BattlePartyMembers.Count);
                 }
                 
-                else if (Shop.IsOpen && (input.KeyChar == 'z'))
+                else if (Shop.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
-                    index += 1;
-                    Shop.menu.MoveCursor(input.KeyChar, Shop.Items.Count + index);
-                    //Console.WriteLine(Inventory._cursorY);
-                }
-                    
-                else if (Shop.IsOpen && (input.KeyChar == 's'))
-                {
-                    index -= 1;
-                    Shop.menu.MoveCursor(input.KeyChar, Shop.Items.Count + index);
-                    //Console.WriteLine(Inventory._cursorY);
-                }
-                    
+                    //index += 1;
+                    Shop.menu.MoveCursor(input.KeyChar, Shop.Items.Count);
+                    Console.WriteLine(Inventory._cursorY);
+                } 
                 else if (Shop.IsOpen && input.Key == ConsoleKey.Enter)
                 {
-                    Inventory.Buy(Inventory._cursorY - 2);
+                    Inventory.Buy(Inventory._cursorY);
                     //Console.WriteLine(Inventory._cursorY);
                     Shop.Open();
                 }

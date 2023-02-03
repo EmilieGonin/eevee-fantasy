@@ -43,11 +43,9 @@ namespace eevee_fantasy
             {
                 case 'z':
                     _cursorY = _cursorY == 2 ? _cursorY : _cursorY -= 1;
-                    //_cursorY -= 1;
                     break;
                 case 's':
                     _cursorY = _cursorY == Items.Length + 1 ? _cursorY : _cursorY += 1;
-                    //_cursorY += 1;
                     break;
 
             }
@@ -58,6 +56,7 @@ namespace eevee_fantasy
 
         public static void Buy(int id)
         {
+
             if (PokeDollars > Items[id].Price)
             {
                 Items[id].Number++;
