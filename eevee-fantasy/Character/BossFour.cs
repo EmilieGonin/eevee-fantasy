@@ -17,6 +17,12 @@ namespace eevee_fantasy
             XpGain = 650;
             X = 2;
             Y = 3;
+
+            BossDialog = new string[]
+            {
+                ("BRRRRHGGH!!!"),
+                ("I can't let you pass!")
+            };
         }
     }
 }

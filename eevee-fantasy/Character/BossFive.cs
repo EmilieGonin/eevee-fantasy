@@ -17,6 +17,12 @@ namespace eevee_fantasy
             XpGain = 700;
             X = 51;
             Y = 5;
+
+            BossDialog = new string[]
+            {
+                ("BRRRRHGGH!!!"),
+                ("You will not make it out alive!")
+            };
         }
     }
 }

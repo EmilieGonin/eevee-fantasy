@@ -8,7 +8,9 @@ namespace eevee_fantasy
 {
 	public class BossEnemy : Character
 	{
-		public BossEnemy()
+        public string[]? BossDialog { get; set; }
+
+        public BossEnemy()
 		{
             XpGain = 300;
 		}
@@ -49,7 +51,15 @@ namespace eevee_fantasy
                 attributeIndex = rnd.Next(1, 6);
                 giveAttribute(attributeIndex);
             }
-		}
-	}
+           
+        }
+        public void BossDialogWrite()
+        {
+            foreach (var item in BossDialog)
+            {
+                new Dialogue(item);
+            }
+        }
+    }
 }
 

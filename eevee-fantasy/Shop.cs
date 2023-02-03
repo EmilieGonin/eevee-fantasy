@@ -9,20 +9,23 @@ namespace eevee_fantasy
 	public class Shop
 	{
         private static int _cursorY;
-        public static Item[]? Items { get; set; }
+        public static List<Item>? Items;
+        public static List<int>? Item;
+        public static Menu menu { get; private set; }
         public static bool IsOpen { get; private set; }
 
         public static void Init()
         {
             _cursorY = 2;
             IsOpen = false;
-            Items = new Item[6] { new AtkPotion(), new Elixir(), new Revive(), new Potion(), new SuperPotion(), new HyperPotion() };
+            Items = new List<Item> { new AtkPotion(), new Elixir(), new Revive(), new Potion(), new SuperPotion(), new HyperPotion() };
+            Item = new List<int> { 0, };
         }
 
         public static void Open()
         {
             IsOpen = true;
-            Menu menu = new Menu();
+            menu = new Menu();
             menu.DrawShop(Items);
             menu.AddCursor(1, 2);
         }
@@ -31,9 +34,6 @@ namespace eevee_fantasy
         {
             IsOpen = false;
         }
-    }
-
-       
-    
+    }  
 }
 

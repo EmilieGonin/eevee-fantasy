@@ -26,6 +26,8 @@ namespace eevee_fantasy
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(30, 1);
             Console.Write("Inventory");
+            Console.SetCursorPosition(50, 2);
+            Console.Write("PokeDollars = " + Inventory.PokeDollars + "$");
 
             for (int i = 0; i < list!.Length; i++)
             {
@@ -34,13 +36,16 @@ namespace eevee_fantasy
             }
         }
 
-        public void DrawShop(Item[] list)
+        public void DrawShop(List<Item> list)
         {
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(30, 1);
             Console.Write("Item Shop");
+            Console.SetCursorPosition(50, 2);
+            Console.Write("PokeDollars = " + Inventory.PokeDollars + "$");
 
-            for (int i = 0; i < list!.Length; i++)
+            for (int i = 0; i < list!.Count; i++)
             {
                 Console.SetCursorPosition(1, i + 2);
                 Console.Write("  " + list[i].Name + " = " + list[i].Price + " $ ");
