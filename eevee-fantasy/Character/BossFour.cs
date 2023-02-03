@@ -18,7 +18,6 @@ namespace eevee_fantasy
             X = 2;
             Y = 3;
 
-
             BaseHp = 60;
             BaseDef = 50;
             BaseAtk = 60;
@@ -27,6 +26,13 @@ namespace eevee_fantasy
             {
                 LevelUp();
             }
+
+            BossDialog = new string[]
+            {
+                ("BRRRRHGGH!!!"),
+                ("I can't let you pass!")
+            };
+
         }
     }
 }

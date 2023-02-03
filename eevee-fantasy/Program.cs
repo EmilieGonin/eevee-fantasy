@@ -35,8 +35,10 @@ namespace eevee_fantasy
 
             while (play != false)
             {
-
                 ConsoleKeyInfo input = Console.ReadKey(true);
+
+                int index = 0;
+
                 if (!Inventory.IsOpen && !Party.IsOpen && !Shop.IsOpen && !battle.BattleState)
                 {
                     switch (input.KeyChar)
@@ -107,14 +109,24 @@ namespace eevee_fantasy
                 else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
                     Inventory.MoveCursor(input.KeyChar);
+                    //Console.WriteLine(Inventory._cursorY);
                 }
                 else if (Party.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
                     Party.PartyMenu.MoveCursor(input.KeyChar, Party.BattlePartyMembers.Count);
                 }
+                
                 else if (Shop.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
                 {
-                    Inventory.MoveCursor(input.KeyChar);
+                    //index += 1;
+                    Shop.menu.MoveCursor(input.KeyChar, Shop.Items.Count);
+                    Console.WriteLine(Inventory._cursorY);
+                } 
+                else if (Shop.IsOpen && input.Key == ConsoleKey.Enter)
+                {
+                    Inventory.Buy(Inventory._cursorY);
+                    //Console.WriteLine(Inventory._cursorY);
+                    Shop.Open();
                 }
                 else if (Inventory.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'i'))
                 {
@@ -229,6 +241,7 @@ namespace eevee_fantasy
                     BossEnemy enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
                     if (eevee.X == enemy.X && eevee.Y == enemy.Y)
                     {
+                        enemy.BossDialogWrite();
                         enemy.giveBestAttribute();
                         battle.Init(enemy, currentMap);
                         enemy.Beaten = true;

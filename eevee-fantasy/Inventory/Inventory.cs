@@ -8,7 +8,7 @@ namespace eevee_fantasy
 {
 	public static class Inventory
 	{
-        private static int _cursorY;
+        public static int _cursorY { get; private set; }
         public static int PokeDollars { get; private set; }
         public static Item[]? Items { get; set; }
         public static bool IsOpen { get; private set; }
@@ -17,6 +17,7 @@ namespace eevee_fantasy
         {
             _cursorY = 2;
             IsOpen = false;
+            PokeDollars = 1000;
             Items = new Item[6] { new AtkPotion(), new Elixir(), new Revive(), new Potion(), new SuperPotion(), new HyperPotion() };
         }
 
@@ -102,11 +103,13 @@ namespace eevee_fantasy
         }
         public static void Buy(int id)
         {
+
             if (PokeDollars > Items[id].Price)
             {
                 Items[id].Number++;
                 PokeDollars -= Items[id].Price;
             }
+
         }
     }
 }

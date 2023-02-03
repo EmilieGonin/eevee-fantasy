@@ -14,10 +14,16 @@ namespace eevee_fantasy
 			Id = 1;
 			Attribute = new Plant();
 			Enemy = 'B';
-			Color = ConsoleColor.DarkRed;
+			Color = ConsoleColor.DarkGreen;
             XpGain = 500;
             X = 62;
             Y = 8;
+
+            BossDialog = new string[]
+            {
+                ("BRRRRHGGH!!!"),
+                ("You will perish!")
+            };
 
             BaseHp = 60;
             BaseDef = 50;

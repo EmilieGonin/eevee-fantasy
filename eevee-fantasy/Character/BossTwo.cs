@@ -13,11 +13,10 @@ namespace eevee_fantasy
             Id = 2;
             Attribute = new Water();
             Enemy = 'B';
-            Color = ConsoleColor.DarkRed;
+            Color = ConsoleColor.DarkBlue;
             XpGain = 550;
             X = 61;
             Y = 13;
-
 
             BaseHp = 75;
             BaseDef = 50;
@@ -27,6 +26,13 @@ namespace eevee_fantasy
             {
                 LevelUp();
             }
+
+            BossDialog = new string[]
+            {
+                ("BRRRRHGGH!!!"),
+                ("My Master told me to kill you...")
+            };
+
         }
     }
 }

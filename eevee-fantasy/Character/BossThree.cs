@@ -27,6 +27,12 @@ namespace eevee_fantasy
             {
                 LevelUp();
             }
+            BossDialog = new string[]
+            {
+                ("BRRRRHGGH!!!"),
+                ("You look so weak!")
+            };
+
         }
     }
 }
