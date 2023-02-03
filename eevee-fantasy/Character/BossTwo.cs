@@ -18,11 +18,21 @@ namespace eevee_fantasy
             X = 61;
             Y = 13;
 
+            BaseHp = 75;
+            BaseDef = 50;
+            BaseAtk = 60;
+            Speed = 100; // random 100 -> 110;
+            for (int i = 0; i < 24; i++)
+            {
+                LevelUp();
+            }
+
             BossDialog = new string[]
             {
                 ("BRRRRHGGH!!!"),
                 ("My Master told me to kill you...")
             };
+
         }
     }
 }

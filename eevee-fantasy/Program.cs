@@ -19,7 +19,7 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
-            //Party.Recruit(1);
+            Party.Recruit(1);
             Bosses.Init();
             Inventory.Init();
             Shop.Init();
@@ -72,10 +72,16 @@ namespace eevee_fantasy
                             }
                             break;
                         case 'i':
-                            Inventory.Open();
+                           
+                          
+                            Inventory.Choice();
+                            currentMap.DrawMap();
+                            eevee.Spawn(eevee.X, eevee.Y);
                             break;
                         case 'p':
-                            Party.Open();
+                           Party.Swap(Party.ChoosePokemon(), Party.ChoosePokemon());
+                            currentMap.DrawMap();
+                            eevee.Spawn(eevee.X, eevee.Y);
                             break;
                         case 'n':
                             Game.CreateSave(eevee);

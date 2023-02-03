@@ -48,9 +48,11 @@ namespace eevee_fantasy
         {
             if (isEffective(defense))
             {
+               
                 return (float)1.5;
             }
             else if (isWeak(defense)) {
+              
                 return (float)0.5;
             }
             else
