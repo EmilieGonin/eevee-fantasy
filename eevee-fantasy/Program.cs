@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Threading.Tasks;
 using eevee_fantasy;
@@ -19,7 +20,6 @@ namespace eevee_fantasy
 
             Eevee eevee = new Eevee();
             Party.Fill(eevee);
-            Party.Recruit(1);
             Bosses.Init();
             Inventory.Init();
             Shop.Init();
@@ -72,14 +72,12 @@ namespace eevee_fantasy
                             }
                             break;
                         case 'i':
-                           
-                          
                             Inventory.Choice();
                             currentMap.DrawMap();
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
-                        case 'p':
-                           Party.Swap(Party.ChoosePokemon(), Party.ChoosePokemon());
+                        case 'p':                            
+                            Party.Swap(Party.ChoosePokemon(), Party.ChoosePokemon());
                             currentMap.DrawMap();
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
@@ -90,7 +88,9 @@ namespace eevee_fantasy
                             eevee.Spawn(eevee.X, eevee.Y);
                             break;
                         case 'b':
-                            Shop.Open();
+                            while (Shop.Choice()) ;
+                            currentMap.DrawMap();
+                            eevee.Spawn(eevee.X, eevee.Y);
                             break;
                         case 'm': //Debug only
                             new Dialogue("A tall mountain is right in front of you.");
@@ -105,46 +105,6 @@ namespace eevee_fantasy
                             eevee.Spawn(currentMap.X, currentMap.Y);
                             break;
                     }
-                }
-                else if (Inventory.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
-                {
-                    Inventory.MoveCursor(input.KeyChar);
-                    //Console.WriteLine(Inventory._cursorY);
-                }
-                else if (Party.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
-                {
-                    Party.PartyMenu.MoveCursor(input.KeyChar, Party.BattlePartyMembers.Count);
-                }
-                
-                else if (Shop.IsOpen && (input.KeyChar == 'z' || input.KeyChar == 's'))
-                {
-                    //index += 1;
-                    Shop.menu.MoveCursor(input.KeyChar, Shop.Items.Count);
-                    Console.WriteLine(Inventory._cursorY);
-                } 
-                else if (Shop.IsOpen && input.Key == ConsoleKey.Enter)
-                {
-                    Inventory.Buy(Inventory._cursorY);
-                    //Console.WriteLine(Inventory._cursorY);
-                    Shop.Open();
-                }
-                else if (Inventory.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'i'))
-                {
-                    Inventory.Close();
-                    currentMap.DrawMap();
-                    eevee.Spawn(eevee.X, eevee.Y);
-                }
-                else if (Party.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'p'))
-                {
-                    Party.Close();
-                    currentMap.DrawMap();
-                    eevee.Spawn(eevee.X, eevee.Y);
-                }
-                else if (Shop.IsOpen && (input.Key == ConsoleKey.Escape || input.KeyChar == 'b'))
-                {
-                    Shop.Close();
-                    currentMap.DrawMap();
-                    eevee.Spawn(eevee.X, eevee.Y);
                 }
                 if (currentMap.Collisions(eevee.X, eevee.Y) == 1)
                 {
@@ -227,7 +187,7 @@ namespace eevee_fantasy
                 if (currentMap.Friend_Id > 0)
                 {
                     Character friend = Party.PartyMembers[currentMap.Friend_Id];
-                    if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y))
+                    if (map != 0 && (eevee.X == friend.X && eevee.Y == friend.Y) && friend.Recruited == false)
                     {
                         new Dialogue(friend.Name + " has joined your team !");
                         currentMap.DrawMap();
@@ -239,10 +199,13 @@ namespace eevee_fantasy
                 if (currentMap.Enemy_Id >= 0)
                 {
                     BossEnemy enemy = Bosses.BossesToBeat[currentMap.Enemy_Id];
-                    if (eevee.X == enemy.X && eevee.Y == enemy.Y)
+                    if (eevee.X == enemy.X && eevee.Y == enemy.Y && enemy.Beaten == false)
                     {
                         enemy.BossDialogWrite();
-                        enemy.giveBestAttribute();
+                        if (Bosses.BossesToBeat.IndexOf(enemy) is 3 or 4)
+                        {
+                            enemy.giveBestAttribute();
+                        }
                         battle.Init(enemy, currentMap);
                         enemy.Beaten = true;
                     }

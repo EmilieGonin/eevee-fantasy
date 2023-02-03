@@ -9,7 +9,7 @@ namespace eevee_fantasy
 	public static class Inventory
 	{
         public static int _cursorY { get; private set; }
-        public static int PokeDollars { get; private set; }
+        public static int PokeDollars { get; set; }
         public static Item[]? Items { get; set; }
         public static bool IsOpen { get; private set; }
 
@@ -54,17 +54,8 @@ namespace eevee_fantasy
             Console.SetCursorPosition(1, _cursorY);
             Console.Write("►");
         }
-        /*public static Item chooseItem()
-        {
-          
-            //BattleMap.AddCursor(1, 2);
-         
-            int myChoice = 0;
-            Choice();
-          
-        }
-*/
-        public static void Choice()
+
+        public static bool Choice()
         {
             Open();
             Console.SetCursorPosition(1, 2);
@@ -91,15 +82,27 @@ namespace eevee_fantasy
                 else if (input.Key == ConsoleKey.Escape)
                 {
                     Close();
-                    break;
+                    return false;
+                 
+                 
+
                 }
                 else if (input.Key == ConsoleKey.Enter)
                 {
-                    Close();
+                    if (Items[Index].Number == 0)
+                    {
+                        new Dialogue("You don't have this item");
+                        new Dialogue("Press B to buy it with PokeDollars");
+                        break;
+                    }
                     _choiceDone = true;
-                    Items[Index].Use(Party.ChoosePokemon());
+                    Close();
+                    Items[Index].Use(Party.ChoosePokemonObject());
+                    return true;
+
                 }
-            } while (_choiceDone == false || Items[Index].Number == 0);
+            } while (_choiceDone == false);
+            return false;
         }
         public static void Buy(int id)
         {

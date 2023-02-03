@@ -27,14 +27,20 @@ namespace eevee_fantasy
 
         }
 
-        public static void Swap(Character pokemon, Character pokemon2)
+        public static bool Swap(Character pokemon, Character pokemon2)
 
         {
-            int temp = pokemon.Id;
-            int index = BattlePartyMembers.IndexOf(temp);
-            int index2 = BattlePartyMembers.IndexOf(pokemon2.Id);
-            BattlePartyMembers[index] = pokemon2.Id;
-            BattlePartyMembers[index2] = temp;
+            bool swapped = false;
+            if (pokemon != null && pokemon2 != null)
+            {
+                swapped = true;
+                int temp = pokemon.Id;
+                int index = BattlePartyMembers.IndexOf(temp);
+                int index2 = BattlePartyMembers.IndexOf(pokemon2.Id);
+                BattlePartyMembers[index] = pokemon2.Id;
+                BattlePartyMembers[index2] = temp;
+            }
+            return swapped;
         }
 
         public static int GetNumberRecruited()
@@ -61,21 +67,45 @@ namespace eevee_fantasy
             Open();
             //BattleMap.AddCursor(1, 2);
             Console.SetCursorPosition(1, 2);
-            int myChoice = 0;
+            int myChoice =150;
             do
             {
-                myChoice = Choice(BattlePartyMembers.Count() - 1);
-            } while (PartyMembers[BattlePartyMembers[myChoice]].Alive == false);
+                myChoice = Choice();
+                if(myChoice == -1)
+                {
+                    Close();
+                    return null;
+                }
+            } while(PartyMembers[BattlePartyMembers[myChoice]].Alive == false);
 
             Close();
             //Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
             return PartyMembers[BattlePartyMembers[myChoice]];
         }
 
-
-        private static int Choice(int choiceLimit)
+        public static Character ChoosePokemonObject()
         {
-         
+            Open();
+            //BattleMap.AddCursor(1, 2);
+            Console.SetCursorPosition(1, 2);
+            int myChoice = 150;
+
+                myChoice = Choice();
+                if (myChoice == -1)
+                {
+                    Close();
+                    return null;
+                }
+
+
+            Close();
+            //Console.WriteLine(Party.PartyMembers[Party.BattlePartyMembers[myChoice]].Name);
+            return PartyMembers[BattlePartyMembers[myChoice]];
+        }
+
+        private static int Choice()
+        {
+          
             int Index = 0;
             bool  _choiceDone = false;
             do
@@ -88,17 +118,26 @@ namespace eevee_fantasy
                     if ((input.Key == ConsoleKey.UpArrow || input.KeyChar == 'z') && Index > 0)
                     {
                         Index -= 1;
-                        PartyMenu.MoveCursor(input.KeyChar, choiceLimit + 1);
+                        PartyMenu.MoveCursor(input.KeyChar, BattlePartyMembers.Count());
                     }
-                    else if ((input.Key == ConsoleKey.DownArrow || input.KeyChar == 's') && Index < choiceLimit)//var to check skill unlocked
+                    else if ((input.Key == ConsoleKey.DownArrow || input.KeyChar == 's') && Index < BattlePartyMembers.Count())//var to check skill unlocked
                     {
                         Index += 1;
-                        PartyMenu.MoveCursor(input.KeyChar, choiceLimit + 1);
+                        PartyMenu.MoveCursor(input.KeyChar, BattlePartyMembers.Count());
                     }
                 }
                 else if (input.Key == ConsoleKey.Enter)
                 {
+                    
+                    return Index;
                     _choiceDone = true;
+                }
+                if (input.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine("hahahaa");
+                    Close();
+                    Index = -1;
+                    break;
                 }
             } while (_choiceDone == false);
 

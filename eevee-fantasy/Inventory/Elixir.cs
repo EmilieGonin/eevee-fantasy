@@ -16,7 +16,8 @@ namespace eevee_fantasy
 
         public override void Use(Character character)
         {
-            base.Use(character);
+         
+            new Dialogue("Not yet implemented");
             //Select skill
         }
     }

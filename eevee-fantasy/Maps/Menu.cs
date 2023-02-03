@@ -65,7 +65,7 @@ namespace eevee_fantasy
                     AttributeColor(list[pokemonOrder[i]].Attribute.Id);
                     Console.SetCursorPosition(1, i + 2);
                     Console.Write("  " + list[pokemonOrder[i]].Name + " lvl " + list[pokemonOrder[i]].lvl + " -- "
-                        + "HP=" + list[pokemonOrder[i]].BattleHp + "/" + list[pokemonOrder[i]].TotalHp + " ATK=" + list[pokemonOrder[i]].TotalAtk + " DEF=" + list[pokemonOrder[i]].TotalDef + " SPD=" + list[pokemonOrder[i]].Speed);
+                        + "HP=" + list[pokemonOrder[i]].BattleHp + "/" + list[pokemonOrder[i]].TotalHp + " ATK=" + list[pokemonOrder[i]].TotalAtk + " DEF=" + list[pokemonOrder[i]].TotalDef + " SPD=" + list[pokemonOrder[i]].Speed + " // xp = " + (list[pokemonOrder[i]].TotalXP - list[pokemonOrder[i]].lvl * list[pokemonOrder[i]].lvl * list[pokemonOrder[i]].lvl) + "/" + (list[pokemonOrder[i]].XPToGet - list[pokemonOrder[i]].lvl * list[pokemonOrder[i]].lvl* list[pokemonOrder[i]].lvl));
                 }
             }
         }

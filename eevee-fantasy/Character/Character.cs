@@ -57,8 +57,10 @@ namespace eevee_fantasy
         }
 
         public void LevelUp()
-        
+
         {
+            if (lvl <= 99)
+            { 
             lvl += 1;
             TotalHp = (int)((2 * BaseHp * lvl) / (100) + 5 + lvl + 10);
             BattleHp = TotalHp;
@@ -67,6 +69,11 @@ namespace eevee_fantasy
             XPToGet = lvl * lvl * lvl;
             Speed += 2;
             UnlockSkills();
+            if (TotalXP > XPToGet && lvl != 100)
+            {
+                LevelUp();
+            }
+        }
         }
         public void UnlockSkills()
         {
@@ -79,11 +86,13 @@ namespace eevee_fantasy
 
             if (lvl == 15)
             {
+             
                 Skills?.Add(Attribute?.SpecialAttacks?[1]);
             }
 
             if (lvl == 40)
             {
+
                 Skills?.Add(Attribute?.SpecialAttacks?[2]);
             }
         }
@@ -120,15 +129,27 @@ namespace eevee_fantasy
                     break;
             }
         }
-        
+
         public void LooseHp(int amount)
         {
             BattleHp -= amount;
             if (BattleHp <= 0)
             {
-                Alive = false;
+                if (Name != null)
+                {
+                    new Dialogue(Name + " fainted...");
+
+                }
+                else
+                {
+                    new Dialogue("Enemy fainted...");
+                }
                 BattleHp = 0;
+                Alive = false;
+               
             }
+        
+        
         }
 
         public void Move(char input)
@@ -188,7 +209,11 @@ namespace eevee_fantasy
         public void WinXp(int amount)
         {
             TotalXP += amount;
-            LevelUp();
+            if(TotalXP > XPToGet) { 
+                LevelUp();
+              
+            }
+            
         }
     }
 }
