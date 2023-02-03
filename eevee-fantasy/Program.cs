@@ -36,9 +36,6 @@ namespace eevee_fantasy
             while (play != false)
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
-
-                int index = 0;
-
                 if (!Inventory.IsOpen && !Party.IsOpen && !Shop.IsOpen && !battle.BattleState)
                 {
                     switch (input.KeyChar)
